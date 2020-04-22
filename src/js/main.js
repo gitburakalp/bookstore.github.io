@@ -110,23 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       cardsSliderStandart = new Swiper($this, configTwo);
     }
-
-    $(window).on('resize orientedChange', function () {
-      ww = $(window).outerWidth();
-
-      var $cardsWrapper = $this.find('.cards-wrapper');
-      var clonedSlides = $cardsWrapper.children('.cards-slide').clone(true);
-
-      cardsSliderStandart.destroy();
-      $cardsWrapper.empty().append(clonedSlides);
-      $cardsWrapper.attr('style', '');
-
-      if (ww < 768) {
-        cardsSliderStandart = new Swiper($this, config);
-      } else {
-        cardsSliderStandart = new Swiper($this, configTwo);
-      }
-    });
   });
 
   $('.cards-slider:not(.cards-slider--standart)').each(function () {
@@ -154,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var config = {
       slidesPerView: 1.25,
       spaceBetween: slideSpaceMobile,
-      // loop: true,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
       wrapperClass: 'cards-wrapper',
