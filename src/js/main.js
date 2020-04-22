@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var config = {
       slidesPerView: 1.3391,
-      
+
       spaceBetween: slideSpaceMobile,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var configTwo = {
       slidesPerView: 1,
-      
+
       spaceBetween: slideSpaceDesktop,
       effect: 'fade',
       containerModifierClass: 'cards-slider--',
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var config = {
       slidesPerView: 1.3391,
-      
+
       spaceBetween: slideSpaceMobile,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
@@ -171,10 +171,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $('.category-block').each(function () {
     var $this = $(this);
-    var slideCssClass = "category-row";
     ww = $(window).outerWidth();
 
     if (ww < 768) {
+      var slideCssClass = 'category-row';
+
       var config = {
         slidesPerView: 1.3391,
         spaceBetween: slideSpaceMobile,
@@ -187,7 +188,34 @@ document.addEventListener('DOMContentLoaded', function () {
         slidePrevClass: slideCssClass + '--prev',
       };
 
-      var categorySlider = new Swiper($this,config)
+      var categorySlider = new Swiper($this, config);
+    } else {
+      var slideCssClass = 'books-block';
+
+      $(this)
+        .find('.books')
+        .each(function () {
+          var config = {
+            slidesPerView: 4,
+            spaceBetween: 0,
+            containerModifierClass: 'books--',
+            wrapperClass: 'books-wrapper',
+            slideClass: slideCssClass,
+            slideActiveClass: slideCssClass + '--active',
+            slideNextClass: slideCssClass + '--next',
+            slidePrevClass: slideCssClass + '--prev',
+            navigation: {
+              nextEl: $(this).siblings('.slider-controls--right-white'),
+            },
+            breakpoints: {
+              1440: {
+                slidesPerView: 6,
+              },
+            },
+          };
+
+          var booksSlider = new Swiper($(this), config);
+        });
     }
   });
 
