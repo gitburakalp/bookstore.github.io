@@ -11,34 +11,34 @@
     height: 100%;
 
     &--library {
-        background-image: url("/Storage/svg/book-icon.svg");
+        background-image: url($storageSrc + "svg/book-icon.svg");
 
         width: 69px;
         height: 65px;
     }
 
     &--home {
-        background-image: url("/Storage/svg/home-icon.svg");
+        background-image: url($storageSrc + "svg/home-icon.svg");
     }
 
     &--search {
-        background-image: url("/Storage/svg/search-icon--black.svg");
+        background-image: url($storageSrc + "svg/search-icon--black.svg");
     }
 
     &--filter {
-        background-image: url("/Storage/svg/filter-icon--black.svg");
+        background-image: url($storageSrc + "svg/filter-icon--black.svg");
     }
 
     &--libraries {
-        background-image: url("/Storage/svg/library-icon.svg");
+        background-image: url($storageSrc + "svg/library-icon.svg");
     }
 
     &--shopping-cart {
-        background-image: url("/Storage/svg/shopping-cart-icon.svg");
+        background-image: url($storageSrc + "svg/shopping-cart-icon.svg");
     }
 
     &--search-white {
-        background-image: url("/Storage/svg/search-icon--white.svg");
+        background-image: url($storageSrc + "svg/search-icon--white.svg");
     }
 
     &-block {
