@@ -16,7 +16,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    > [class*='-slider'] {
+    > [class*='-slider']:not([class*=--standart]) {
       max-width: calc(100% - (2rem + 3.7rem + 2rem));
       margin-left: 0 !important;
     }

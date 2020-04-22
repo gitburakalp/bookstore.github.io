@@ -17,6 +17,10 @@
         height: 65px;
     }
 
+    &--home {
+        background-image: url("/Storage/svg/home-icon.svg");
+    }
+
     &--search {
         background-image: url("/Storage/svg/search-icon--black.svg");
     }

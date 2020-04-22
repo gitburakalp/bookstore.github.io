@@ -1,0 +1,9 @@
+{
+    "short_name": "BookStore",
+    "name": "book store name",
+    "description": "book store description",
+    "background_color": "#333333",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#333333"
+  }
