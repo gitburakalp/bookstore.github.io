@@ -34,6 +34,8 @@ $bgColorMap: (
   mushroom-two:#ba9f90
 );
 
+$bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e6, #734860, #a68f9b, #b39988, #ffeadb, #d7d9a7, #c2e0f2, #456173, #ba9f90;
+
 @mixin color-modifiers {
   @each $name, $hex in $bgColorMap {
     &--#{$name} {
@@ -58,3 +60,4 @@ $bgColorMap: (
     color: $colors--black !important;
   }
 }
+

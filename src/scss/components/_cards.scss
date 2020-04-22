@@ -3,7 +3,7 @@
   border-radius: 10px;
 
   &-slide {
-    .cards {
+    .cards { 
       .title {
         color: $colors--white;
         text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
@@ -67,8 +67,6 @@
       font-weight: 400;
       margin-bottom: 4rem;
     }
-
-    
   }
 
   .more-btn-block {

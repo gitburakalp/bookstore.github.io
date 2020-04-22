@@ -37,6 +37,11 @@
                 bottom: 0;
                 height: 1px;
                 background-color: $colors--black-two;
+
+                @include media-breakpoint-down(sm) {
+                    left: 1.5rem;
+                    right: 1.5rem;
+                }
             }
         }
     }

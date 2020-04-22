@@ -16,25 +16,15 @@
   }
 
   @include media-breakpoint-up(md) {
-    > [class*='-slider']:not([class*=--standart]) {
+    > [class*='-slider']:not([class*='--standart']) {
       max-width: calc(100% - (2rem + 3.7rem + 2rem));
       margin-left: 0 !important;
     }
   }
-
-  
 }
 
 [class*='-slider']:not([class*='-slider-block']) {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  z-index: 1;
-
-  width: 100%;
+  @extend %slider-container;
 
   &[class*='--fade'] {
     > *:nth-child(1) > * {
@@ -52,59 +42,117 @@
   }
 
   > [class*='-wrapper'] {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    transition-property: transform;
-    box-sizing: content-box;
-    transform: translate3d(0px, 0, 0);
+    @extend %slider-wrapper;
 
     > [class*='-slide'] {
+      @extend %slider-slide;
+
+      @for $i from 1 through $repeat {
+        &:nth-child(#{length($bgColors)}n + #{$i}) {
+          .cards {
+            background: nth($bgColors, random(length($colors)));
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .category {
+    &-block {
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      overflow: hidden;
+      list-style: none;
+      padding: 0;
+      z-index: 1;
+
+      width: 100%;
+    }
+
+    &-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      transition-property: transform;
+      box-sizing: content-box;
+      transform: translate3d(0px, 0, 0);
+    }
+
+    &-row {
       flex-shrink: 0;
       width: 100%;
       height: 100%;
       position: relative;
       transition-property: transform;
-    }
-  }
-}
 
-%slider {
-  &-pagination {
-    position: absolute;
-    text-align: center;
-    transition: 0.3s opacity;
-    transform: translate3d(0, 0, 0);
-    z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-
-    @include media-breakpoint-up(md) {
-      display: none;
-    }
-
-    &-bullet {
-      width: 30px;
-      height: 3px;
-      display: inline-block;
-      background: $colors--white;
-      opacity: 0.5;
-      cursor: pointer;
-
-      + * {
-        margin-left: 4px;
+      @for $i from 1 through $repeat {
+        &:nth-child(#{length($bgColors)}n + #{$i}) {
+          background: nth($bgColors, random(length($colors)));
+        }
       }
 
-      &--active {
-        opacity: 0.8;
+      border-radius: 1rem;
+      height: 200px;
+
+      .title-block {
+        position: absolute;
+        left: 50%;
+        bottom: 1rem;
+        transform: translate(-50%);
+        min-width: 85%;
+        text-align: center;
+        z-index: 1;
+
+        + * {
+          margin-top: 0;
+          margin-bottom: 2rem;
+        }
+
+        .title {
+          font-size: 1.4rem;
+          color: $colors--white;
+          text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
+        }
+
+        .description {
+          display: none;
+        }
       }
 
-      &--dark {
-        @extend %slider-pagination-bullet;
+      .books {
+        position: relative;
+
+        &-wrapper {
+          position: relative;
+          display: flex;
+          flex-flow: no-wrap;
+          max-width: 90%;
+          overflow: hidden;
+          margin: 0  auto;
+
+          > * {
+            flex: 0 0 calc(100% / 3);
+            width: 100%;
+            max-width: calc(100% / 3);
+            text-align: center;
+          }
+        }
+
+        &-block {
+          &:not(:nth-child(2)) {
+            transform: scale(0.8);
+          }
+        }
       }
     }
   }

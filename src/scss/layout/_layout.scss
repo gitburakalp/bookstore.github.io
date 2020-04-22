@@ -39,9 +39,16 @@ main {
     
             .main-section {
                 > * {
-                    &:not([class*=-slider]) {
+                    &:not([class*=-slider]):not([slider-element]) {
                         padding-left: 1.5rem;
                         padding-right: 1.5rem;
+                    }
+
+                    &[slider-element] {
+                        .title-block {
+                            padding-left: 1.5rem;
+                            padding-right: 1.5rem;
+                        }
                     }
                 }
             }

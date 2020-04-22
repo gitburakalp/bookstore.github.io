@@ -5,18 +5,6 @@ var ww = $(window).outerWidth();
 
 var bgColorList = [];
 
-var sliderConfig = {
-  slidesPerView: 1.25,
-  spaceBetween: slideSpaceMobile,
-  loop: true,
-  containerModifierClass: 'hotel-cards-slider--',
-  wrapperClass: 'hotel-cards-wrapper',
-  slideClass: 'hotel-cards-slide',
-  slideActiveClass: 'hotel-cards-slide--active',
-  slideNextClass: 'hotel-cards-slide--next',
-  slidePrevClass: 'hotel-cards-slide--prev',
-};
-
 document.addEventListener('DOMContentLoaded', function () {
   $(document.styleSheets[0].rules).each(function (idx, e) {
     if (e.selectorText != undefined ? e.selectorText.includes('bg--') : '') {
@@ -34,34 +22,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  function setCardBackgrounds(sliderSlide) {
-    var bgListRandom = Math.floor(Math.random() * (bgColorList.length - 1)) + 1;
-    var isSameBg = $(sliderSlide).prev().find('.cards').hasClass(bgColorList[bgListRandom]);
+  // function setCardBackgrounds(sliderSlide) {
+  //   var bgListRandom = Math.floor(Math.random() * (bgColorList.length - 1)) + 1;
+  //   var isSameBg = $(sliderSlide).prev().find('.cards').hasClass(bgColorList[bgListRandom]);
 
-    if (isSameBg) {
-      bgListRandom = Math.floor(Math.random() * (bgColorList.length - 1)) + 1;
-    }
+  //   if (isSameBg) {
+  //     bgListRandom = Math.floor(Math.random() * (bgColorList.length - 1)) + 1;
+  //   }
 
-    $(sliderSlide).find('.cards').addClass(bgColorList[bgListRandom]);
-  }
+  //   $(sliderSlide).find('.cards').addClass(bgColorList[bgListRandom]);
+  // }
 
-  $('.cards-slider').each(function () {
-    var $this = $(this);
-    var isCardsSlider = $this.hasClass('cards-slider--standart');
-    ww = $(window).outerWidth();
+  // $('.cards-slider').each(function () {
+  //   var $this = $(this);
+  //   var isCardsSlider = $this.hasClass('cards-slider--standart');
+  //   ww = $(window).outerWidth();
 
-    if (!isCardsSlider) {
-      $this.find('.cards-slide').each(function (idx, el) {
-        setCardBackgrounds(el);
-      });
-    } else {
-      if (ww < 768) {
-        $this.find('.cards-slide').each(function (idx, el) {
-          setCardBackgrounds(el);
-        });
-      }
-    }
-  });
+  //   if (!isCardsSlider) {
+  //     $this.find('.cards-slide').each(function (idx, el) {
+  //       setCardBackgrounds(el);
+  //     });
+  //   } else {
+  //     if (ww < 768) {
+  //       $this.find('.cards-slide').each(function (idx, el) {
+  //         setCardBackgrounds(el);
+  //       });
+  //     }
+  //   }
+  // });
 
   $('.cards-slider--standart').each(function () {
     var $this = $(this);
@@ -70,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
     ww = $(window).outerWidth();
 
     var config = {
-      slidesPerView: 1.25,
+      slidesPerView: 1.3391,
+      
       spaceBetween: slideSpaceMobile,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
@@ -95,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var configTwo = {
       slidesPerView: 1,
+      
       spaceBetween: slideSpaceDesktop,
       effect: 'fade',
       containerModifierClass: 'cards-slider--',
@@ -135,7 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var config = {
-      slidesPerView: 1.25,
+      slidesPerView: 1.3391,
+      
       spaceBetween: slideSpaceMobile,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
@@ -177,4 +168,29 @@ document.addEventListener('DOMContentLoaded', function () {
       $(this).addClass('active');
     });
   });
+
+  $('.category-block').each(function () {
+    var $this = $(this);
+    var slideCssClass = "category-row";
+    ww = $(window).outerWidth();
+
+    if (ww < 768) {
+      var config = {
+        slidesPerView: 1.3391,
+        spaceBetween: slideSpaceMobile,
+        centeredSlides: true,
+        containerModifierClass: 'category-block--',
+        wrapperClass: 'category-wrapper',
+        slideClass: slideCssClass,
+        slideActiveClass: slideCssClass + '--active',
+        slideNextClass: slideCssClass + '--next',
+        slidePrevClass: slideCssClass + '--prev',
+      };
+
+      var categorySlider = new Swiper($this,config)
+    }
+  });
+
+  let root = document.documentElement;
+  root.style.setProperty('--book-row-count', 10);
 });
