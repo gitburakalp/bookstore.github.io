@@ -1,69 +1,143 @@
 %slider {
-    &-container {
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      overflow: hidden;
-      list-style: none;
-      padding: 0;
-      z-index: 1;
-  
-      width: 100%;
-    }
-  
-    &-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: flex;
-      transition-property: transform;
-      box-sizing: content-box;
-      transform: translate3d(0px, 0, 0);
-    }
-  
-    &-slide {
-      flex-shrink: 0;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transition-property: transform;
-    }
-  
-    &-pagination {
-      position: absolute;
-      text-align: center;
-      transition: 0.3s opacity;
-      transform: translate3d(0, 0, 0);
-      z-index: 10;
-  
-      bottom: 10px;
-      left: 0;
-      width: 100%;
-  
-      @include media-breakpoint-up(md) {
-        display: none;
+  &-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+
+    width: 100%;
+
+    &--sm {
+      @include media-breakpoint-down(sm) {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+
+        width: 100%;
       }
-  
-      &-bullet {
-        width: 30px;
-        height: 3px;
-        display: inline-block;
-        background: $colors--white;
-        opacity: 0.5;
-        cursor: pointer;
-  
-        + * {
-          margin-left: 4px;
-        }
-  
-        &--active {
-          opacity: 0.8;
-        }
-  
-        &--dark {
-          @extend %slider-pagination-bullet;
-        }
+    }
+
+    &--up-md {
+      @include media-breakpoint-up(md) {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+
+        width: 100%;
       }
     }
   }
+
+  &-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+    transform: translate3d(0px, 0, 0);
+
+    &--sm {
+      @include media-breakpoint-down(sm) {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+        transform: translate3d(0px, 0, 0);
+      }
+    }
+
+    &--up-md {
+      @include media-breakpoint-up(md) {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        box-sizing: content-box;
+        transform: translate3d(0px, 0, 0);
+      }
+    }
+  }
+
+  &-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+
+    &--sm {
+      @include media-breakpoint-down(sm) {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+      }
+    }
+
+    &--up-md {
+      @include media-breakpoint-up(md) {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition-property: transform;
+      }
+    }
+  }
+
+  &-pagination {
+    position: absolute;
+    text-align: center;
+    transition: 0.3s opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+
+    &-bullet {
+      width: 30px;
+      height: 3px;
+      display: inline-block;
+      background: $colors--white;
+      opacity: 0.5;
+      cursor: pointer;
+
+      + * {
+        margin-left: 4px;
+      }
+
+      &--active {
+        opacity: 0.8;
+      }
+
+      &--dark {
+        @extend %slider-pagination-bullet;
+      }
+    }
+  }
+}

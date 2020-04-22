@@ -1,38 +1,64 @@
+$mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
+
 [class*='-slider-block'] {
   position: relative;
 
-  
-
   @include media-breakpoint-up(md) {
     > [class*='-slider']:not([class*='--standart']) {
-      max-width: calc(100% - (1.9rem + 3.7rem + 2.6rem));
-      margin-left: 0 !important;
+      max-width: $mw;
     }
   }
 }
 
-.slider-controls--right {
+.slider-controls {
   @include media-breakpoint-down(sm) {
     display: none;
   }
 
   position: absolute;
-  right: 0;
   top: 50%;
-  right: 2.6rem;
   z-index: 9;
   font-size: 3.7rem;
   transform: translateY(-50%);
   cursor: pointer;
 
-  &-white {
-    @extend .slider-controls--right;
-    color: $colors--white;
-    text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
-
-    top: unset;
-    bottom: 19%;
+  &[class*=disabled] {
+    opacity: 0.35;
   }
+
+  &--prev {
+    @extend .slider-controls;
+
+    left: 2.6rem;
+
+    &-white {
+      @extend .slider-controls--prev;
+      
+      color: $colors--white;
+      text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
+  
+      top: unset;
+      bottom: 23%;
+    }
+  }
+
+  &--next {
+    @extend .slider-controls;
+
+    right: 2.6rem;
+
+    &-white {
+      @extend .slider-controls--next;
+      
+      color: $colors--white;
+      text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
+  
+      top: unset;
+      bottom: 23%;
+    }
+  }
+
+  
 }
 
 [class*='-slider']:not([class*='-slider-block']) {
@@ -170,56 +196,21 @@
   }
 }
 
-@include media-breakpoint-up(md) {
-  .category-block {
-    .books {
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      overflow: hidden;
-      list-style: none;
-      padding: 0;
-      z-index: 1;
-
-      width: 100%;
-
-      &-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        display: flex;
-        transition-property: transform;
-        box-sizing: content-box;
-        transform: translate3d(0px, 0, 0);
-      }
-
-      &-block {
-        flex-shrink: 0;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transition-property: transform;
-      }
-    }
-  }
-}
-
 .category {
   &-row {
     @include media-breakpoint-up(md) {
       position: relative;
       margin-top: 3rem;
-      padding-bottom: 4rem;
+      padding-bottom: 6.2rem;
 
       &:after {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: 0.9rem;
         left: 0;
         right: 0;
-        height: 4rem;
-        background-image: linear-gradient(180deg, rgba(212,212,212,1) 6%, rgba(241,241,241,1) 22%, rgba(247,247,247,1) 28%, rgba(237,237,237,1) 35%, rgba(212,212,212,1) 45%, rgba(241,241,241,1) 66%, rgba(247,247,247,1) 85%, rgba(241,241,241,1) 100%);
+        height: 6.2rem;
+        background-image: url($storageSrc + "svg/bg-shelf.png")
       }
 
       @for $i from 1 through $repeat {
@@ -237,10 +228,7 @@
         }
       }
 
-      .books {
-        max-width: calc(100% - (1.9rem + 3.7rem + 2.6rem));
-        margin-left: 0 !important;
-      }
+      
     }
   }
 }
@@ -272,9 +260,9 @@
     
 
     img {
-      @include media-breakpoint-up(lg) {
-        width: 143px;
-        height: 206px;
+      @include media-breakpoint-up(md) {
+        width: 120px;
+        height: 180px;
         object-fit: cover;
       }
     }

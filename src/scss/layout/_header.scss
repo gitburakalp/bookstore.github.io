@@ -1,8 +1,9 @@
 .header {
     position: relative;
-    overflow: hidden;
 
     @include media-breakpoint-down(sm) {
+    overflow: hidden;
+
         &::before {
             content: "";
             position: absolute;
@@ -19,6 +20,24 @@
             + .row {
                 margin-top: 1.4rem;
             }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 999;
+        background-color: $colors--white;
+        
+
+        &-main {
+            box-shadow: 0 30px 14px rgba($colors--white,0.75);
+        }
+
+        + * {
+            margin-top: var(--header-height);
         }
     }
 

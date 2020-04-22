@@ -70,6 +70,12 @@ main {
     }
 }
 
+@for $i from 1 to 7 {
+    h#{$i} {
+        margin-bottom: 0;
+    }
+}
+
 .container {
 
     @include media-breakpoint-down(sm) {

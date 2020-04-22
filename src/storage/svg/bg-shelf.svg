@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__Component_36_1" width="7" height="61.49" data-name="Component 36 – 1" viewBox="0 0 7 61.49">
+    <defs>
+        <linearGradient id="prefix__linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#e6e6e6"/>
+            <stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+        <linearGradient id="prefix__linear-gradient-2" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ededed"/>
+            <stop offset=".184" stop-color="#f7f7f7"/>
+            <stop offset=".518" stop-color="#f1f1f1"/>
+            <stop offset="1" stop-color="#d4d4d4"/>
+        </linearGradient>
+        <linearGradient id="prefix__linear-gradient-3" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset=".216" stop-color="#faf9fa"/>
+            <stop offset=".659" stop-color="#e7e6e7"/>
+            <stop offset=".925" stop-color="#d1d1d1"/>
+            <stop offset=".973" stop-color="#c2c2c2"/>
+        </linearGradient>
+    </defs>
+    <path id="prefix__Rectangle_364" d="M0 0H7V10H0z" data-name="Rectangle 364"/>
+    <path id="prefix__Rectangle_365" d="M0 0H7V21.657H0z" data-name="Rectangle 365" transform="translate(0 10)"/>
+    <path id="prefix__Rectangle_366" d="M0 0H7V29.833H0z" data-name="Rectangle 366" transform="translate(0 31.657)"/>
+</svg>

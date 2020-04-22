@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var config = {
       slidesPerView: 1.3391,
-
       spaceBetween: slideSpaceMobile,
       centeredSlides: true,
       containerModifierClass: 'cards-slider--',
@@ -139,17 +138,21 @@ document.addEventListener('DOMContentLoaded', function () {
         768: {
           slidesPerView: hasPerviewProp ? slidesPerviewMD : 4,
           centeredSlides: false,
+          loop:true,
           spaceBetween: slideSpaceTablet,
           navigation: {
-            nextEl: $this.parent().find('.slider-controls--right'),
+            prevEl: $this.parent().find('.slider-controls--prev'),
+            nextEl: $this.parent().find('.slider-controls--next'),
           },
         },
         1440: {
           slidesPerView: hasPerviewProp ? slidesPerviewLG : 5,
           centeredSlides: false,
+          loop:true,
           spaceBetween: slideSpaceDesktop,
           navigation: {
-            nextEl: $this.parent().find('.slider-controls--right'),
+            prevEl: $this.parent().find('.slider-controls--prev'),
+            nextEl: $this.parent().find('.slider-controls--next'),
           },
         },
       },
@@ -205,7 +208,8 @@ document.addEventListener('DOMContentLoaded', function () {
             slideNextClass: slideCssClass + '--next',
             slidePrevClass: slideCssClass + '--prev',
             navigation: {
-              nextEl: $(this).siblings('.slider-controls--right-white'),
+              prevEl: $(this).siblings('.slider-controls--prev-white'),
+              nextEl: $(this).siblings('.slider-controls--next-white'),
             },
             breakpoints: {
               1440: {
@@ -221,4 +225,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let root = document.documentElement;
   root.style.setProperty('--book-row-count', 10);
+  root.style.setProperty('--header-height', $('header').height() + "px");
+
+  $(window).on("resize oriantedChange",function(){
+    root.style.setProperty('--header-height', $('header').height() + "px");
+  })
 });

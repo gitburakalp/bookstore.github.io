@@ -1,0 +1,40 @@
+.books {
+
+    &.slider-only-sm {
+        @extend %slider-container--sm;
+
+        .books-wrapper {
+            @extend %slider-wrapper--sm;
+        }
+
+        .books-block {
+            @extend %slider-slide--sm;
+        }
+    }
+
+    @extend %slider-container--up-md;
+
+    &-wrapper {
+        @extend %slider-wrapper--up-md;
+    }
+
+    &-block {
+        @extend %slider-slide--up-md;
+        
+        picture {
+            transform: scale(0.9);
+            transition: transform $duration;
+        }
+
+        &:hover {
+
+            picture {
+                transform: scale(1);
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        max-width: $mw;
+    }
+}
