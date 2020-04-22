@@ -1,0 +1,43 @@
+a {
+    color: inherit;
+    transition: color $duration ease-in;
+
+    &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+[role=button] {
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+
+
+.update-notification {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    border-radius: 50%;
+    background-color: $colors--aqua-blue;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &.left {
+        position: absolute;
+    }
+
+    &.bottom-left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(-50%,50%);
+    }
+}

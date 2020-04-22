@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.306" height="20.136" viewBox="0 0 18.306 20.136">
+    <defs>
+        <style>
+            .prefix__cls-1,.prefix__cls-4{fill:none}.prefix__cls-1,.prefix__cls-2{stroke:#212121;stroke-width:1.5px}.prefix__cls-1{stroke-linecap:round}.prefix__cls-2{fill:#fff}.prefix__cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="prefix__Group_35" data-name="Group 35" transform="translate(-305.5 -76)">
+        <path id="prefix__Path_4" d="M4418.5 124v15.255" class="prefix__cls-1" data-name="Path 4" transform="translate(-4110.559 -45.559)"/>
+        <path id="prefix__Path_5" d="M4418.5 124v15.255" class="prefix__cls-1" data-name="Path 5" transform="translate(-4103.847 -45.559)"/>
+        <path id="prefix__Path_6" d="M4418.5 124v15.255" class="prefix__cls-1" data-name="Path 6" transform="translate(-4097.135 -45.559)"/>
+        <g id="prefix__Ellipse_16" class="prefix__cls-2" data-name="Ellipse 16" transform="translate(305.5 83.933)">
+            <circle cx="2.441" cy="2.441" r="2.441" class="prefix__cls-3"/>
+            <circle cx="2.441" cy="2.441" r="1.691" class="prefix__cls-4"/>
+        </g>
+        <g id="prefix__Ellipse_17" class="prefix__cls-2" data-name="Ellipse 17" transform="translate(312.212 76)">
+            <circle cx="2.441" cy="2.441" r="2.441" class="prefix__cls-3"/>
+            <circle cx="2.441" cy="2.441" r="1.691" class="prefix__cls-4"/>
+        </g>
+        <g id="prefix__Ellipse_18" class="prefix__cls-2" data-name="Ellipse 18" transform="translate(318.924 91.255)">
+            <circle cx="2.441" cy="2.441" r="2.441" class="prefix__cls-3"/>
+            <circle cx="2.441" cy="2.441" r="1.691" class="prefix__cls-4"/>
+        </g>
+    </g>
+</svg>

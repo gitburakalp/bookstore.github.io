@@ -1,0 +1,60 @@
+$colors--black: #000;
+$colors--black-two: #303030;
+$colors--main-green: #5dd3c5;
+$colors--dark-green: #246464;
+$colors--aqua-blue: #00e6e6;
+$colors--white: #ffffff;
+$colors--dirty-white: #efefef;
+
+$colors--windows-blue: #2e93a4;
+$colors--dark-peach: #e18453;
+$colors--ocean: #037f8c;
+$colors--green-blue: #05a6a6;
+$colors--peach: #fdae84;
+$colors--beige: #ecc7c0;
+$colors--pale-teal: #8bcbc8;
+$colors--white-two: #e6e6e6;
+
+$bgColorMap: (
+  pale-teal: #8bcbc8,
+  windows-blue: #2e93a4,
+  beige: #ecc7c0,
+  peach: #fdae84,
+  dark-peach: #e18453,
+  ocean: #037f8c,
+  green-blue: #05a6a6,
+  white-two: #e6e6e6,
+  dirty-purple:#734860,
+  dusty-lavender:#a68f9b,
+  mushroom:#b39988,
+  very-light-pink: #ffeadb,
+  beige-two:#d7d9a7,
+  light-blue-grey:#c2e0f2,
+  slate:#456173,
+  mushroom-two:#ba9f90
+);
+
+@mixin color-modifiers {
+  @each $name, $hex in $bgColorMap {
+    &--#{$name} {
+      background-color: $hex;
+      color: $colors--white;
+
+      .with-three-dots {
+        &:after {
+            background-color: $hex;
+        }
+    }
+    }
+  }
+}
+
+.bg {
+  @include color-modifiers;
+}
+
+.text-color {
+  &--black {
+    color: $colors--black !important;
+  }
+}

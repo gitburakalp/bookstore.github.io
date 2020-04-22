@@ -1,0 +1,61 @@
+.cards {
+  position: relative;
+  border-radius: 10px;
+
+  &-slide {
+    .cards {
+      .title {
+        color: $colors--white;
+        text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
+      }
+
+      padding: 2.8rem;
+
+      @include media-breakpoint-up(md) {
+        padding: 3.5rem;
+      }
+    }
+  }
+
+  &.standart {
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      align-items: stretch;
+      padding: 2rem
+    }
+
+    min-height: 189px;
+  }
+
+  .mobile-block {
+    display: flex;
+    flex-direction: column;
+
+    .description {
+        position: relative;
+        font-weight: 300;
+        max-height: 100px;
+        overflow: hidden;
+
+        &.with-three-dots {
+            &:after {
+                content: "...";
+                position: absolute;
+                bottom: 4px;
+                right: 0;
+                padding-left: 2px;
+            }
+        }
+    }
+
+    .more-btn-block {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid $colors--black;
+      text-align: right;
+      margin-top: auto;
+    }
+  }
+
+  
+}

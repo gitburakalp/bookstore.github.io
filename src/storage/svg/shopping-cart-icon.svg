@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="33.018" viewBox="0 0 34 33.018">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="prefix__Group_299" data-name="Group 299" transform="translate(-249 -1509)">
+        <path id="prefix__Path_743" d="M390 1555h4.523v4.523" class="prefix__cls-2" data-name="Path 743" transform="translate(-121.906 -39.184)"/>
+        <path id="prefix__Path_744" d="M254.523 1555H250v25.2h12.924" class="prefix__cls-2" data-name="Path 744" transform="translate(0 -39.184)"/>
+        <path id="prefix__Rectangle_343" d="M0 0H16V18H0z" class="prefix__cls-2" data-name="Rectangle 343" transform="translate(266 1523.018)"/>
+        <g id="prefix__Group_297" data-name="Group 297" transform="translate(254.622 1510)">
+            <path id="prefix__Path_745" d="M300 1519.047v-4.2a4.847 4.847 0 0 1 4.847-4.847 4.847 4.847 0 0 1 4.847 4.847v4.2" class="prefix__cls-2" data-name="Path 745" transform="translate(-298.16 -1510)"/>
+            <path id="prefix__Line_24" d="M0 0L2 0" class="prefix__cls-2" data-name="Line 24" transform="translate(.378 9.018)"/>
+            <path id="prefix__Line_25" d="M0 0L3 0" class="prefix__cls-2" data-name="Line 25" transform="translate(10.378 9.018)"/>
+        </g>
+        <g id="prefix__Group_298" data-name="Group 298" transform="translate(269.413 1526.155)">
+            <path id="prefix__Path_746" d="M417.108 1635v2.262a3.554 3.554 0 0 1-3.554 3.554 3.554 3.554 0 0 1-3.554-3.554V1635" class="prefix__cls-2" data-name="Path 746" transform="translate(-408.734 -1635)"/>
+            <path id="prefix__Line_26" d="M2 0L0 0" class="prefix__cls-2" data-name="Line 26" transform="translate(7.587 -.137)"/>
+            <path id="prefix__Line_27" d="M3 0L0 0" class="prefix__cls-2" data-name="Line 27" transform="translate(-.413 -.137)"/>
+        </g>
+        <path id="prefix__Line_28" d="M0 0L6 0" class="prefix__cls-2" data-name="Line 28" transform="translate(258 1516.018)"/>
+    </g>
+</svg>

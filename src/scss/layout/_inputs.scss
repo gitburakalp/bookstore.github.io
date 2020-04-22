@@ -1,0 +1,15 @@
+.form-control {
+    font-size: 1.4rem;
+    letter-spacing: 0.022rem;
+    line-height: 1;
+    height: auto;
+
+    &::placeholder {
+        color: rgba($colors--black-two,0.5);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}

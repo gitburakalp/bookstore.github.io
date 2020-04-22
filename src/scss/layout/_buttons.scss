@@ -1,0 +1,10 @@
+.btn {
+    font-size: 1.4rem;
+
+    &--more {
+        &::after {
+            content: ">>";
+            display: inline-block;
+        }
+    }
+}

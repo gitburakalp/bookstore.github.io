@@ -1,0 +1,47 @@
+
+.icons {
+    position: relative;
+
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    width: 100%;
+    height: 100%;
+
+    &--library {
+        background-image: url("/Storage/svg/book-icon.svg");
+
+        width: 69px;
+        height: 65px;
+    }
+
+    &--search {
+        background-image: url("/Storage/svg/search-icon--black.svg");
+    }
+
+    &--filter {
+        background-image: url("/Storage/svg/filter-icon--black.svg");
+    }
+
+    &--libraries {
+        background-image: url("/Storage/svg/library-icon.svg");
+    }
+
+    &--shopping-cart {
+        background-image: url("/Storage/svg/shopping-cart-icon.svg");
+    }
+
+    &--search-white {
+        background-image: url("/Storage/svg/search-icon--white.svg");
+    }
+
+    &-block {
+        position: relative;
+
+        &.with-notification {
+            margin-top: (-27 / 2) + px;
+        }
+    }
+}
