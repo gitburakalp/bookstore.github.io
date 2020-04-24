@@ -14,7 +14,7 @@
   @extend %slider-container--up-md;
 
   &-section {
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-up(md) {
       $pd: (1.9rem + 3.7rem + 2.6rem);
       padding-bottom: 6.2rem;
       padding-left: $pd;
