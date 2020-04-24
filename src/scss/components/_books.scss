@@ -14,27 +14,29 @@
   @extend %slider-container--up-md;
 
   &-section {
-    $pd: (1.9rem + 3.7rem + 2.6rem);
-    padding-bottom: 6.2rem;
-    padding-left: $pd;
-    padding-right: $pd;
+    @include media-breakpoint-down(sm) {
+      $pd: (1.9rem + 3.7rem + 2.6rem);
+      padding-bottom: 6.2rem;
+      padding-left: $pd;
+      padding-right: $pd;
 
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 6.2rem;
-      background-image: url($storageSrc + 'svg/bg-shelf.png');
-      z-index: 9;
-    }
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 6.2rem;
+        background-image: url($storageSrc + 'svg/bg-shelf.png');
+        z-index: 9;
+      }
 
-    .slider-controls--prev-white,
-    .slider-controls--next-white {
-      top: unset;
-      bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
-      transform: translateY(0);
+      .slider-controls--prev-white,
+      .slider-controls--next-white {
+        top: unset;
+        bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
+        transform: translateY(0);
+      }
     }
   }
 
