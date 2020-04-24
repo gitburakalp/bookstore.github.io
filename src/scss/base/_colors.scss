@@ -1,4 +1,5 @@
 $colors--black: #000;
+$colors--dark: rgb(36, 33, 38);
 $colors--black-two: #303030;
 $colors--main-green: #5dd3c5;
 $colors--dark-green: #246464;
@@ -58,6 +59,10 @@ $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e
 .text-color {
   &--black {
     color: $colors--black !important;
+  }
+
+  &--dark {
+    color: $colors--dark !important;
   }
 }
 

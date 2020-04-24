@@ -3,7 +3,7 @@ html {
     
 
     @include media-breakpoint-up(md) {
-        font-size: 50%;
+        font-size: 43%;
     }
 
     @include media-breakpoint-up(lg) {
@@ -70,11 +70,19 @@ main {
     }
 }
 
+figure {
+    margin-bottom: 0;
+}
+
 @for $i from 1 to 7 {
     h#{$i} {
         margin-bottom: 0;
     }
 }
+
+    .op-05 {
+        opacity: 0.5;
+    }
 
 .container {
 
