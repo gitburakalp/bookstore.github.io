@@ -25,14 +25,15 @@ $bgColorMap: (
   ocean: #037f8c,
   green-blue: #05a6a6,
   white-two: #e6e6e6,
-  dirty-purple:#734860,
-  dusty-lavender:#a68f9b,
-  mushroom:#b39988,
+  dirty-purple: #734860,
+  dusty-lavender: #a68f9b,
+  mushroom: #b39988,
   very-light-pink: #ffeadb,
-  beige-two:#d7d9a7,
-  light-blue-grey:#c2e0f2,
-  slate:#456173,
-  mushroom-two:#ba9f90
+  beige-two: #d7d9a7,
+  light-blue-grey: #c2e0f2,
+  slate: #456173,
+  mushroom-two: #ba9f90,
+  pale-grey: #ecf0f4,
 );
 
 $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e6, #734860, #a68f9b, #b39988, #ffeadb, #d7d9a7, #c2e0f2, #456173, #ba9f90;
@@ -45,9 +46,9 @@ $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e
 
       .with-three-dots {
         &:after {
-            background-color: $hex;
+          background-color: $hex;
         }
-    }
+      }
     }
   }
 }
@@ -65,4 +66,3 @@ $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e
     color: $colors--dark !important;
   }
 }
-

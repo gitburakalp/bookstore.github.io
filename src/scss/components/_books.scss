@@ -1,3 +1,28 @@
+%books-image {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  box-shadow: 5px 12px 12px 0 rgba($colors--black, 0.41);
+  transition: transform $duration;
+
+  @include media-breakpoint-up(md) {
+    &:hover {
+      transform: scale(1.125);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.83;
+    background-image: linear-gradient(to right, #dedede 0%, rgba(92, 90, 90, 0.99) 0%, #bcb4b4 3%, #b4adad 4%, rgba(201, 195, 195, 0.77) 7%, rgba(234, 234, 234, 0.7) 9%, rgba(245, 245, 245, 0.11) 67%);
+  }
+}
+
 .books {
   &.slider-only-sm {
     @extend %slider-container--sm;
@@ -11,9 +36,55 @@
     }
   }
 
+  &-slider {
+    @extend %slider-container;
+
+    .books-wrapper  {
+      @extend %slider-wrapper;
+    }
+
+    .books-block {
+      @extend %slider-slide;
+
+      &-link {
+        @include media-breakpoint-down(sm) {
+          text-align: right;
+        }
+      }
+
+      .image {
+        @extend %books-image;
+
+        @include media-breakpoint-down(sm) {
+          max-width: 80%;
+        }
+      }
+    }
+  }
+
   @extend %slider-container--up-md;
 
   &-section {
+    &.bg-shelf--sm {
+      padding-bottom: 6.2rem;
+
+      @include media-breakpoint-down(sm) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 6.2rem;
+        background-image: url($storageSrc + 'svg/bg-shelf.png');
+        z-index: 9;
+      }
+    }
+
     @include media-breakpoint-up(md) {
       $pd: (1.9rem + 3.7rem + 2.6rem);
       padding-bottom: 6.2rem;
@@ -65,8 +136,6 @@
     }
 
     @include media-breakpoint-up(md) {
-      $pd: calcPercent(33.9, 1222.5) * 1%;
-
       .image {
         position: relative;
         display: inline-block;

@@ -1,84 +1,93 @@
 .title {
-    font-size: 2.4rem;
-    color: $colors--black-two;
-    font-weight: bold;
+  font-size: 2.4rem;
+  color: $colors--black-two;
+  font-weight: bold;
 
-    @include media-breakpoint-up(md) {
-        font-size: 2.2rem;
+  @include media-breakpoint-up(md) {
+    font-size: 2.2rem;
 
-        + .description.d-md-inline-block {
-            font-size: 1.8rem;
-        }
+    + .description.d-md-inline-block {
+      font-size: 1.8rem;
     }
+  }
+
+  + * {
+    margin-top: 0.75rem;
+  }
+
+  &-block {
+    position: relative;
 
     + * {
-        margin-top: 0.75rem;
+      margin-top: 1.8rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 3rem;
+      }
     }
 
-    &-block {
-        position: relative;
+    &.bottom-line {
+      padding-bottom: 1rem;
 
-        + * {
-            margin-top: 1.8rem;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: $colors--black-two;
 
-            @include media-breakpoint-up(lg) {
-                margin-top: 3rem;
-            }
+        @include media-breakpoint-down(sm) {
+          left: 1.5rem;
+          right: 1.5rem;
         }
-
-        &.bottom-line {
-            padding-bottom: 1rem;
-
-            &:after {
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                height: 1px;
-                background-color: $colors--black-two;
-
-                @include media-breakpoint-down(sm) {
-                    left: 1.5rem;
-                    right: 1.5rem;
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 .description {
+  font-size: 1.4rem;
+  letter-spacing: 0.19px;
+  line-height: 1.2;
+
+  &--serif {
+    font-family: 'Georgia', serif;
     font-size: 1.4rem;
-    letter-spacing: 0.19px;
-    line-height: 1.2;
+    color: inherit;
+  }
+}
+
+.serif-description  {
 }
 
 .font-size {
-    &-xs {
-        font-size: 1rem !important;
-    }
+  &-xs {
+    font-size: 1rem !important;
+  }
 
-    &-sm{
-        font-size: 1.2rem !important;
-    }
+  &-sm {
+    font-size: 1.2rem !important;
+  }
 
-    &-md {
-        font-size: 1.4rem !important;
-    }
+  &-md {
+    font-size: 1.4rem !important;
+  }
 
-    &-lg {
-        font-size: 1.6rem !important;
-    }
+  &-lg {
+    font-size: 1.6rem !important;
+  }
 
-    &-xl {
-        font-size: 1.8rem !important;
-    }
+  &-xl {
+    font-size: 1.8rem !important;
+  }
 
-    &-xxl {
-        font-size: 2rem !important;
-    }
+  &-xxl {
+    font-size: 2rem !important;
+  }
 
-    &-huge {
-        font-size: 2.2rem !important;
-    }
+  &-huge {
+    font-size: 2.2rem !important;
+  }
 }

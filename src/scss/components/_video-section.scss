@@ -1,0 +1,32 @@
+.video-section {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  color: $colors--black;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: 434 / 787 * 100%;
+  }
+
+  video,
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+  }
+}
+
+.video-lessons {
+  padding-left: 0;
+  list-style: none;
+
+  &-item {
+    color: $colors--black;
+    line-height: 1.57;
+    letter-spacing: 0.042rem;
+  }
+}
