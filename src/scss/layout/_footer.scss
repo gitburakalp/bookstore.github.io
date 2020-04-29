@@ -1,0 +1,55 @@
+.footer {
+  line-height: 1.43;
+
+  &-top {
+    position: relative;
+
+    + * {
+      margin-top: 6rem;
+    }
+  }
+
+  &-main {
+    border-radius: 1rem;
+    background-color: $colors--main-green;
+    padding: 3rem 6rem;
+
+    .btn {
+      &.d-block {
+        padding: 0;
+        font-size: 1rem;
+        text-align: left;
+      }
+    }
+
+    .cards {
+      padding: 2rem 1.2rem;
+      background-color: rgba($colors--white, 0.4);
+
+      .form-control {
+        border-radius: 1rem;
+      }
+    }
+  }
+
+  p {
+    line-height: inherit !important;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    color: $colors--black;
+  }
+
+  .description {
+    color: $colors--black-two;
+    letter-spacing: 0.02rem;
+  }
+
+  .google-maps {
+    position: relative;
+    padding-bottom: 255 / 397 * 100%;
+    border-radius: 5px;
+    border: solid 1px $colors--pinkish-grey;
+  }
+}

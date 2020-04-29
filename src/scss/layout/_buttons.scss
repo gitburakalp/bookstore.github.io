@@ -1,10 +1,20 @@
 .btn {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 
-    &--more {
-        &::after {
-            content: ">>";
-            display: inline-block;
-        }
+  &--more {
+    &::after {
+      content: '>>';
+      display: inline-block;
     }
+  }
+}
+
+.btn--radius-20 {
+  border-radius: 2rem;
+  border-color: inherit;
+  border-width: 1px;
+  border-style: solid;
+  line-height: 1.2;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
 }

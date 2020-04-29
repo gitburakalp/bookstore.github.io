@@ -242,6 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
         1440: {
           slidesPerView: 5,
         },
+        768: {
+          slidesPerView: 4,
+        },
       },
     };
 
@@ -256,3 +259,12 @@ document.addEventListener('DOMContentLoaded', function () {
     root.style.setProperty('--header-height', $('header').height() + 'px');
   });
 });
+
+function getMap() {
+  var mapProp = {
+    center: new google.maps.LatLng(41.0258767, 28.9711733),
+    zoom: 17,
+    disableDefaultUI: true,
+  };
+  var map = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+}

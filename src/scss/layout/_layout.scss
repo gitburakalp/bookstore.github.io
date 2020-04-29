@@ -1,116 +1,153 @@
 html {
+  font-size: 62.5%;
+
+  @include media-breakpoint-up(md) {
+    font-size: 43%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 53.125%;
+  }
+
+  @include media-breakpoint-up(xl) {
     font-size: 62.5%;
-    
-
-    @include media-breakpoint-up(md) {
-        font-size: 43%;
-    }
-
-    @include media-breakpoint-up(lg) {
-        font-size: 53.125%;
-    }
-
-    @include media-breakpoint-up(xl) {
-        font-size: 62.5%;
-    }
+  }
 }
 
 body {
-    font-size: 1rem;
-    line-height: 1;
+  font-size: 1rem;
+  line-height: 1;
+  padding-bottom: 4rem;
+}
+
+html,
+body {
+  &::-webkit-scrollbar {
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 8px;
+    background-color: #c1c1c1;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
 }
 
 main {
-    padding-top: 3rem;
-    padding-bottom: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
 
-    .main-section {
-        > div {
-            + * {
-                margin-top: 3rem;
-            }
-        }
+  .main-section {
+    > div {
+      + * {
+        margin-top: 3rem;
+      }
     }
+  }
 
-    .container {
-        @include media-breakpoint-down(sm) {
-            padding-left: 0;
-            padding-right: 0;
-    
-            .main-section {
-                > * {
-                    &:not([class*=-slider]):not([slider-element]) {
-                        padding-left: 1.5rem;
-                        padding-right: 1.5rem;
-                    }
+  .container {
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+      padding-right: 0;
 
-                    &[slider-element] {
-                        .title-block {
-                            padding-left: 1.5rem;
-                            padding-right: 1.5rem;
-                        }
-                    }
-                }
+      .main-section {
+        > * {
+          &:not([class*='-slider']):not([slider-element]) {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+
+          &[slider-element] {
+            .title-block {
+              padding-left: 1.5rem;
+              padding-right: 1.5rem;
             }
+          }
         }
+      }
     }
+  }
 
-    .row {
-        &.no-gutter-on-mobile {
-            @include media-breakpoint-down(sm) {
-                margin-left: 0;
-                margin-right: 0;
+  .row {
+    &.no-gutter-on-mobile {
+      @include media-breakpoint-down(sm) {
+        margin-left: 0;
+        margin-right: 0;
 
-                > * {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-            }
+        > * {
+          padding-left: 0;
+          padding-right: 0;
         }
+      }
     }
+  }
 }
 
-figure {
+figure,
+p {
+  margin-bottom: 0;
+}
+
+ul {
+  &:not(.standart-list) {
+    padding-left: 0;
     margin-bottom: 0;
+    list-style: none;
+  }
 }
 
 @for $i from 1 to 7 {
-    h#{$i} {
-        margin-bottom: 0;
-    }
+  h#{$i} {
+    margin-bottom: 0;
+  }
 }
 
-    .op-05 {
-        opacity: 0.5;
+form {
+  .row {
+    + .row {
+      margin-top: 2rem;
     }
+  }
+}
+
+.op-05 {
+  opacity: 0.5;
+}
 
 .container {
+  @include media-breakpoint-down(sm) {
+    max-width: unset;
+  }
 
-    @include media-breakpoint-down(sm) {
-        max-width: unset;
-    }
+  @include media-breakpoint-up(md) {
+    max-width: calc(100% - 4.763rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 
-    @include media-breakpoint-up(md) {
-        max-width: calc(100% - 4.763rem);
+    .row {
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+
+      > [class*='col'] {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-
-        .row {
-            margin-left: -1.5rem;
-            margin-right: -1.5rem;
-
-            > [class*=col] {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
+      }
     }
+  }
 
-    @include media-breakpoint-up(xl) {
-        max-width: vw(1670,1920);
-    }
+  @include media-breakpoint-up(xl) {
+    max-width: vw(1670, 1920);
+  }
 
-    @media (min-width:1920px) {
-        max-width: 1670px;
-    }
+  @media (min-width: 1920px) {
+    max-width: 1670px;
+  }
 }

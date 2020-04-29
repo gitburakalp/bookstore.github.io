@@ -1,15 +1,25 @@
 .form-control {
-    font-size: 1.4rem;
-    letter-spacing: 0.022rem;
-    line-height: 1;
-    height: auto;
+  font-size: 1.4rem;
+  letter-spacing: 0.022rem;
+  line-height: 1;
+  height: auto;
+  padding: 1.5rem 2rem;
+  border-radius: 5px;
 
-    &::placeholder {
-        color: rgba($colors--black-two,0.5);
-    }
+  &.font-size-sm {
+    padding: 0.9rem 1.6rem;
+  }
 
-    &:focus {
-        outline: none;
-        box-shadow: none;
-    }
+  &::placeholder {
+    color: rgba($colors--black-two, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+textarea.form-control {
+  resize: none;
 }
