@@ -329,3 +329,50 @@
     }
   }
 }
+
+.search-block {
+  @include media-breakpoint-down(sm) {
+    .cancel-btn {
+      position: absolute;
+
+      font-size: 1.6rem;
+      font-weight: 300;
+      right: 2.2rem;
+      transform: translateY(2rem);
+    }
+
+    &:not(.is-shown) {
+      .cancel-btn {
+        display: none;
+      }
+    }
+
+    &.is-shown {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      background-color: $colors--white;
+      padding: 2rem;
+      transition: all $duration;
+      z-index: 999;
+      margin-top: 0;
+      border-radius: 0;
+    }
+
+    &.is-shown {
+      .input-group {
+        border-radius: 2rem;
+        background-color: rgba(239, 239, 239, 0.4);
+        max-width: 85%;
+      }
+
+      .cancel-button-block {
+        display: inline-flex;
+        padding-left: 2.2rem;
+        padding-right: 0;
+      }
+    }
+  }
+}

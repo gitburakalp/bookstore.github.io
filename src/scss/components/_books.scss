@@ -123,6 +123,10 @@
     &-link {
       position: relative;
       display: inline-block;
+
+      @include media-breakpoint-up(md) {
+        max-width: 14.4rem;
+      }
     }
 
     .books-title {

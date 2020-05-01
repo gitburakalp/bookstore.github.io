@@ -99,13 +99,52 @@
                                 </ul>
                             </div>
                             <div class="search-block">
+                                <a class="cancel-btn">
+                                    İptal
+                                </a>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <i class="icons icons--search"></i>
                                     </div>
                                     <input class="form-control" placeholder="Kitaba, Yazar veya ISBN göre ara">
-                                    <div class="input-group-prepend">
-                                        <i class="icons icons--filter"></i>
+                                    <div class="input-group-prepend p-0">
+                                        <a href="#!" class="btn--filter" role="button">
+                                            <i class="icons icons--filter"></i>
+                                        </a>
+                                        <div class="popover popover--filter">
+                                            <div class="arrow"></div>
+                                            <div class="popover-inner">
+                                                <div class="popover-content">
+                                                    <div class="filter-popover">
+                                                        <h5 class="title">
+                                                            Filtreler
+                                                        </h5>
+                                                        <span class="d-block">
+                                                            Göre Sırala
+                                                        </span>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpAllBooks" name="filter" type="radio" />
+                                                            <label for="inpAllBooks">Tüm kitaplarda ara</label>
+                                                        </div>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpOnlyWord" name="filter" type="radio" />
+                                                            <label for="inpOnlyWord">Sadece tam kelimelerde
+                                                                ara</label>
+                                                        </div>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpSomeOpt" name="filter" type="radio" />
+                                                            <label for="inpSomeOpt">Haşiyelerde de ara</label>
+                                                        </div>
+                                                        <div class="d-block mt-5">
+                                                            <a href="#!"
+                                                                class="btn d-block btn--radius-20 font-weight-bold">
+                                                                UYGULA
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

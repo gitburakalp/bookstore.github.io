@@ -23,3 +23,72 @@
 textarea.form-control {
   resize: none;
 }
+
+%custom-inputs-input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+
+  + label {
+    position: relative;
+    padding-left: 3.2rem;
+
+    font-size: 1.4rem;
+    line-height: 1.27;
+    letter-spacing: 0.038rem;
+    color: $colors--black;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.6rem;
+      font-family: $font-awesome;
+      color: rgba($colors--black, 0.5);
+      transition: color $duration;
+    }
+
+    &:hover {
+      text-shadow: 0 1px 1px rgba($colors--black-two, 0.05);
+
+      &::before {
+        color: $colors--black;
+      }
+    }
+  }
+}
+
+.custom-inputs {
+  &--checkbox {
+    input[type='checkbox'] {
+      @extend %custom-inputs-input;
+    }
+  }
+
+  &--radio {
+    input[type='radio'] {
+      @extend %custom-inputs-input;
+
+      &:not(:checked) {
+        + label {
+          &::before {
+            content: '\f111';
+          }
+        }
+      }
+
+      &:checked {
+        + label {
+          &::before {
+            font-family: 'Font Awesome 5 Free';
+            content: '\f192';
+            font-weight: 400;
+            color: $colors--black;
+          }
+        }
+      }
+    }
+  }
+}

@@ -258,6 +258,23 @@ document.addEventListener('DOMContentLoaded', function () {
   $(window).on('resize oriantedChange', function () {
     root.style.setProperty('--header-height', $('header').height() + 'px');
   });
+
+  $('.search-block .form-control').on('click', function () {
+    var $this = $(this);
+    ww = $(window).outerWidth();
+
+    if (ww < 768) {
+      $('.search-block').addClass('is-shown');
+    }
+  });
+
+  $('.cancel-btn').on('click', function () {
+    $('.search-block').removeClass('is-shown');
+  });
+
+  $('.btn--filter').on('click', function () {
+    $(this).siblings().toggleClass('is-shown');
+  });
 });
 
 function getMap() {
