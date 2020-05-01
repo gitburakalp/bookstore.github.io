@@ -18,6 +18,10 @@ body {
   font-size: 1rem;
   line-height: 1;
   padding-bottom: 4rem;
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: 10rem;
+  }
 }
 
 html,
@@ -41,9 +45,19 @@ body {
   }
 }
 
+.fal,
+.fab,
+.fas {
+  vertical-align: middle;
+}
+
 main {
   padding-top: 3rem;
-  padding-bottom: 10rem;
+  padding-bottom: 3rem;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: 10rem;
+  }
 
   .main-section {
     > div {

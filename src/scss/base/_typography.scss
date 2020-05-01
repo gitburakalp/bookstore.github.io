@@ -36,7 +36,7 @@
         right: 0;
         bottom: 0;
         height: 1px;
-        background-color: $colors--black-two;
+        background-color: rgba($colors--black, 0.5);
 
         @include media-breakpoint-down(sm) {
           left: 1.5rem;

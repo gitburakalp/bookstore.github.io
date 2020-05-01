@@ -1,21 +1,102 @@
 .footer {
   line-height: 1.43;
 
+  &-logo {
+    display: inline-block;
+    width: 16.2rem;
+    height: auto;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .mt-6rem {
+    margin-top: 6rem;
+  }
+
   &-top {
     position: relative;
 
-    + * {
-      margin-top: 6rem;
+    @include media-breakpoint-down(sm) {
+      display: none;
     }
+
+    @include media-breakpoint-up(md) {
+      + * {
+        margin-top: 6rem;
+      }
+    }
+  }
+
+  .title {
+    font-size: 1.4rem;
+    color: $colors--black;
   }
 
   &-main {
     border-radius: 1rem;
     background-color: $colors--main-green;
-    padding: 3rem 6rem;
+    padding: 1.5rem;
+
+    @include media-breakpoint-down(sm) {
+      > .row {
+        > * {
+          &:not(.footer-main-subscribe) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      padding: 5rem 6rem 3rem;
+
+      &-subscribe {
+        flex: 0 0 33.4rem;
+        max-width: 33.4rem;
+      }
+    }
+
+    .title {
+      font-size: 1.8rem;
+    }
+
+    &-list {
+      &.right-list {
+        display: inline-flex;
+        flex-wrap: nowrap;
+
+        > * {
+          + * {
+            margin-left: 3rem;
+          }
+        }
+      }
+
+      &:not(.right-list) {
+        .footer-main-list-item {
+          + * {
+            margin-top: 0.25rem;
+          }
+        }
+      }
+
+      &-link {
+        display: block;
+        font-size: 1.4rem;
+        letter-spacing: 0.029rem;
+        line-height: 1.43;
+
+        &:hover {
+          color: $colors--white;
+        }
+      }
+    }
 
     .btn {
-      &.d-block {
+      &:not([class*='btn--']).d-block {
         padding: 0;
         font-size: 1rem;
         text-align: left;
@@ -34,11 +115,6 @@
 
   p {
     line-height: inherit !important;
-  }
-
-  .title {
-    font-size: 1.4rem;
-    color: $colors--black;
   }
 
   .description {

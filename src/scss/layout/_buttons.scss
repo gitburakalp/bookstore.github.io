@@ -7,6 +7,40 @@
       display: inline-block;
     }
   }
+
+  &--small {
+    font-size: 1rem;
+    padding: 1rem;
+    border: 1px solid $colors--black;
+    border-radius: 1rem;
+  }
+
+  &--radius {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    line-height: 1;
+
+    &-10 {
+      @extend .btn--radius;
+      border-radius: 1rem;
+    }
+
+    &-20 {
+      @extend .btn--radius;
+      border-radius: 2rem;
+    }
+  }
+
+  &--black {
+    color: $colors--white;
+    background-color: $colors--black;
+    border: 1px solid $colors--black;
+
+    &:hover {
+      background-color: $colors--white;
+      color: $colors--black;
+    }
+  }
 }
 
 .btn--radius-20 {
