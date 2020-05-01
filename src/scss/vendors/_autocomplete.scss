@@ -1,0 +1,25 @@
+.ui {
+  &-autocomplete {
+    &.ui-widget {
+      width: calc(100% - 4rem) !important;
+      z-index: 1000;
+      border: none;
+      left: 2rem !important;
+
+      > .ui-menu-item {
+        font-size: 1.4rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        &:focus {
+          background-color: $colors--black;
+          color: $colors--white;
+        }
+
+        &:nth-child(1) {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}

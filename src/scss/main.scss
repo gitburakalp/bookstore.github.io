@@ -4,6 +4,8 @@
 
 @import 'override-variables.scss';
 
+@import '../css/vendors/jquery-ui.min.css';
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
@@ -17,3 +19,4 @@
 @import 'layout/index';
 
 @import 'components/index';
+@import 'vendors/autocomplete';

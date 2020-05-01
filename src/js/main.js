@@ -265,15 +265,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (ww < 768) {
       $('.search-block').addClass('is-shown');
+      $('html,body').addClass('overflow-hidden');
+      $('html,body').animate(
+        {
+          scrollTop: 0,
+        },
+        500,
+      );
     }
   });
 
   $('.cancel-btn').on('click', function () {
     $('.search-block').removeClass('is-shown');
+    $('html,body').removeClass('overflow-hidden');
   });
 
   $('.btn--filter').on('click', function () {
-    $(this).siblings().toggleClass('is-shown');
+    ww = $(window).outerWidth();
+
+    if (ww < 768) {
+      $('.search-block').hasClass('is-shown') ? $(this).siblings().toggleClass('is-shown') : '';
+    } else {
+      $(this).siblings().toggleClass('is-shown');
+    }
   });
 });
 
