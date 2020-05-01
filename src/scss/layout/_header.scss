@@ -375,4 +375,10 @@
       }
     }
   }
+
+  @include media-breakpoint-up(md) {
+    .cancel-btn {
+      display: none;
+    }
+  }
 }

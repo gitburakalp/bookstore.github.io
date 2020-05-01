@@ -289,6 +289,11 @@ document.addEventListener('DOMContentLoaded', function () {
       $(this).siblings().toggleClass('is-shown');
     }
   });
+
+  $('#btnFilterAccept').on('click', function (e) {
+    e.preventDefault();
+    $('.popover--filter').removeClass('is-shown');
+  });
 });
 
 function getMap() {
