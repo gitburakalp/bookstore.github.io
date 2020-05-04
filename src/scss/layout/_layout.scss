@@ -194,3 +194,33 @@ form {
     max-width: 1655px;
   }
 }
+
+.list {
+  position: relative;
+
+  &-item {
+    + * {
+      margin-top: 1.6rem;
+    }
+  }
+
+  &-link {
+    display: block;
+    font-size: 1.4rem;
+    color: inherit;
+    transition: opacity $duration, transform $duration;
+
+    .op-05 {
+      transition: opacity $duration;
+      transition-delay: $duration / 2;
+    }
+
+    &:hover {
+      transform: translateY(-0.5rem);
+
+      .op-05 {
+        opacity: 1 !important;
+      }
+    }
+  }
+}

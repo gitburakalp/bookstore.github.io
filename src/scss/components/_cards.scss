@@ -21,14 +21,6 @@
     }
   }
 
-  &--library {
-    .row {
-      + .row {
-        margin-top: 3.05rem;
-      }
-    }
-  }
-
   &-slide {
     .cards {
       .title {
@@ -46,6 +38,7 @@
 
   &.standart {
     display: flex;
+    border-radius: 2rem;
 
     @include media-breakpoint-down(sm) {
       align-items: stretch;
@@ -106,14 +99,72 @@
       border-top: 1px solid $colors--black;
     }
   }
+
+  &-right-slider {
+    .image {
+      position: relative;
+      overflow: hidden;
+      width: 89px;
+      border-radius: 3px;
+      box-shadow: $book-shadow;
+    }
+
+    .cards-slide {
+      padding: 4px;
+    }
+  }
+
+  &--sticky {
+    position: sticky;
+    top: calc(var(--header-height) + 3rem);
+    color: $colors--white !important;
+    max-height: calc(100vh - (var(--header-height) + 6rem));
+    overflow-y: auto;
+
+    .title-block {
+      &:after {
+        background-color: $colors--white;
+      }
+
+      .title {
+        color: inherit;
+      }
+    }
+  }
 }
 
 .col--aside {
   .cards {
     padding: 4.7rem 3rem;
+    color: $colors--black;
+
+    .title-block {
+      + * {
+        margin-top: 1rem;
+      }
+    }
+
+    .description {
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    > * {
+      + * {
+        margin-top: 3.05rem;
+      }
+    }
 
     &.bg--windows-blue {
-      background-color: rgba($colors--windows-blue, 0.6);
+      background-color: $colors--windows-blue;
+
+      &-06 {
+        background-color: rgba($colors--windows-blue, 0.6);
+      }
     }
   }
 }

@@ -203,9 +203,24 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            transition-duration: 0s;
 
             &:hover {
               color: $colors--black;
+
+              .icons {
+                &--home {
+                  background-image: url($storageSrc + 'svg/home-icon-black.svg');
+                }
+
+                &--libraries {
+                  background-image: url($storageSrc + 'svg/library-icon-black.svg');
+                }
+
+                &--shopping-cart {
+                  background-image: url($storageSrc + 'svg/shopping-cart-icon-black.svg');
+                }
+              }
             }
           }
         }

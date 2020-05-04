@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
       slideActiveClass: slideCssClass + '--active',
       slideNextClass: slideCssClass + '--next',
       slidePrevClass: slideCssClass + '--prev',
+
       breakpoints: {
         768: {
           slidesPerView: 1,
@@ -93,6 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
       slideActiveClass: slideCssClass + '--active',
       slideNextClass: slideCssClass + '--next',
       slidePrevClass: slideCssClass + '--prev',
+      pagination: {
+        el: '.cards-slider--standart .cards-pagination',
+        type: 'bullets',
+      },
     };
 
     if (ww < 768) {
@@ -249,6 +254,26 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     var booksSlider = new Swiper($(this), config);
+  });
+
+  $('.cards-right-slider').each(function () {
+    var $this = $(this);
+    var slideCssClass = 'cards-slide';
+    var config = {
+      slidesPerView: 1,
+      containerModifierClass: 'cards-right-slider--',
+      wrapperClass: 'cards-wrapper',
+      slideClass: slideCssClass,
+      slideActiveClass: slideCssClass + '--active',
+      slideNextClass: slideCssClass + '--next',
+      slidePrevClass: slideCssClass + '--prev',
+      pagination: {
+        el: '.cards-right-slider .cards-pagination.pagination-relative',
+        type: 'bullets',
+      },
+    };
+
+    var cardsSlider = new Swiper($this, config);
   });
 
   let root = document.documentElement;

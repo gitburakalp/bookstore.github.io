@@ -87,3 +87,15 @@ $mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
     }
   }
 }
+
+.swiper-pagination-bullets {
+  @extend %slider-pagination;
+
+  .swiper-pagination-bullet {
+    @extend %slider-pagination-bullet;
+
+    &-active {
+      @extend %slider-pagination-bullet-active;
+    }
+  }
+}
