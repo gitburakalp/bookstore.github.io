@@ -14,6 +14,16 @@
 
     width: 69px;
     height: 65px;
+
+    @include media-breakpoint-up(md) {
+      width: vw(69, 1920);
+      height: vw(65, 1920);
+    }
+
+    @media (min-width: 1920px) {
+      width: 69px;
+      height: 65px;
+    }
   }
 
   &--home {
@@ -49,6 +59,14 @@
 
     &.with-notification {
       margin-top: (-27 / 2) + px;
+
+      @include media-breakpoint-up(md) {
+        margin-top: vw((-27 / 2), 1920);
+      }
+
+      @media (min-width: 1920px) {
+        margin-top: (-27 / 2) + px;
+      }
     }
   }
 }

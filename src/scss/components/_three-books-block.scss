@@ -5,6 +5,11 @@
   padding-top: 5rem;
   padding-bottom: 2rem;
 
+  @include media-breakpoint-down(xl) {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
   > * {
     position: relative;
     min-height: 1px;

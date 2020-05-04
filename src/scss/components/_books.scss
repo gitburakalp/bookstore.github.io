@@ -139,6 +139,13 @@
       }
     }
 
+    @include media-breakpoint-only(md) {
+      .image {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+
     @include media-breakpoint-up(md) {
       .image {
         position: relative;
