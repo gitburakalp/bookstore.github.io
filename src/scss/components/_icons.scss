@@ -1,51 +1,54 @@
-
 .icons {
+  position: relative;
+
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  width: 100%;
+  height: 100%;
+
+  &--library {
+    background-image: url($storageSrc + 'svg/book-icon.svg');
+
+    width: 69px;
+    height: 65px;
+  }
+
+  &--home {
+    background-image: url($storageSrc + 'svg/home-icon.svg');
+  }
+
+  &--search {
+    background-image: url($storageSrc + 'svg/search-icon--black.svg');
+  }
+
+  &--filter {
+    background-image: url($storageSrc + 'svg/filter-icon--black.svg');
+  }
+
+  &--libraries {
+    background-image: url($storageSrc + 'svg/library-icon.svg');
+  }
+
+  &--shopping-cart {
+    background-image: url($storageSrc + 'svg/shopping-cart-icon.svg');
+  }
+
+  &--search-white {
+    background-image: url($storageSrc + 'svg/search-icon--white.svg');
+  }
+
+  &--book {
+    background-image: url($storageSrc + 'svg/opened-book-icon.svg');
+  }
+
+  &-block {
     position: relative;
 
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-
-    width: 100%;
-    height: 100%;
-
-    &--library {
-        background-image: url($storageSrc + "svg/book-icon.svg");
-
-        width: 69px;
-        height: 65px;
+    &.with-notification {
+      margin-top: (-27 / 2) + px;
     }
-
-    &--home {
-        background-image: url($storageSrc + "svg/home-icon.svg");
-    }
-
-    &--search {
-        background-image: url($storageSrc + "svg/search-icon--black.svg");
-    }
-
-    &--filter {
-        background-image: url($storageSrc + "svg/filter-icon--black.svg");
-    }
-
-    &--libraries {
-        background-image: url($storageSrc + "svg/library-icon.svg");
-    }
-
-    &--shopping-cart {
-        background-image: url($storageSrc + "svg/shopping-cart-icon.svg");
-    }
-
-    &--search-white {
-        background-image: url($storageSrc + "svg/search-icon--white.svg");
-    }
-
-    &-block {
-        position: relative;
-
-        &.with-notification {
-            margin-top: (-27 / 2) + px;
-        }
-    }
+  }
 }

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="66.068" height="51.91" viewBox="0 0 66.068 51.91">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:#2b2e2c}.prefix__cls-2{fill:none;stroke:#2b2e2c;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="prefix__Group_289" data-name="Group 289" transform="translate(-69 -581.09)">
+        <g id="prefix__Group_288" data-name="Group 288" transform="translate(-91 391.09)">
+            <g id="prefix__Group_285" data-name="Group 285" transform="translate(191.854 192.36)">
+                <path id="prefix__Path_738" d="M296.18 249.551a1.18 1.18 0 0 1-1.18-1.18V201.18a1.18 1.18 0 0 1 2.36 0v47.191a1.18 1.18 0 0 1-1.18 1.18z" class="prefix__cls-1" data-name="Path 738" transform="translate(-295 -200)"/>
+            </g>
+            <g id="prefix__Group_286" data-name="Group 286" transform="translate(160 190)">
+                <path id="prefix__Path_739" d="M194.214 241.91h-2.36a1.181 1.181 0 0 1-.834-.345 6.83 6.83 0 0 0-4.862-2.014H161.18a1.18 1.18 0 0 1-1.18-1.18V191.18a1.18 1.18 0 0 1 1.18-1.18h24.978a9.169 9.169 0 0 1 6.166 2.36h1.42a9.169 9.169 0 0 1 6.166-2.36h24.978a1.18 1.18 0 0 1 1.18 1.18v47.191a1.18 1.18 0 0 1-1.18 1.18H199.91a6.83 6.83 0 0 0-4.862 2.014 1.181 1.181 0 0 1-.834.345zm-1.89-2.36h1.42a9.169 9.169 0 0 1 6.166-2.36h23.8v-44.83h-23.8a6.83 6.83 0 0 0-4.862 2.014 1.181 1.181 0 0 1-.834.345h-2.36a1.181 1.181 0 0 1-.834-.345 6.83 6.83 0 0 0-4.862-2.014h-23.8v44.832h23.8a9.169 9.169 0 0 1 6.166 2.359z" class="prefix__cls-1" data-name="Path 739" transform="translate(-160 -190)"/>
+            </g>
+            <g id="prefix__Group_287" data-name="Group 287" transform="translate(214.27 190)">
+                <path id="prefix__Path_740" d="M400.618 201.8h-9.438a1.18 1.18 0 0 1-1.18-1.18v-9.44a1.18 1.18 0 0 1 1.553-1.119 16.181 16.181 0 0 1 10.185 10.185 1.18 1.18 0 0 1-1.119 1.553zm-8.258-2.36h6.513a13.847 13.847 0 0 0-6.513-6.513z" class="prefix__cls-1" data-name="Path 740" transform="translate(-390 -190)"/>
+            </g>
+        </g>
+        <path id="prefix__Line_9" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 9" transform="translate(75.5 595.5)"/>
+        <path id="prefix__Line_16" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 16" transform="translate(107.5 595.5)"/>
+        <path id="prefix__Line_10" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 10" transform="translate(75.5 600.5)"/>
+        <path id="prefix__Line_15" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 15" transform="translate(107.5 600.5)"/>
+        <path id="prefix__Line_11" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 11" transform="translate(75.5 605.5)"/>
+        <path id="prefix__Line_17" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 17" transform="translate(107.5 605.5)"/>
+        <path id="prefix__Line_12" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 12" transform="translate(75.5 610.5)"/>
+        <path id="prefix__Line_18" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 18" transform="translate(107.5 610.5)"/>
+        <path id="prefix__Line_13" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 13" transform="translate(75.5 615.5)"/>
+        <path id="prefix__Line_19" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 19" transform="translate(107.5 615.5)"/>
+        <path id="prefix__Line_14" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 14" transform="translate(75.5 620.5)"/>
+        <path id="prefix__Line_20" d="M0 0L21 0" class="prefix__cls-2" data-name="Line 20" transform="translate(107.5 620.5)"/>
+    </g>
+</svg>

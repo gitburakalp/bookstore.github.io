@@ -1,9 +1,36 @@
 .cards {
   position: relative;
-  border-radius: 10px;
+  border-radius: 2rem;
 
   &-slide {
-    .cards { 
+    .cards {
+      border-radius: 1rem;
+    }
+  }
+
+  &-link {
+    display: inline-block;
+  }
+
+  .book-icon {
+    width: 45px;
+    height: 35px;
+
+    .icons {
+      background-size: 45px;
+    }
+  }
+
+  &--library {
+    .row {
+      + .row {
+        margin-top: 3.05rem;
+      }
+    }
+  }
+
+  &-slide {
+    .cards {
       .title {
         color: $colors--white;
         text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
@@ -44,7 +71,7 @@
 
     .mobile-block {
       @include media-breakpoint-up(md) {
-        display: none
+        display: none;
       }
     }
   }
@@ -67,16 +94,9 @@
         }
       }
     }
-
-    @include media-breakpoint-up(md) {
-      font-size: 3.6rem !important;
-      font-weight: 400;
-      margin-bottom: 4rem;
-    }
   }
 
   .more-btn-block {
-    
     text-align: right;
     margin-top: auto;
 
@@ -84,6 +104,16 @@
       margin-top: 0.5rem;
       padding-top: 0.5rem;
       border-top: 1px solid $colors--black;
+    }
+  }
+}
+
+.col--aside {
+  .cards {
+    padding: 4.7rem 3rem;
+
+    &.bg--windows-blue {
+      background-color: rgba($colors--windows-blue, 0.6);
     }
   }
 }

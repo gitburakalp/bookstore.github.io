@@ -19,6 +19,37 @@ body {
   line-height: 1;
   padding-bottom: 4rem;
 
+  .container {
+    @include media-breakpoint-up(md) {
+      $margin: 0.75rem;
+
+      padding-left: $margin;
+      padding-right: $margin;
+
+      .row {
+        margin-left: $margin * -1;
+        margin-right: $margin * -1;
+
+        > [class*='col'] {
+          padding-left: $margin;
+          padding-right: $margin;
+        }
+      }
+    }
+
+    .col--aside {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+
+      > * {
+        + * {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+
   @include media-breakpoint-down(sm) {
     padding-bottom: 10rem;
   }
@@ -153,25 +184,13 @@ form {
 
   @include media-breakpoint-up(md) {
     max-width: calc(100% - 4.763rem);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-
-    .row {
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
-
-      > [class*='col'] {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-    }
   }
 
   @include media-breakpoint-up(xl) {
-    max-width: vw(1670, 1920);
+    max-width: vw(1655, 1920);
   }
 
   @media (min-width: 1920px) {
-    max-width: 1670px;
+    max-width: 1655px;
   }
 }
