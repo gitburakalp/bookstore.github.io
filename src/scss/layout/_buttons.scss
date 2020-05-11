@@ -56,6 +56,57 @@
       background-color: rgba($colors--black, 0.125);
     }
   }
+
+  &--google {
+    color: rgba($colors--black, 0.5);
+    border-color: rgba($colors--black, 0.5);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 2rem;
+      width: 28px;
+      height: 28px;
+      background-image: url('/Storage/svg/google-icon.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &--facebook {
+    color: $colors--white;
+    background-color: #32599d;
+    border-color: #32599d;
+
+    &::before {
+      content: '\f39e';
+      position: absolute;
+      font-family: 'Font Awesome 5 Brands';
+      font-weight: 900;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 2.4rem;
+      font-size: 2.6rem;
+    }
+  }
+
+  &--google,
+  &--facebook {
+    font-family: $font-family-sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.19;
+    letter-spacing: 0.26px;
+    border: 1px solid;
+    border-radius: 1rem;
+    padding-top: 13px;
+    padding-bottom: 11px;
+    font-weight: bold;
+    padding-left: 6rem;
+    text-align: left;
+  }
 }
 
 .btn--radius-20 {

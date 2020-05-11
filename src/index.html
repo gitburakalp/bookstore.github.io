@@ -30,12 +30,13 @@
                                 <div class="col-12 col-md-auto">
                                     <ul class="header-list ml-lg-4">
                                         <li class="header-list-item">
-                                            <a href="#!" class="header-list-link">
+                                            <a id="btnSignIn" href="#!" class="header-list-link">
                                                 Şifremi Unuttum
                                             </a>
                                         </li>
                                         <li class="header-list-item">
-                                            <a href="#!" class="header-list-link">
+                                            <a id="btnSignUp" href="#!" class="header-list-link" data-toggle="modal"
+                                                data-target="#accountModal">
                                                 Üye Ol
                                             </a>
                                         </li>
@@ -1613,6 +1614,150 @@
 
     </footer>
 
+    <!-- Login & Sign Up Modal -->
+    <div class="modal modal--account is-homescreen fade" id="accountModal" tabindex="-1" role="dialog"
+        aria-labelledby="accountModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="brand">
+                        <img src="https://via.placeholder.com/76x49" alt="Brand" />
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="welcome-screen is-shown">
+                        <div class="form-row">
+                            <div class="col-12">
+                                <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                    Oturumu Aç
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                    Kayıt Ol
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center mt-5 pt-3">
+                            <div class="col-10">
+                                <a href="#!" class="d-block btn btn--google">
+                                    Sign in with Google
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-center">
+                            <div class="col-10">
+                                <a href="#!" class="d-block btn btn--facebook">
+                                    Sign in with Facebook
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body__sign-in">
+                        <div class="form-row">
+                            <div class="col-12">
+                                <h3 class="title">
+                                    Oturum Açın
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="İsteğe Bağlı Özel Grup Kodu">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="E-Posta">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input type="password" class="form-control bg-dirty-white-40" placeholder="Şifreniz">
+                            </div>
+                        </div>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <div class="custom-inputs--checkbox">
+                                    <input id="chkRemindMe" type="checkbox">
+                                    <label for="chkRemindMe">Bağlı Kal</label>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <a href="#!" class="font-size-sm op-05 line-height-24">
+                                    Parolanızı mı unuttunuz?
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                    Oturumu Aç
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body__sign-up">
+                        <div class="form-row">
+                            <div class="col-12">
+                                <h3 class="title">
+                                    Kayıt Olun
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="Adınız & Soyadınız">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="E-Posta">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="Cep Telefonunuz">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40"
+                                    placeholder="İsteğe Bağlı Grup Özel Kodu (Opsiyonel)">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input class="form-control bg-dirty-white-40" placeholder="Şifre">
+                            </div>
+                        </div>
+                        <div class="form-row align-items-center">
+                            <div class="col-12">
+                                <div class="custom-inputs--checkbox">
+                                    <input id="chkEBullettin" type="checkbox">
+                                    <label for="chkEBullettin">Lütfen aylık bültene üye olun</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                    Kayıt Ol
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/vendors/jquery.min.js"></script>
     <script src="js/vendors/jquery-ui.min.js"></script>
     <script src="js/vendors/popper.min.js"></script>
@@ -1623,6 +1768,9 @@
     <script src="js/autocomplete-functions.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHmCyPwmR0gwm-picbqfK9acDDsm-SVc0&callback=getMap"></script>
+    <script>
+        $("#accountModal").modal("show")
+    </script>
 </body>
 
 </html>

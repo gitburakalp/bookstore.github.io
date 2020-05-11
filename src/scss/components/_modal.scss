@@ -1,0 +1,131 @@
+.modal {
+  &--account {
+    .modal {
+      &-dialog {
+        @include media-breakpoint-down(sm) {
+          margin-top: 0;
+          margin-bottom: 0;
+          height: 100%;
+        }
+      }
+
+      &-content {
+        border-radius: 0;
+        @include media-breakpoint-down(sm) {
+          height: 100%;
+        }
+      }
+
+      &-header {
+        position: relative;
+        border-bottom-color: transparent;
+        z-index: 1;
+
+        [data-dismiss='modal'] {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          margin: 0;
+          color: $colors--dark;
+          opacity: 1;
+        }
+
+        .brand {
+          width: 100%;
+          max-width: vw(76, 375);
+          margin: 0 auto;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      &-body {
+        padding: 2rem 2rem 2.8rem;
+
+        &[class*='__'] {
+          > * {
+            > * {
+              &:last-child {
+                margin-top: auto !important;
+              }
+            }
+          }
+        }
+
+        > * {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+
+          &:not(.is-shown) {
+            display: none;
+          }
+        }
+
+        .form-row {
+          + .form-row {
+            margin-top: 2rem;
+          }
+        }
+
+        .form-control {
+          border-radius: 10px;
+        }
+
+        .custom-inputs {
+          &--checkbox {
+            label {
+              font-size: 1.2rem;
+              letter-spacing: 0.019rem;
+              color: rgba($colors--black, 0.5);
+            }
+          }
+        }
+
+        .line-height-24 {
+          line-height: 2.4rem;
+        }
+      }
+    }
+
+    &.is-homescreen {
+      .modal-content {
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          height: 75vh;
+          width: 150%;
+          border-radius: 50%;
+          background-color: $colors--main-green;
+          transform: translate(-50%, -50%);
+        }
+
+        .modal-body {
+          padding-top: 44vw;
+        }
+      }
+
+      .brand {
+        animation: brandAnim 1s;
+        transform: translateY(50px);
+        max-width: 171px;
+      }
+
+      [data-dismiss='modal'] {
+        display: none;
+      }
+    }
+  }
+}
+
+.welcome-screen {
+  justify-content: center;
+}

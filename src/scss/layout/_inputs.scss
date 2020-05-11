@@ -18,6 +18,16 @@
     outline: none;
     box-shadow: none;
   }
+
+  &.bg-dirty-white-40 {
+    background-color: rgba($colors--dirty-white, 0.4);
+    border-color: rgba($colors--dirty-white, 0.4);
+
+    &:focus {
+      border-color: rgba($colors--black-two, 0.4);
+      background-color: $colors--white;
+    }
+  }
 }
 
 textarea.form-control {
@@ -64,6 +74,43 @@ textarea.form-control {
   &--checkbox {
     input[type='checkbox'] {
       @extend %custom-inputs-input;
+
+      + label {
+        position: relative;
+        line-height: 2.4rem;
+        color: inherit;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 2.4rem;
+          height: 2.4rem;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          transition: background-color $duration * 2;
+        }
+      }
+
+      &:checked {
+        + label {
+          &::before {
+            background-color: $colors--dark;
+          }
+
+          &:after {
+            content: '\f00c';
+            position: absolute;
+            top: 0.02rem;
+            left: 0.5rem;
+            font-family: $font-awesome;
+            font-weight: 400;
+            font-size: 1.6rem;
+            color: $colors--white;
+          }
+        }
+      }
     }
   }
 
