@@ -46,6 +46,9 @@
       &-body {
         padding: 2rem 2rem 2.8rem;
 
+        max-height: 80vh;
+        overflow-x: auto;
+
         &[class*='__'] {
           > * {
             > * {
