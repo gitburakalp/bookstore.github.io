@@ -54,6 +54,12 @@
     background-image: url($storageSrc + 'svg/opened-book-icon.svg');
   }
 
+  &--read-book {
+    width: 9.3rem;
+    height: 9.3rem;
+    background-image: url($storageSrc + 'svg/read-book-icon.svg');
+  }
+
   &-block {
     position: relative;
 

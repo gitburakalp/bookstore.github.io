@@ -1,0 +1,15 @@
+.book {
+  &-default {
+    @extend %book;
+
+    &--sm {
+      @extend %book;
+    }
+  }
+
+  &-writer {
+    margin-top: 1rem;
+    text-align: center;
+    color: rgba($colors--dark, 0.5);
+  }
+}

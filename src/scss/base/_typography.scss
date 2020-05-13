@@ -1,3 +1,10 @@
+%title {
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
 .title {
   font-size: 2.4rem;
   color: $colors--black-two;
@@ -9,6 +16,10 @@
     + .description.d-md-inline-block {
       font-size: 1.8rem;
     }
+  }
+
+  &--sm {
+    @extend %title;
   }
 
   + * {
@@ -59,7 +70,12 @@
   }
 }
 
-.serif-description  {
+.bottom-lined-text {
+  font-family: $font-family-sans-serif;
+  font-size: 1.4rem;
+  color: inherit;
+
+  @extend %bottom-line;
 }
 
 .font-size {
@@ -93,5 +109,13 @@
 
   &-xhuge {
     font-size: 2.4rem !important;
+  }
+}
+
+.font {
+  &-weight {
+    &-medium {
+      font-weight: 500 !important;
+    }
   }
 }

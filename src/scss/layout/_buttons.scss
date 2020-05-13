@@ -40,6 +40,24 @@
       background-color: $colors--white;
       color: $colors--black;
     }
+
+    &-cart {
+      position: relative;
+      border: 2px solid $colors--black;
+      border-radius: 3rem;
+      line-height: 1.2;
+      padding: 0.35rem 0;
+      width: 100px;
+
+      &::before {
+        content: '\f07a';
+        font-family: $font-awesome;
+        font-weight: 300;
+        font-size: 2rem;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
   }
 
   &--filter {

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__Component_37_3" width="93" height="93" data-name="Component 37 – 3" viewBox="0 0 93 93">
+    <defs>
+        <style>
+            .prefix__cls-3{fill:#efefef}.prefix__cls-5{fill:#fff}.prefix__cls-7{fill:#dbdbdb}
+        </style>
+    </defs>
+    <g id="prefix__Component_26_1" data-name="Component 26 – 1">
+        <circle id="prefix__Ellipse_79" cx="46.5" cy="46.5" r="46.5" data-name="Ellipse 79" style="fill:rgba(90,189,140,.5)"/>
+    </g>
+    <text id="prefix__Kitabı_Oku" data-name="Kitabı Oku" transform="translate(46.042 80.214)" style="font-size:9px;font-family:Roboto-Regular,Roboto;letter-spacing:.016em">
+        <tspan x="-21.085" y="0">Kitabı Oku</tspan>
+    </text>
+    <g id="prefix__Group_327" data-name="Group 327" transform="translate(-2318.533 -2323.794)">
+        <g id="prefix___ÎÓÈ_8" data-name="—ÎÓÈ_8" transform="translate(2326.674 2327.962)">
+            <path id="prefix__Path_791" d="M2327.35 2398.071l1.021.2-.084.427h-1.069z" class="prefix__cls-3" data-name="Path 791" transform="translate(-2327.219 -2398.071)"/>
+        </g>
+        <g id="prefix__Layer_3" data-name="Layer 3" transform="translate(2326.533 2329.453)">
+            <rect id="prefix__Rectangle_362" width="77.071" height="53.333" data-name="Rectangle 362" rx="2" transform="translate(0 5.587)" style="fill:#242240"/>
+            <path id="prefix__Rectangle_363" d="M0 0H73.24V48.405H0z" class="prefix__cls-3" data-name="Rectangle 363" transform="translate(1.915 8.051)"/>
+            <path id="prefix__Path_793" d="M2341.279 2433.942l-.62 47.465 35.843 1.222v-44.873z" class="prefix__cls-5" data-name="Path 793" transform="translate(-2337.748 -2428.041)"/>
+            <path id="prefix__Path_794" d="M2364.053 2412.777l-.6 50.478 31.146 2.571v-44.873z" class="prefix__cls-3" data-name="Path 794" transform="translate(-2355.843 -2411.237)"/>
+            <path id="prefix__Path_795" d="M2396.515 2405.3v48.164l24.333 6.425v-44.869z" class="prefix__cls-5" data-name="Path 795" transform="translate(-2382.094 -2405.304)"/>
+            <path id="prefix__Path_796" d="M2547.861 2422.821l.654 50.478-33.85.661v-44.873z" class="prefix__cls-5" data-name="Path 796" transform="translate(-2475.897 -2419.211)"/>
+            <path id="prefix__Path_797" d="M2573.779 2599.114l1.041 25.1 1.711-1.408 1.992 1.408v-24.551z" data-name="Path 797" transform="translate(-2522.83 -2559.177)" style="fill:#ff4540"/>
+            <path id="prefix__Path_798" d="M2541.11 2415.348v48.164l-26.446 4.514v-44.873z" class="prefix__cls-3" data-name="Path 798" transform="translate(-2475.897 -2413.279)"/>
+            <g id="prefix__Group_326" data-name="Group 326" transform="translate(40.946 7.095)">
+                <path id="prefix__Path_799" d="M2525.237 2445.606l20.844-5.874v1.758l-20.844 5.579z" class="prefix__cls-7" data-name="Path 799" transform="translate(-2525.237 -2439.732)"/>
+                <path id="prefix__Path_800" d="M2526.889 2477.912l9.324-2.575v.724l-9.324 3.021z" class="prefix__cls-7" data-name="Path 800" transform="translate(-2526.548 -2468)"/>
+                <path id="prefix__Path_801" d="M2578.832 2465.325c.3 0 9.8-2.6 9.8-2.6v1.3l-9.8 2.723z" class="prefix__cls-7" data-name="Path 801" transform="translate(-2567.788 -2457.989)"/>
+                <path id="prefix__Path_802" d="M2526.889 2493.374l13.527-3.4v.729l-13.527 3.974z" class="prefix__cls-7" data-name="Path 802" transform="translate(-2526.548 -2479.617)"/>
+                <path id="prefix__Path_803" d="M2529.485 2504.541l19.968-4.541v.65l-19.968 5.273z" class="prefix__cls-7" data-name="Path 803" transform="translate(-2528.61 -2487.581)"/>
+                <path id="prefix__Path_804" d="M2529.485 2526.047l16.2-4.01v1.382l-16.2 3.742z" class="prefix__cls-7" data-name="Path 804" transform="translate(-2528.61 -2505.077)"/>
+                <path id="prefix__Path_805" d="M2528.19 2548.992l10.436-2.088-.185 1.066-10.251 2.3z" class="prefix__cls-7" data-name="Path 805" transform="translate(-2527.582 -2524.82)"/>
+                <path id="prefix__Path_806" d="M2583.947 2536.729l-.313 1.146 8.81-1.875v-1.531z" class="prefix__cls-7" data-name="Path 806" transform="translate(-2571.6 -2514.948)"/>
+            </g>
+            <path id="prefix__Path_807" d="M2427.685 2437.662l-20.843-9.152v1.824l20.843 8.846z" class="prefix__cls-7" data-name="Path 807" transform="translate(-2390.293 -2423.728)"/>
+            <path id="prefix__Path_808" d="M2468.917 2476.873l-9.713-4.252v.752l9.713 4.714z" class="prefix__cls-7" data-name="Path 808" transform="translate(-2431.865 -2458.749)"/>
+            <path id="prefix__Path_809" d="M2416.486 2455.969c-.3 0-9.644-3.6-9.644-3.6v1.348l9.644 3.729z" class="prefix__cls-7" data-name="Path 809" transform="translate(-2390.293 -2442.67)"/>
+            <path id="prefix__Path_810" d="M2429.472 2555.185l-20.843-9.152v1.824l20.843 8.846z" class="prefix__cls-7" data-name="Path 810" transform="translate(-2391.712 -2517.033)"/>
+            <path id="prefix__Path_811" d="M2418.272 2573.492c-.3 0-9.644-3.6-9.644-3.6v1.348l9.644 3.729z" class="prefix__cls-7" data-name="Path 811" transform="translate(-2391.712 -2535.976)"/>
+            <path id="prefix__Path_812" d="M2441.854 2488.774l-16.737-6.187v.757l16.737 6.779z" class="prefix__cls-7" data-name="Path 812" transform="translate(-2404.802 -2466.661)"/>
+            <path id="prefix__Path_813" d="M2426.81 2498.812l-19.968-7.769v.674l19.968 8.529z" class="prefix__cls-7" data-name="Path 813" transform="translate(-2390.293 -2473.375)"/>
+            <path id="prefix__Path_814" d="M2441.318 2521.126l-16.2-7.217v1.434l16.2 6.94z" class="prefix__cls-7" data-name="Path 814" transform="translate(-2404.802 -2491.529)"/>
+            <path id="prefix__Path_815" d="M2425.816 2617.717l-16.2-5.447v1.434l16.2 5.17z" class="prefix__cls-7" data-name="Path 815" transform="translate(-2392.494 -2569.621)"/>
+            <path id="prefix__Path_816" d="M2463.875 2548.514l-10.684-4.294.185 1.106 10.5 4.513z" class="prefix__cls-7" data-name="Path 816" transform="translate(-2427.092 -2515.594)"/>
+            <path id="prefix__Path_817" d="M2415.029 2530.355l.314 1.189-8.5-3.147v-1.588z" class="prefix__cls-7" data-name="Path 817" transform="translate(-2390.293 -2501.771)"/>
+            <path id="prefix__Path_818" d="M2417.8 2594.994l.314 1.189-8.5-3.148v-1.588z" class="prefix__cls-7" data-name="Path 818" transform="translate(-2392.494 -2553.09)"/>
+        </g>
+    </g>
+</svg>

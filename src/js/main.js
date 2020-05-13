@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  if (!$('body').hasClass('homepage')) {
+    $('body').append("<i class='prev-icon'></i>");
+  }
+
   $(window).on('resize orientedChanged', function () {
     $('[class*=-slider]:not([class*=-slider-block])').each(function () {
       var $thisSwiper = $(this)[0].swiper;

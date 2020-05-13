@@ -16,7 +16,7 @@ html {
 
 body {
   font-size: 1rem;
-  line-height: 1;
+  line-height: 1.17;
   padding-bottom: 4rem;
 
   .container {
@@ -83,6 +83,24 @@ body {
 
   &.overflow-hidden {
     overflow: hidden !important;
+  }
+
+  &:not(.homepage) {
+    @include media-breakpoint-down(sm) {
+      header + * {
+        padding-top: 0 !important;
+
+        .main-section > *:nth-child(1) {
+          padding-top: 5rem;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      main {
+        padding-top: 5rem;
+      }
+    }
   }
 }
 
@@ -223,5 +241,11 @@ form {
         opacity: 1 !important;
       }
     }
+  }
+}
+
+.border-radius {
+  &-3px {
+    border-radius: 0.3rem;
   }
 }
