@@ -33,6 +33,9 @@
 
     .books-block {
       @extend %slider-slide--sm;
+
+      .descripton {
+      }
     }
   }
 
@@ -87,19 +90,22 @@
 
     @include media-breakpoint-up(md) {
       $pd: (1.9rem + 3.7rem + 2.6rem);
-      padding-bottom: 6.2rem;
+
       padding-left: $pd;
       padding-right: $pd;
+      &:not(.non-shelf) {
+        padding-bottom: 6.2rem;
 
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 6.2rem;
-        background-image: url($storageSrc + 'svg/bg-shelf.png');
-        z-index: 9;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 6.2rem;
+          background-image: url($storageSrc + 'svg/bg-shelf.png');
+          z-index: 9;
+        }
       }
 
       .slider-controls--prev-white,

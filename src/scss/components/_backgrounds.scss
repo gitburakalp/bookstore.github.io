@@ -42,4 +42,25 @@
       }
     }
   }
+
+  &-gray-bordered {
+    &--md-up {
+      @include media-breakpoint-up(md) {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-43%);
+          height: 50%;
+          left: 0;
+          right: 0;
+          background-color: $colors--bluey-grey;
+          border-top-left-radius: 1rem;
+          border-bottom-left-radius: 1rem;
+        }
+      }
+    }
+  }
 }
