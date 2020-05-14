@@ -1,0 +1,20 @@
+.only-mobile-block {
+  @include media-breakpoint-down(sm) {
+    .bg-shelf--sm {
+      &::after {
+        left: -1.5rem;
+        right: -1.5rem;
+      }
+    }
+
+    > * {
+      + * {
+        margin-top: 2.6rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}

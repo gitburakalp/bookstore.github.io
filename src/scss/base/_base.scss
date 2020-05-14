@@ -71,3 +71,15 @@ body {
     transform: translate(-50%, 50%);
   }
 }
+
+.show-md-upper {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+
+  > * {
+    + * {
+      margin-top: 1.6rem;
+    }
+  }
+}

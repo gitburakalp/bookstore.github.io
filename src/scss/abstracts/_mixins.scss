@@ -1,0 +1,11 @@
+@mixin polyPropsSize($sm, $md, $lg, $prop) {
+  #{$prop}: $sm + rem;
+
+  @include media-breakpoint-up(md) {
+    #{$prop}: $md + rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    #{$prop}: $lg + rem;
+  }
+}

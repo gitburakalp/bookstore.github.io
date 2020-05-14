@@ -160,10 +160,10 @@
 
 %bottom-line {
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
 
   + * {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
   }
 
   &::after {

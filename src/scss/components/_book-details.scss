@@ -2,17 +2,40 @@
   position: relative;
   color: rgba($colors--dark, 0.5);
 
-  > .row {
-    > * {
-      + * {
-        margin-top: 2rem;
+  @include media-breakpoint-up(md) {
+    > .row {
+      > * {
+        > * {
+          + * {
+            &:not(.show-md-upper) {
+              margin-top: 1.6rem;
+            }
+          }
+        }
       }
     }
   }
 
   .book-default {
-    max-width: calcPercent(153, 375) * 1%;
-    margin: 0 auto;
+    &.main-book {
+      max-width: calcPercent(153, 375) * 1%;
+      margin: 0 auto;
+
+      @include media-breakpoint-up(md) {
+        max-width: calcPercent(227, 360) * 1%;
+      }
+
+      .img {
+        padding-bottom: 230 / 153 * 100%;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .description {
+      font-size: 1.5rem;
+      letter-spacing: 0.024rem;
+    }
   }
 
   [class*='title'] {

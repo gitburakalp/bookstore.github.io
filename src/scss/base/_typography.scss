@@ -20,10 +20,22 @@
 
   &--sm {
     @extend %title;
+
+    font-size: 2rem;
+
+    @include polyPropsSize(2, 3, 3, font-size);
   }
 
-  + * {
+  &:not(.d-inline-block) + * {
     margin-top: 0.75rem;
+  }
+
+  &.d-md-inline-block {
+    + .description {
+      @include media-breakpoint-up(md) {
+        margin-left: 1rem;
+      }
+    }
   }
 
   &-block {
@@ -62,6 +74,22 @@
   font-size: 1.4rem;
   letter-spacing: 0.19px;
   line-height: 1.2;
+
+  + .btn--more {
+    position: relative;
+    padding-left: 1rem;
+    margin-left: 1rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      width: 1px;
+      background-color: $colors--black;
+    }
+  }
 
   &--serif {
     font-family: 'Georgia', serif;

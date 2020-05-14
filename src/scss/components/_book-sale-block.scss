@@ -1,0 +1,19 @@
+.book-sale-block {
+  > .row {
+    > * {
+      &:nth-child(1) {
+        $mw: calcPercent(90, 375) * 1%;
+        flex: 0 0 $mw;
+        max-width: $mw;
+
+        .book-default {
+          border-radius: 3px;
+        }
+
+        .img {
+          padding-bottom: 89 / 60 * 100%;
+        }
+      }
+    }
+  }
+}

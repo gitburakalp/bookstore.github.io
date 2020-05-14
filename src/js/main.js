@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $('.books-slider').each(function () {
     var slideCssClass = 'books-block';
+    var isBookDetailsSlide = $(this).closest('.book-details').length != 0 ? true : false;
 
     var config = {
       slidesPerView: 2.5,
@@ -249,10 +250,10 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       breakpoints: {
         1440: {
-          slidesPerView: 5,
+          slidesPerView: isBookDetailsSlide ? 4 : 5,
         },
         768: {
-          slidesPerView: 4,
+          slidesPerView: isBookDetailsSlide ? 3 : 4,
         },
       },
     };
