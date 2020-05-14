@@ -2,14 +2,12 @@
   position: relative;
   color: rgba($colors--dark, 0.5);
 
-  @include media-breakpoint-up(md) {
-    > .row {
+  > .row {
+    > * {
       > * {
-        > * {
-          + * {
-            &:not(.show-md-upper) {
-              margin-top: 2.6rem;
-            }
+        + * {
+          &:not(.show-md-upper) {
+            margin-top: 2.6rem;
           }
         }
       }
