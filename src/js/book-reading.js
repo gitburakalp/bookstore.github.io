@@ -23,6 +23,9 @@ function getPageOfBook(pageNumber, bookID) {
     url: 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber,
     type: 'get',
     async: false,
+    headers: {
+      Authorization: 'Bearer ' + userToken,
+    },
     success: function (data) {
       $('.book-content').each(function () {
         $(this).empty();
