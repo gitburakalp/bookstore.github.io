@@ -23,6 +23,8 @@
       align-items: center;
 
       > * {
+        position: relative;
+
         + * {
           margin-left: 3rem;
         }
@@ -34,10 +36,6 @@
       padding: 0;
       line-height: 1;
       cursor: pointer;
-
-      &:hover {
-        transform: translateY(10%);
-      }
     }
 
     > * {

@@ -4,10 +4,82 @@
   height: calc(100vh - 224px);
   overflow-y: auto;
 
-  font-family: $ff-serif !important;
-  font-size: 1.6rem !important;
   line-height: 1.5;
   text-align: justify;
+
+  &[class*='georgia'] {
+    font-family: $ff-georgia !important;
+
+    * {
+      font-family: $ff-georgia !important;
+    }
+  }
+
+  &[class*='arial'] {
+    font-family: $ff-arial !important;
+
+    * {
+      font-family: $ff-arial !important;
+    }
+  }
+
+  &[class*='tahoma'] {
+    font-family: $ff-tahoma !important;
+
+    * {
+      font-family: $ff-tahoma !important;
+    }
+  }
+
+  &[class*='comic-sans'] {
+    font-family: $ff-comic-sans !important;
+
+    * {
+      font-family: $ff-comic-sans !important;
+    }
+  }
+
+  &[class*='fs-'] {
+    &[class*='-1-0'] {
+      font-size: 1rem !important;
+
+      * {
+        font-size: 1rem !important;
+      }
+    }
+
+    &[class*='-1-2'] {
+      font-size: 1.2rem !important;
+
+      * {
+        font-size: 1.2rem !important;
+      }
+    }
+
+    &[class*='-1-4'] {
+      font-size: 1.4rem !important;
+
+      * {
+        font-size: 1.4rem !important;
+      }
+    }
+
+    &[class*='-1-6'] {
+      font-size: 1.6rem !important;
+
+      * {
+        font-size: 1.6rem !important;
+      }
+    }
+
+    &[class*='-1-8'] {
+      font-size: 1.8rem !important;
+
+      * {
+        font-size: 1.8rem !important;
+      }
+    }
+  }
 
   + * {
     margin-top: 2rem;
@@ -20,8 +92,6 @@
   }
 
   * {
-    font-family: $ff-serif !important;
-    font-size: 1.6rem !important;
     line-height: 1.5;
     text-align: justify;
   }
