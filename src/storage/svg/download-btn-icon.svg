@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__download" width="84" height="24" viewBox="0 0 84 24">
+    <defs>
+        <style>
+            .prefix__cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <rect id="prefix__Rectangle_344" width="84" height="24" data-name="Rectangle 344" rx="5" style="fill:#5abd8c"/>
+    <g id="prefix__Group_316" data-name="Group 316" transform="translate(-1915 -761)">
+        <path id="prefix__Line_41" d="M0 0L0 14" class="prefix__cls-3" data-name="Line 41" transform="translate(1978 766)"/>
+        <path id="prefix__Path_752" d="M1979.982 765a3.117 3.117 0 0 0-2.2.913h-.913a3.117 3.117 0 0 0-2.2-.913H1965v14.6h9.662a3.116 3.116 0 0 1 2.2.913h.913a3.116 3.116 0 0 1 2.2-.913h9.662V765z" class="prefix__cls-3" data-name="Path 752"/>
+        <path id="prefix__Path_753" d="M2198.651 768.651H2195V765a5.772 5.772 0 0 1 3.651 3.651z" class="prefix__cls-3" data-name="Path 753" transform="translate(-209.007)"/>
+        <path id="prefix__Path_754" d="M2066.826 965v2.738H2065l3.195 3.651 3.195-3.651h-1.825V965z" data-name="Path 754" transform="translate(-97.151 -189.594)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;fill:#fff"/>
+    </g>
+</svg>

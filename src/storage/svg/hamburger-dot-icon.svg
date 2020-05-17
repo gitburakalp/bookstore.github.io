@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="13.5" viewBox="0 0 18 13.5">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:none;stroke:#303030;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="prefix__Group_309" data-name="Group 309" transform="translate(-253.5 -29.75)">
+        <g id="prefix__Group_306" data-name="Group 306" transform="translate(0 10)">
+            <path id="prefix__Line_30" d="M0 0L14 0" class="prefix__cls-1" data-name="Line 30" transform="translate(257.5 26.5)"/>
+            <path id="prefix__Line_31" d="M0 0L2 0" class="prefix__cls-1" data-name="Line 31" transform="translate(253.5 26.5)"/>
+        </g>
+        <g id="prefix__Group_308" data-name="Group 308" transform="translate(0 4)">
+            <path id="prefix__Line_30-2" d="M0 0L14 0" class="prefix__cls-1" data-name="Line 30" transform="translate(257.5 26.5)"/>
+            <path id="prefix__Line_31-2" d="M0 0L2 0" class="prefix__cls-1" data-name="Line 31" transform="translate(253.5 26.5)"/>
+        </g>
+        <g id="prefix__Group_307" data-name="Group 307" transform="translate(0 16)">
+            <path id="prefix__Line_30-3" d="M0 0L14 0" class="prefix__cls-1" data-name="Line 30" transform="translate(257.5 26.5)"/>
+            <path id="prefix__Line_31-3" d="M0 0L2 0" class="prefix__cls-1" data-name="Line 31" transform="translate(253.5 26.5)"/>
+        </g>
+    </g>
+</svg>

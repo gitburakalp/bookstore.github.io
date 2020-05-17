@@ -51,7 +51,20 @@ body {
   }
 
   @include media-breakpoint-down(sm) {
-    padding-bottom: 10rem;
+    &:not(.mode--reading) {
+      padding-bottom: 10rem;
+    }
+  }
+
+  &.mode--reading {
+    header,
+    footer {
+      display: none !important;
+    }
+
+    main {
+      padding: 0 !important;
+    }
   }
 }
 

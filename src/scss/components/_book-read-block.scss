@@ -1,0 +1,62 @@
+.book-read {
+  &-block {
+    position: relative;
+
+    padding-top: 2.15rem !important;
+  }
+
+  &-top-menu {
+    position: relative;
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+    padding-left: 5.5rem !important;
+
+    + * {
+      margin-top: 2rem;
+    }
+
+    .left,
+    .right {
+      display: flex;
+      flex-flow: nowrap;
+      align-items: center;
+
+      > * {
+        + * {
+          margin-left: 3rem;
+        }
+      }
+    }
+
+    [class*='btn--'] {
+      position: relative;
+      padding: 0;
+      line-height: 1;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(10%);
+      }
+    }
+
+    > * {
+      position: relative;
+      width: auto;
+      flex: 0 0 auto;
+      min-height: 1px;
+    }
+
+    .download-button {
+      span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1rem;
+        color: $colors--white !important;
+        font-size: 1.2rem;
+        z-index: 1;
+      }
+    }
+  }
+}
