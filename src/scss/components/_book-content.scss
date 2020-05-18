@@ -4,8 +4,12 @@
   height: calc(100vh - 224px);
   overflow-y: auto;
 
-  line-height: 1.5;
+  line-height: 1.5 !important;
   text-align: justify;
+
+  @include media-breakpoint-down(sm) {
+    -webkit-touch-callout: none;
+  }
 
   &[class*='georgia'] {
     font-family: $ff-georgia !important;
@@ -81,6 +85,12 @@
     }
   }
 
+  @for $i from 1 to 6 {
+    h#{$i} {
+      font-weight: bold !important;
+    }
+  }
+
   + * {
     margin-top: 2rem;
   }
@@ -92,7 +102,7 @@
   }
 
   * {
-    line-height: 1.5;
+    line-height: 1.5 !important;
     text-align: justify;
   }
 

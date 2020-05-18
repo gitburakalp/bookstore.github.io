@@ -1,4 +1,4 @@
-let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1ODk3MjM1NDUsImV4cCI6MTU5MDMyODM0NSwiaWF0IjoxNTg5NzIzNTQ1fQ.6siYLl9QdJ8AFbgL2SrGdlFoOpufpTrzRwPuh38rHPU';
+let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1ODk3OTIyOTEsImV4cCI6MTU5MDM5NzA5MSwiaWF0IjoxNTg5NzkyMjkxfQ.vnAJKW8s1-ab1wsqiobVZOFcKBgkAW2ts9k7PfZV0i0';
 let bookID = 43;
 let pageNumber = 19;
 let note = 'Test Note';
@@ -6,6 +6,29 @@ let color = 'black';
 let startIndex = 89;
 let lastIndex = 189;
 let totalPageNumber = 0;
+
+function getFetchByUrl(url, haveToken) {
+  var response = null;
+
+  if (haveToken) {
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    })
+      .then(x => x.json())
+      .then(x => console.log(x))
+      .catch(e => console.error(e));
+  } else {
+    fetch(url)
+      .then(function (res) {
+        response = res.json();
+      })
+      .then(function (data) {
+        response = data.json();
+      });
+  }
+}
 
 $.ajax({
   dataType: 'json',
@@ -18,23 +41,6 @@ $.ajax({
 });
 
 function getPageOfBook(pageNumber, bookID) {
-  // $.ajax({
-  //   dataType: 'json',
-  //   url: 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber,
-  //   type: 'get',
-  //   async: false,
-  //   headers: {
-  //     Authorization: 'Bearer ' + userToken,
-  //   },
-  //   success: function (data) {
-  //     $('.book-content').each(function () {
-  //       $(this).empty();
-  //       $(this).append(data.pageContent);
-  //       $(this).append(data.pageContentClear);
-  //     });
-  //   },
-  // });
-
   var url = 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber;
   var url2 = 'http://api.semendel.com/api/identity/addusernote?bookId=43&page=17&note=Note%20Test&color=red&startIndex=15&lastIndex=45';
 
@@ -81,20 +87,17 @@ $('div.context').mark('text', {
 $('.add-brackets').on('click', function (e) {
   e.stopPropagation();
 
+  var url2 = 'http://api.semendel.com/api/identity/listusernote';
+
   var url = 'http://api.semendel.com/api/identity/addusernote?bookId=43&page=17&note=NoteTest&color=red&startIndex=15&lastIndex=45';
 
-  var h = new Headers();
-
-  h.append('Authentication', `Bearer ${userToken}`);
-
-  let req = new Request(url, {
-    method: 'POST',
-    mode: 'cors',
-  });
-
-  fetch(req).then(function (data) {
-    console.log(data);
-  });
+  fetch(url, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  })
+    .then(x => console.log(x))
+    .catch(e => console.error(e));
 });
 
 $('.btn--font-props').on('click', function (e) {
@@ -124,3 +127,66 @@ $('.props-font-size > *').on('click', function () {
   var css = 'fs-1-' + staticVal;
   $('.book-content').attr('class', 'book-content ff-georgia ' + css);
 });
+
+// Text selecting functions
+
+function getSelectionText() {
+  'use strict';
+
+  var text = '';
+  if (window.getSelection) {
+    text = window.getSelection().toString();
+  } else if (document.selection && document.selection.type != 'Control') {
+    text = document.selection.createRange().text;
+  }
+
+  return text;
+}
+
+// function getSelectionText() {
+//   var text = '';
+//   var activeEl = document.activeElement;
+//   var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+
+//   $('.book-content').each(function () {
+//     var activeEl = $(this).find('*')[0];
+
+//     console.log(document.getSelection());
+
+//     text = $(activeEl).text().slice(activeEl.selectionStart, activeEl.selectionEnd);
+//   });
+
+//   // if (activeElTagName == 'textarea' || (activeElTagName == 'input' && /^(?:text|search|password|tel|url)$/i.test(activeEl.type) && typeof activeEl.selectionStart == 'number')) {
+//   // } else if (window.getSelection) {
+//   //   text = window.getSelection().toString();
+//   // }
+//   return text;
+// }
+
+document.onmouseup = document.onkeyup = document.onselectionchange = function () {
+  // $('#sel').text(window.getSelection().anchorOffset);
+  $('#sel').text(getSelectionText());
+  // console.log(getSelectionText());
+};
+
+window.onload = function () {
+  setMarks();
+};
+
+function setMarks() {
+  var markLabels = [
+    { text: 'cinâyetini', color: 'red' },
+    { text: 'Yahûdîlerin', color: 'blue' },
+    { text: 'Ísâ', color: 'yellow' },
+  ];
+
+  markLabels.forEach(function (e) {
+    var val = e.text;
+    var color = e.color;
+
+    $('.book-content').mark(val, {
+      element: 'span',
+      className: color,
+    });
+  });
+}

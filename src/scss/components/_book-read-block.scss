@@ -10,7 +10,10 @@
     display: flex;
     flex-flow: nowrap;
     align-items: center;
-    padding-left: 5.5rem !important;
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 5.5rem !important;
+    }
 
     + * {
       margin-top: 2rem;
@@ -36,6 +39,11 @@
       padding: 0;
       line-height: 1;
       cursor: pointer;
+      transition: opacity $duration;
+
+      &:hover {
+        opacity: 0.65;
+      }
     }
 
     > * {

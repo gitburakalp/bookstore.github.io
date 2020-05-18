@@ -12,7 +12,10 @@
 </head>
 
 <body class="mode--reading">
+
     <header class="header">
+        <p id="sel"></p>
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -167,12 +170,12 @@
                             <div class="book-read-top-menu">
                                 <div class="left">
                                     <div class="hamburger-icon">
-                                        <a class="btn btn--hambuger">
+                                        <a class="btn btn--hambuger" title="Menu">
                                             <img class="img-fluid" src="storage/svg/hamburger-dot-icon.svg" />
                                         </a>
                                     </div>
                                     <div class="download-button">
-                                        <a class="btn btn--download">
+                                        <a class="btn btn--download" title="Kitabınızı PDF Olarak İndirin">
                                             <img class="img-fluid" src="storage/svg/download-btn-icon.svg" />
                                             <span class="text">İNDİR</span>
                                         </a>
@@ -180,12 +183,12 @@
                                 </div>
                                 <div class="right ml-auto">
                                     <div class="brackets">
-                                        <a class="btn btn--brackets add-brackets">
+                                        <a class="btn btn--brackets add-brackets" title="Bu sayfaya ayraç ekle">
                                             <img class="img-fluid" src="storage/svg/brackets-icon.svg" />
                                         </a>
                                     </div>
                                     <div class="font-props">
-                                        <a class="btn btn--font-props">
+                                        <a class="btn btn--font-props" title="Sayfanın stilini ayarlayın">
                                             <img class="img-fluid" src="storage/svg/font-size-icon.svg" />
                                         </a>
                                         <div class="popovers">
@@ -268,18 +271,19 @@
                                         </div>
                                     </div>
                                     <div class="search">
-                                        <a class="btn btn--search">
+                                        <a class="btn btn--search" title="Kitap içinde ara">
                                             <img class="img-fluid" src="storage/svg/search-icon--black.svg" />
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="book-content ff-georgia fs-1-6">
-
-                            </div>
-                            <div class="book-pagining">
-                                <div class="page-of">
-                                    <span class="current">1</span> / <span class="total"></span>
+                            <div class="book-content-block">
+                                <div class="book-content ff-georgia fs-1-6" oncontextmenu="return false;">
+                                </div>
+                                <div class="book-pagining">
+                                    <div class="page-of">
+                                        <span class="current">1</span> / <span class="total"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -919,6 +923,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="popovers--sm bg-white">
+        Test
     </div>
 
     <script src="js/vendors/jquery.min.js"></script>

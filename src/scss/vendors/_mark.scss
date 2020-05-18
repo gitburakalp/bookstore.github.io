@@ -1,4 +1,16 @@
 [data-markjs='true'] {
-  background: orange;
-  color: black;
+  color: white;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+
+  &.red {
+    background-color: red;
+  }
+
+  &.yellow {
+    background-color: yellow;
+  }
+
+  &.blue {
+    background-color: blue;
+  }
 }
