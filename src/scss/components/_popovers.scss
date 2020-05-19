@@ -43,18 +43,24 @@
       cursor: pointer;
     }
 
-    &:not(.expanded) {
+    &:not(:hover) {
       .color-pick {
         display: none;
       }
     }
+
+    // &:not(.expanded) {
+    //   .color-pick {
+    //     display: none;
+    //   }
+    // }
 
     .trash {
       cursor: pointer;
       border-left: 1px solid rgba($colors--black, 0.3);
     }
 
-    &.expanded {
+    &:hover {
       .popovers--content {
         .row {
           margin-left: -6px;
@@ -73,6 +79,26 @@
         }
       }
     }
+
+    // &.expanded {
+    //   .popovers--content {
+    //     .row {
+    //       margin-left: -6px;
+    //       margin-right: -6px;
+
+    //       [class*='col'] {
+    //         padding-left: 6px;
+    //         padding-right: 6px;
+    //       }
+    //     }
+
+    //     .row {
+    //       &:nth-child(1) {
+    //         display: none;
+    //       }
+    //     }
+    //   }
+    // }
 
     .color-pick {
       position: relative;
