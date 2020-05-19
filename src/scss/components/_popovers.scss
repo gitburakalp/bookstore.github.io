@@ -1,3 +1,11 @@
+%color-pick {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid $colors--white;
+  border-radius: 50%;
+}
+
 .popovers {
   position: absolute;
   box-shadow: 2px 6px 10px 0 rgba(0, 0, 0, 0.16);
@@ -14,10 +22,92 @@
 
   transition: opacity $duration;
 
+  &:not(.is-shown) {
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+  }
+
   &--sm {
     position: absolute;
     top: 0px;
     left: 0px;
+    width: auto;
+    box-shadow: 2px 6px 10px 0 rgba(0, 0, 0, 0.16);
+    z-index: 999;
+    border-radius: 2rem;
+    margin-top: 1.25rem;
+    padding: 1.6rem;
+
+    a {
+      cursor: pointer;
+    }
+
+    &:not(.expanded) {
+      .color-pick {
+        display: none;
+      }
+    }
+
+    .trash {
+      cursor: pointer;
+      border-left: 1px solid rgba($colors--black, 0.3);
+    }
+
+    &.expanded {
+      .popovers--content {
+        .row {
+          margin-left: -6px;
+          margin-right: -6px;
+
+          [class*='col'] {
+            padding-left: 6px;
+            padding-right: 6px;
+          }
+        }
+
+        .row {
+          &:nth-child(1) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .color-pick {
+      position: relative;
+
+      &--green {
+        @extend %color-pick;
+
+        background-color: $colors--turquise-green;
+        border: 1px solid $colors--pinkish-grey-two;
+      }
+
+      &--orange {
+        @extend %color-pick;
+
+        background-color: $colors--yellow-orange;
+      }
+
+      &--azure {
+        @extend %color-pick;
+
+        background-color: $colors--azure;
+      }
+
+      &--seafoam {
+        @extend %color-pick;
+
+        background-color: $colors--main-green;
+      }
+    }
+
+    &:not(.is-shown) {
+      z-index: -1;
+      visibility: hidden;
+      opacity: 0;
+    }
   }
 
   .arrow {
@@ -61,12 +151,6 @@
     border-width: 0 10px 17.3px 10px;
     border-color: transparent transparent $colors--white transparent;
     text-shadow: 0 0 4px black;
-  }
-
-  &:not(.is-shown) {
-    z-index: -1;
-    visibility: hidden;
-    opacity: 0;
   }
 
   > * {

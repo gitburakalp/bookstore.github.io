@@ -8,7 +8,9 @@
   text-align: justify;
 
   @include media-breakpoint-down(sm) {
-    -webkit-touch-callout: none;
+    * {
+      -webkit-touch-callout: none;
+    }
   }
 
   &[class*='georgia'] {
@@ -102,7 +104,8 @@
   }
 
   * {
-    line-height: 1.5 !important;
+    line-height: 1.57 !important;
+    letter-spacing: 0.042rem !important;
     text-align: justify;
   }
 
