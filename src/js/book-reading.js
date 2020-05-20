@@ -14,6 +14,7 @@ var markLabels = [];
 var selectedText = '';
 
 var staticVal = 6;
+var endCoords = {};
 
 // Text selecting functions
 
@@ -205,6 +206,62 @@ function getBookmarks(bid, pnum) {
     });
 }
 
+function getAllProps(url, type, bookID) {
+  fetch(url, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  })
+    .then(x => x.json())
+    .then(function (x) {
+      var data = x.data;
+
+      $('[data-props="' + type + '"]').empty();
+
+      data.forEach(function (e) {
+        console.log(e);
+
+        var title = '';
+        var note = '';
+
+        if (e.bookId == bookID) {
+          if (e.pageNumber != undefined) title = '<h3>' + e.pageNumber + '. Sayfa</h3>';
+          if (e.note != undefined) note = '<p>' + e.note + '</p>';
+
+          if (title != '' || note != '') {
+            $('[data-props="' + type + '"]').append('<li><a data-pagenumber="' + e.pageNumber + '">' + title + note + '</a></li>');
+          }
+        }
+      });
+
+      $('[data-props="' + type + '"] a').on('click', function () {
+        var pn = $(this).data('pagenumber');
+        getPageOfBook(pn, bookID);
+        $('.book-read-tabs > *').removeClass('is-shown');
+        $('.book-read-tabs').find('.reading').addClass('is-shown');
+        $('html,body').animate(
+          {
+            scrollTop: $('.book-read-tabs').find('.reading').offset().top - 100,
+          },
+          250,
+        );
+      });
+    })
+    .catch(error => {
+      reject(error);
+    });
+}
+
+function setMinHeight() {
+  var calcAmount = 0;
+  var bookReadTopMenuHeight = $('.book-read-top-menu').outerHeight(true) + 'px';
+  var bookReadSubMenu = $('.book-read-submenu').outerHeight(true) + 'px';
+  var bookpaging = $('.book-pagining').outerHeight(true) + 'px';
+
+  let root = document.documentElement;
+  root.style.setProperty('--calcAmount', 'calc(100vh - (' + bookReadTopMenuHeight + ' + ' + bookReadSubMenu + ' + ' + bookpaging + ' + 2.15rem + 2rem + 2rem + 2rem + 2rem))');
+}
+
 $.ajax({
   dataType: 'json',
   url: 'http://api.semendel.com/api/list/book?bookId=43',
@@ -215,10 +272,18 @@ $.ajax({
   },
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  setMinHeight();
+});
+
+$(window).on('resize oriantedChange', function () {
+  setMinHeight();
+});
+
 $('body').hasClass('mode--reading') ? $('.main-section').parent().attr('class', 'col-12') : '';
 
 $('body').click(function (e) {
-  var isFontPropsPopover = !$(e.target).closest('.btn--font-props').siblings().closest('.popovers').length && !$(e.target).closest('.popovers').hasClass('is-shown');
+  var isFontPropsPopover = !$(e.target).closest('[class*=btn--]').siblings().closest('.popovers').length && !$(e.target).closest('.popovers').hasClass('is-shown');
   var isCustomizePopover = !$(e.target).closest('body').find('.popovers--sm.is-shown').length;
 
   if (isFontPropsPopover) {
@@ -226,8 +291,27 @@ $('body').click(function (e) {
   }
 });
 
+$(document)
+  .on('mouseover', function (e) {
+    console.log(e);
+
+    if ($(e.target).hasClass('book-read-top-menu')) {
+      $(e.target).siblings().addClass('is-shown');
+    }
+  })
+  .on('mouseleave', function (e) {
+    var $target = $(e.target);
+    if (!$target.hasClass('book-read-top-menu') || !$target.hasClass('book-read-submenu')) {
+      setTimeout(() => {
+        $(this).siblings().removeClass('is-shown');
+      }, 2000);
+    }
+  });
+
+$('.book-read-top-menu').on('mouseleave', function () {});
+
 $('.book-content').each(function () {
-  $(this).siblings().find('.total').text(totalPageNumber);
+  $('.book-pagining .total').text(totalPageNumber);
 
   $('.book-pagining').slider({
     step: 1,
@@ -268,9 +352,33 @@ $('.add-brackets').on('click', function (e) {
     .catch(e => console.error(e));
 });
 
-$('.btn--font-props').on('click', function (e) {
+// $('.book-content').bind('touchmove', function (event) {
+//   endCoords = event.originalEvent.targetTouches[0];
+// });
+
+// $('.book-content').bind('touchend', function (event) {
+//   if (endCoords.pageY - endCoords.pageX > 50) {
+//     alert('Your end coords is: x: ' + endCoords.pageX + ', y: ' + endCoords.pageY);
+
+//     pageNumber = pageNumber + 1;
+
+//     getPageOfBook(pageNumber, bookID);
+//   }
+// });
+
+$('.book-read-top-menu [class*=btn--]').on('click', function (e) {
   e.preventDefault();
 
+  function getPos(el) {
+    // yay readability
+    for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+    return { x: lx, y: ly };
+  }
+
+  var left = $(this).offset().left;
+  var wwouterWidth = $(window).outerWidth();
+
+  $('.popovers').removeClass('is-shown');
   $(this).siblings().toggleClass('is-shown');
 });
 
@@ -306,4 +414,22 @@ $('.popovers--sm').each(function () {
   $('[data-btn="highlight"]').on('click', function () {
     $this.addClass('expanded');
   });
+});
+
+$('.book-read-list-item').on('click', function (e) {
+  e.preventDefault();
+
+  var shownTab = $(this).data('showntab');
+  var url = '';
+
+  $('.book-read-list-item').removeClass('active');
+  $(this).addClass('active');
+
+  $('.book-read-tabs > *').removeClass('is-shown');
+  $('.book-read-tabs > .' + shownTab).addClass('is-shown');
+
+  if (shownTab != 'reading') {
+    shownTab != 'notes' ? (url = 'http://api.semendel.com/api/identity/listuserbracket') : (url = 'http://api.semendel.com/api/identity/listusernote');
+    getAllProps(url, shownTab, bookID);
+  }
 });

@@ -22,6 +22,12 @@
 
   transition: opacity $duration;
 
+  @include media-breakpoint-down(sm) {
+    position: fixed;
+    right: 1rem;
+    transform: translate(0, 0);
+  }
+
   &:not(.is-shown) {
     z-index: -1;
     visibility: hidden;
@@ -111,14 +117,15 @@
   }
 
   .arrow {
-    position: absolute;
+    position: fixed;
     display: block;
     height: 1.73rem;
-    margin: 0 0.3rem;
-    width: 1rem;
+    margin: 0;
     top: 0;
-    transform: translateY(-100%);
-    right: 3.675rem;
+    transform: translate(50%, -100%);
+
+    padding: 0;
+    width: 2.5rem;
 
     &:before,
     &:after {

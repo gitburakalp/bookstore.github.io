@@ -53,7 +53,7 @@ $mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
   }
 }
 
-[class*='-slider']:not([class*='-slider-block']) {
+[class*='-slider']:not([class*='-slider-block']):not([class*='ui-slider']) {
   @extend %slider-container;
 
   &[class*='--fade'] {
