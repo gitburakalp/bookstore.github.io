@@ -262,7 +262,9 @@ $('.add-brackets').on('click', function (e) {
       Authorization: `Bearer ${userToken}`,
     },
   })
-    .then(x => console.log(x))
+    .then(function (x) {
+      getBookmarks(bookID, pageNumber);
+    })
     .catch(e => console.error(e));
 });
 

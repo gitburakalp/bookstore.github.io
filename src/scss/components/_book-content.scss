@@ -17,7 +17,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    height: calc(100vh - 17rem);
+    height: calc(100vh - 17.5rem);
   }
 
   &[class*='georgia'] {
