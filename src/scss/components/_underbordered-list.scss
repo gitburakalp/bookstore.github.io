@@ -83,13 +83,13 @@
           margin-left: auto;
         }
       }
-    }
-  }
 
-  @for $i from 1 through 12 {
-    &.md-up-#{$i} {
-      > * {
-        width: 100 / $i * 0.875 * 1%;
+      @for $i from 1 through 12 {
+        &.md-up-#{$i} {
+          > * {
+            width: 100 / $i * 0.875 * 1%;
+          }
+        }
       }
     }
   }

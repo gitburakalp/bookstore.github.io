@@ -362,13 +362,13 @@ $('[data-slidable-wrapper="true"]').each(function () {
   var thisSlider = null;
   ww = $(window).outerWidth();
 
-  $(this).addClass('c');
-  $(this).find('> *').addClass('w');
-  $(this).find('> * > *').addClass('s');
-
   switch (activePlatforms) {
     case 'md-up':
       if (ww > 767.99) {
+        $(this).addClass('c');
+        $(this).find('> *').addClass('w');
+        $(this).find('> * > *').addClass('s');
+
         config = {
           observer: true,
           observeParents: true,
