@@ -1,0 +1,62 @@
+body {
+  &.mode--reading {
+    transition: background-color $duration, color $duration;
+
+    > * {
+      transition: color $duration;
+    }
+
+    &.theme--grey,
+    &.theme--black {
+      .book-read-top-menu {
+        border-color: rgba($colors--white, 0.3);
+      }
+
+      * {
+        &.book-content {
+          * {
+            color: $colors--white !important;
+          }
+
+          + * {
+            color: $colors--white !important;
+
+            > * {
+              color: $colors--white !important;
+            }
+          }
+        }
+      }
+
+      .ui-slider-handle {
+        background-color: $colors--white;
+      }
+
+      .book-pagining {
+        &:before {
+          background-color: rgba($colors--white, 0.3);
+        }
+      }
+    }
+
+    &.theme--grey {
+      background-color: $colors--grey;
+
+      .book-read-top-menu {
+        border-color: rgba($colors--white, 0.3);
+      }
+    }
+
+    &.theme--black {
+      background-color: $colors--pure-black;
+    }
+
+    &.theme--green {
+      background-color: $colors--light-green;
+
+      .book-read-top-menu {
+        border-color: rgba($colors--black, 0.3);
+      }
+    }
+  }
+}

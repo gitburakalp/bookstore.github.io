@@ -74,15 +74,20 @@ body {
     &:not(.mode--reading) {
       padding-bottom: 10rem;
     }
+  }
 
-    &.mode--reading {
-      header,
-      footer {
-        display: none !important;
-      }
+  &.mode--reading {
+    header,
+    footer {
+      display: none !important;
+    }
 
-      main {
-        padding: 0 !important;
+    main {
+      padding: 0 !important;
+      margin: 0 !important;
+
+      .col--aside {
+        display: none;
       }
     }
   }
@@ -116,9 +121,6 @@ body {
 
   &.overflow-hidden {
     overflow: hidden !important;
-  }
-
-  &:not(.homepage):not(.mode--reading) {
   }
 }
 

@@ -3,6 +3,13 @@
     position: relative;
 
     padding-top: 2.15rem !important;
+
+    @include media-breakpoint-up(md) {
+      .book-read-top-menu {
+        padding-bottom: 2.15rem !important;
+        border-bottom: 1px solid rgba($colors--black, 0.3);
+      }
+    }
   }
 
   &-top-menu {
@@ -40,6 +47,25 @@
       line-height: 1;
       cursor: pointer;
       transition: opacity $duration;
+
+      &[class*='bookmarked'] {
+        color: $colors--black !important;
+
+        img {
+          width: 100%;
+        }
+
+        &:before {
+          content: '\f00c';
+          position: absolute;
+          font-size: 1rem;
+          font-family: $font-awesome;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1;
+        }
+      }
 
       &:hover {
         opacity: 0.65;

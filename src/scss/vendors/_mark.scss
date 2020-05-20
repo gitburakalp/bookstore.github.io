@@ -1,11 +1,9 @@
 [data-markjs='true'] {
   color: $colors--black !important;
-  border-radius: 5px;
+  // border-radius: 5px;
   line-height: 1.5 !important;
-  display: inline-block;
-  padding-left: 4px;
-  padding-right: 4px;
   margin: 0 !important;
+  padding: 4px 0 !important;
 
   &.green {
     background-color: $colors--turquise-green;

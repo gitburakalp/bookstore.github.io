@@ -3,14 +3,21 @@
 
   height: calc(100vh - 224px);
   overflow-y: auto;
+  overflow-x: hidden;
 
   line-height: 1.5 !important;
   text-align: justify;
 
   @include media-breakpoint-down(sm) {
+    cursor: pointer;
+
     * {
-      -webkit-touch-callout: none;
+      cursor: pointer;
     }
+  }
+
+  @include media-breakpoint-up(md) {
+    height: calc(100vh - 17rem);
   }
 
   &[class*='georgia'] {
@@ -107,6 +114,10 @@
     line-height: 1.57 !important;
     letter-spacing: 0.042rem !important;
     text-align: justify;
+
+    span {
+      display: unset;
+    }
   }
 
   + .book-pagining {
@@ -115,6 +126,7 @@
     border-radius: 0;
     height: 2rem;
     border: none;
+    background-color: transparent;
 
     &:before {
       content: '';
@@ -130,7 +142,7 @@
       &:not(.page-of) {
         display: inline-block;
         position: absolute;
-        top: 0.675rem;
+        top: 0.6rem;
         width: 1rem;
         height: 1rem;
         background-color: $colors--dark;
@@ -148,6 +160,10 @@
       font-weight: 500;
       letter-spacing: 0.019rem;
       color: $colors--charcoal;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.4rem;
+      }
     }
   }
 }

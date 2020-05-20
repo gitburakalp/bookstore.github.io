@@ -11,11 +11,8 @@
     <title>BookStore</title>
 </head>
 
-<body class="mode--reading">
-
+<body class="mode--reading theme--green">
     <header class="header">
-        <p id="sel"></p>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -235,7 +232,7 @@
                                             <div class="props-theme">
                                                 <div class="row my-2">
                                                     <div class="col-auto">
-                                                        <span class="color-circle color-circle--white">
+                                                        <span class="color-circle color-circle--default">
 
                                                         </span>
                                                     </div>
@@ -278,7 +275,7 @@
                                 </div>
                             </div>
                             <div class="book-content-block">
-                                <div class="book-content ff-georgia fs-1-6" contenteditable="true">
+                                <div class="book-content ff-georgia fs-1-6 theme--default">
                                     <!-- <h1>TİTLE</h1>
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, quisquam impedit,
                                         velit autem totam doloremque nisi saepe minima cumque alias ut magnam
@@ -307,6 +304,9 @@
                                 <div class="book-pagining">
                                     <div class="page-of">
                                         <span class="current">1</span> / <span class="total"></span>
+                                        <span
+                                            class="pagesLeft ml-4 op-05 font-size-sm d-none d-md-inline-block"><i>221</i>
+                                            sayfa kaldı</span>
                                     </div>
                                 </div>
                             </div>
@@ -1005,7 +1005,8 @@
         <script src="js/autocomplete-functions.js"></script>
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHmCyPwmR0gwm-picbqfK9acDDsm-SVc0&callback=getMap"></script>
-        <script src="js/vendors/jquery.mark.min.js"></script>
+        <!-- <script src="js/vendors/jquery.mark.min.js"></script> -->
+        <script src="https://rawgit.com/julmot/mark.js/master/dist/jquery.mark.js"></script>
         <script src="js/book-reading.js"></script>
 </body>
 
