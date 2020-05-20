@@ -334,3 +334,75 @@ function getMap() {
   };
   var map = new google.maps.Map(document.getElementById('googleMap'), mapProp);
 }
+
+$('.basic-tabs-block').each(function () {
+  var $basicTabs = $(this).find('.basic-tabs');
+  var $basicTabsContent = $(this).find('.basic-tabs-contents');
+
+  $basicTabs.find('.basic-tabs-item.active').each(function () {
+    var activeTab = $(this).data('tabs');
+
+    $basicTabsContent.find('> *[class*=-' + activeTab + ']').addClass('is-shown');
+  });
+
+  $basicTabs.find('.basic-tabs-item').on('click', function () {
+    var activeTab = $(this).data('tabs');
+
+    $basicTabs.find('.basic-tabs-item').removeClass('active');
+    $(this).addClass('active');
+
+    $basicTabsContent.find('> *').removeClass('is-shown');
+    $basicTabsContent.find('> *[class*=-' + activeTab + ']').addClass('is-shown');
+  });
+});
+
+$('[data-slidable-wrapper="true"]').each(function () {
+  var activePlatforms = $(this).data('active-platforms');
+  var config = {};
+  var thisSlider = null;
+  ww = $(window).outerWidth();
+
+  $(this).addClass('c');
+  $(this).find('> *').addClass('w');
+  $(this).find('> * > *').addClass('s');
+
+  switch (activePlatforms) {
+    case 'md-up':
+      if (ww > 767.99) {
+        config = {
+          observer: true,
+          observeParents: true,
+          slidesPerView: 3,
+          loop: $(this).find('s').length <= 3 ? true : false,
+          spaceBetween: '4.75%',
+          containerModifierClass: 'c--',
+          wrapperClass: 'w',
+          slideClass: 's',
+          slideActiveClass: 's--active',
+          slideNextClass: 's--next',
+          slidePrevClass: 's--prev',
+        };
+      }
+
+      thisSlider = new Swiper($(this), config);
+
+      break;
+  }
+});
+
+var oldCardIdx = '';
+
+$(window).on('load', function () {
+  $('.books-cards.is-collapsed').on('click', function (e) {
+    e.preventDefault();
+
+    if ($(this).parent().index() != oldCardIdx) {
+      $('.books-cards.is-collapsed').siblings().slideUp();
+      $(this).siblings().slideDown();
+    } else {
+      $(this).siblings().slideToggle();
+    }
+
+    oldCardIdx = $(this).parent().index();
+  });
+});

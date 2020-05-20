@@ -1,0 +1,44 @@
+.basic-tabs {
+  position: relative;
+  display: flex;
+  flex-flow: nowrap;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem !important;
+  border-bottom: 3px solid rgba($colors--black, 0.2);
+
+  justify-content: space-around;
+
+  &-block {
+    position: relative;
+  }
+
+  &-item {
+    position: relative;
+    min-height: 1px;
+    width: auto;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    &:not(.active) {
+      opacity: 0.5;
+    }
+  }
+
+  &-contents {
+    position: relative;
+
+    > * {
+      &:not(.is-shown) {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        display: none;
+      }
+
+      &.is-shown {
+        animation: fadeIn $duration * 2;
+      }
+    }
+  }
+}

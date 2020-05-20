@@ -99,3 +99,17 @@ $mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
     }
   }
 }
+
+[data-slidable-wrapper='true'] {
+  &[data-active-platforms='md-up'] {
+    @extend %slider-container--up-md;
+
+    > * {
+      @extend %slider-wrapper--up-md;
+
+      > * {
+        @extend %slider-slide--up-md;
+      }
+    }
+  }
+}

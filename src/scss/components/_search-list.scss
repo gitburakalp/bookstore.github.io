@@ -1,0 +1,8 @@
+.search-list {
+  position: relative;
+
+  &-item {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}

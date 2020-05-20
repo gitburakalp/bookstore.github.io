@@ -19,7 +19,22 @@ body {
   @include media-breakpoint-down(sm) {
     &:not(.homepage) {
       header {
-        display: none;
+        > * {
+          > * {
+            &:nth-child(1),
+            &:nth-child(2) {
+              display: none;
+
+              + * {
+                margin-top: 0 !important;
+              }
+            }
+
+            .search-block {
+              display: none;
+            }
+          }
+        }
       }
 
       .prev-icon {
