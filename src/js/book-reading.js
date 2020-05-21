@@ -292,22 +292,20 @@ $('body').click(function (e) {
   }
 });
 
-// $(document)
-//   .on('mouseover', function (e) {
-//     console.log(e);
-
-//     if ($(e.target).hasClass('book-read-top-menu')) {
-//       $(e.target).siblings().addClass('is-shown');
-//     }
-//   })
-//   .on('mouseleave', function (e) {
-//     var $target = $(e.target);
-//     if (!$target.hasClass('book-read-top-menu') || !$target.hasClass('book-read-submenu')) {
-//       setTimeout(() => {
-//         $(this).siblings().removeClass('is-shown');
-//       }, 2000);
-//     }
-//   });
+$(document)
+  .on('mouseover', function (e) {
+    if ($(e.target).hasClass('book-read-top-menu')) {
+      $(e.target).siblings().addClass('is-shown');
+    }
+  })
+  .on('mouseleave', function (e) {
+    var $target = $(e.target);
+    if (!$target.hasClass('book-read-top-menu') || !$target.hasClass('book-read-submenu')) {
+      setTimeout(() => {
+        $(this).siblings().removeClass('is-shown');
+      }, 2000);
+    }
+  });
 
 $('.book-read-top-menu').on('mouseleave', function () {});
 
