@@ -61,7 +61,6 @@ var functionsBrowserSync = function (done) {
     gulp.watch('./src/**/*.js', gulp.series('html'));
     gulp.watch('./src/**/*.html', gulp.series('html'));
   };
-  
 
 gulp.task('browser-sync', functionsBrowserSync);
 gulp.task('sass', functionsSass);

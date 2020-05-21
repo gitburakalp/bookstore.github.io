@@ -32,6 +32,16 @@
       flex-flow: nowrap;
       align-items: center;
 
+      .prev {
+        @include media-breakpoint-down(sm) {
+          display: none;
+
+          + * {
+            margin-left: 0;
+          }
+        }
+      }
+
       > * {
         position: relative;
 
@@ -134,7 +144,15 @@
 
   &-list {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .form-control {
+      line-height: 1;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 1rem 2.5rem;
+    }
 
     @include media-breakpoint-down(sm) {
       justify-content: space-around;

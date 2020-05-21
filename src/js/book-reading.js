@@ -20,17 +20,42 @@ var endCoords = {};
 
 function getPageOfBook(pageNumber, bookID) {
   var url = 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber;
-  // var url2 = 'http://api.semendel.com/api/identity/addusernote?bookId=43&page=17&note=Note%20Test&color=red&startIndex=15&lastIndex=45';
 
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      $('.book-content').each(function () {
-        $(this).empty();
-        $(this).append(data.pageContent);
-      });
+      console.log(data);
+
+      var ww = $(window).outerWidth();
+
+      $('.book-content').empty();
+
+      if (ww < 1279.99) {
+        data.forEach(function (e, idx) {
+          $('.book-content').append(e.pageContent);
+        });
+      } else {
+        data.forEach(function (e, idx) {
+          if (idx == 0) {
+            $('.book-content').append("<div class='row'><div class='col-12 col-xl-6'>" + e.pageContent + '</div></div>');
+          } else {
+            $('.book-content > .row > .col-12').after("<div class='col-12 col-xl-6'>" + e.pageContent + '</div>');
+          }
+        });
+        $('.book-content').append('<div class="row justify-content-between mt-auto"><div class="col-auto"><span class="prev-page font-weight-bold">Önceki Sayfa</span></div><div class="col-auto"><span class="next-page font-weight-bold">Sonraki Sayfa</span></div></div>');
+
+        $('.next-page').on('click', function () {
+          pageNumber = pageNumber + 2;
+          getPageOfBook(pageNumber, bookID);
+        });
+
+        $('.prev-page').on('click', function () {
+          pageNumber = pageNumber - 2;
+          getPageOfBook(pageNumber, bookID);
+        });
+      }
 
       initBookContentMenus();
       getHighlights(pageNumber);
@@ -102,10 +127,13 @@ function postToHighlight(note, color, startIdx, lastIdx) {
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
-  }).then(function (e) {
-    console.log(e);
-    getHighlights(pageNumber);
-  });
+  })
+    .then(function (e) {
+      console.log(e);
+    })
+    .then(function (e) {
+      getHighlights(pageNumber);
+    });
 }
 
 function initBookContentMenus() {
@@ -145,6 +173,16 @@ function initBookContentMenus() {
   });
 }
 
+function listUserBooks() {
+  fetch('http://api.semendel.com/api/identity/listuserbook', {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  })
+    .then(x => x.json())
+    .then(x => console.log(x));
+}
+
 function getHighlights(pageNumber) {
   var $bookContent = $('.book-content, .book-content *'),
     results = [],
@@ -164,7 +202,9 @@ function getHighlights(pageNumber) {
         }
       });
 
-      $bookContent.unmark().markRanges(ranges, {
+      console.log(results, ranges);
+
+      $bookContent.markRanges(ranges, {
         debug: true,
         separateWordSearch: false,
         each: function (node, range) {
@@ -178,9 +218,6 @@ function getHighlights(pageNumber) {
           }
         },
       });
-    })
-    .catch(error => {
-      reject(error);
     });
 }
 
@@ -203,7 +240,7 @@ function getBookmarks(bid, pnum) {
       });
     })
     .catch(error => {
-      reject(error);
+      console.log(error);
     });
 }
 
@@ -215,31 +252,41 @@ function getAllProps(url, type, bookID) {
   })
     .then(x => x.json())
     .then(function (x) {
-      var data = x.data;
-
       $('[data-props="' + type + '"]').empty();
 
-      data.forEach(function (e) {
-        console.log(e);
+      if (type == 'fihrist') {
+        x.forEach(function (e) {
+          $('[data-props="' + type + '"]').append('<li><a data-pagenumber="' + e.pageNumber + '"><h3>' + e.indexTitle + '</h3><span data-props="pn">' + e.pageNumber + '</span></a></li>');
+        });
+      } else {
+        var data = x.data;
 
-        var title = '';
-        var note = '';
+        data.forEach(function (e) {
+          var title = '';
+          var note = '';
 
-        if (e.bookId == bookID) {
-          if (e.pageNumber != undefined) title = '<h3>' + e.pageNumber + '. Sayfa</h3>';
-          if (e.note != undefined) note = '<p>' + e.note + '</p>';
+          if (e.bookId == bookID) {
+            if (e.pageNumber != undefined) title = '<h3>' + e.pageNumber + '. Sayfa</h3>';
+            if (e.note != undefined) note = '<p>' + e.note + '</p>';
 
-          if (title != '' || note != '') {
-            $('[data-props="' + type + '"]').append('<li><a data-pagenumber="' + e.pageNumber + '">' + title + note + '</a></li>');
+            if (title != '' || note != '') {
+              $('[data-props="' + type + '"]').append('<li><a data-pagenumber="' + e.pageNumber + '">' + title + note + '</a></li>');
+            }
           }
-        }
-      });
+        });
+      }
 
       $('[data-props="' + type + '"] a').on('click', function () {
         var pn = $(this).data('pagenumber');
         getPageOfBook(pn, bookID);
+        pageNumber = pn;
+        changePageNumber(pageNumber);
         $('.book-read-tabs > *').removeClass('is-shown');
         $('.book-read-tabs').find('.reading').addClass('is-shown');
+
+        $('.book-read-list > *').removeClass('active');
+        $('[data-showntab="reading"]').addClass('active');
+
         $('html,body').animate(
           {
             scrollTop: $('.book-read-tabs').find('.reading').offset().top - 100,
@@ -249,7 +296,7 @@ function getAllProps(url, type, bookID) {
       });
     })
     .catch(error => {
-      reject(error);
+      console.log(error);
     });
 }
 
@@ -261,6 +308,79 @@ function setMinHeight() {
 
   let root = document.documentElement;
   root.style.setProperty('--calcAmount', 'calc(100vh - (' + bookReadTopMenuHeight + ' + ' + bookReadSubMenu + ' + ' + bookpaging + ' + 2.15rem + 2rem + 2rem + 2rem + 2rem))');
+}
+
+function submenuInit() {
+  $('.book-read-submenu').each(function () {
+    var $bookReadList = $(this).find('.book-read-list');
+    var $bookReadTabsContent = $('.book-read-tabs');
+
+    $bookReadList.find('.book-read-list-item.active').each(function () {
+      var activeTab = $(this).data('showntab');
+
+      $bookReadTabsContent.find('> *').removeClass('is-shown');
+      $bookReadTabsContent.find('> .' + activeTab).addClass('is-shown');
+
+      switch (activeTab) {
+        case 'notes':
+          url = 'http://api.semendel.com/api/identity/listusernote';
+          break;
+        case 'bookmarks':
+          url = 'http://api.semendel.com/api/identity/listuserbracket';
+          break;
+        case 'fihrist':
+          url = 'http://api.semendel.com/api/list/bookindexes?bookId=' + bookID;
+          break;
+      }
+
+      if (activeTab != 'reading') {
+        getAllProps(url, activeTab, bookID);
+      }
+    });
+
+    $bookReadList.find('.book-read-list-item:not([non])').on('click', function () {
+      var activeTab = $(this).data('showntab');
+
+      $bookReadList.find('> *').removeClass('active');
+      $(this).addClass('active');
+
+      $bookReadTabsContent.find('> *').removeClass('is-shown');
+      $bookReadTabsContent.find('> .' + activeTab).addClass('is-shown');
+
+      switch (activeTab) {
+        case 'notes':
+          url = 'http://api.semendel.com/api/identity/listusernote';
+          break;
+        case 'bookmarks':
+          url = 'http://api.semendel.com/api/identity/listuserbracket';
+          break;
+        case 'fihrist':
+          url = 'http://api.semendel.com/api/list/bookindexes?bookId=' + bookID;
+          break;
+      }
+
+      if (activeTab != 'reading') {
+        getAllProps(url, activeTab, bookID);
+      }
+    });
+  });
+}
+
+function changePageNumber(pageNumber) {
+  $('.book-pagining').find('.current').text(pageNumber);
+  $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
+  $('.book-pagining').slider('value', pageNumber);
+
+  if ($(window).outerWidth() < 768) {
+    if (document.documentElement.scrollTop || document.body.scrollTop > 500) {
+      $('html,body').animate(
+        {
+          scrollTop: 0,
+        },
+        500,
+      );
+    }
+  }
 }
 
 $.ajax({
@@ -317,6 +437,7 @@ $('.book-content').each(function () {
     min: 1,
     max: totalPageNumber,
     value: pageNumber,
+    animate: 'slow',
     stop: function (event, ui) {
       pageNumber = ui.value;
       getPageOfBook(pageNumber, bookID);
@@ -351,17 +472,16 @@ $('.add-brackets').on('click', function (e) {
     .catch(e => console.error(e));
 });
 
-// $('.book-content').bind('touchmove', function (event) {
-//   endCoords = event.originalEvent.targetTouches[0];
-// });
+$('.book-content').bind('touchmove', function (event) {
+  endCoords = event.originalEvent.targetTouches[0];
+});
 
 // $('.book-content').bind('touchend', function (event) {
 //   if (endCoords.pageY - endCoords.pageX > 50) {
-//     alert('Your end coords is: x: ' + endCoords.pageX + ', y: ' + endCoords.pageY);
-
 //     pageNumber = pageNumber + 1;
 
 //     getPageOfBook(pageNumber, bookID);
+//     changePageNumber(pageNumber);
 //   }
 // });
 
@@ -413,22 +533,74 @@ $('.popovers--sm').each(function () {
   $('[data-btn="highlight"]').on('click', function () {
     $this.addClass('expanded');
   });
+
+  $('[data-btn="highlight"]')
+    .parent()
+    .siblings()
+    .on('click', function () {
+      $('[data-showntab]').removeClass('active');
+      $('[data-showntab="notes"]').addClass('active');
+      submenuInit();
+      $this.removeClass('is-shown');
+    });
 });
 
-$('.book-read-list-item').on('click', function (e) {
-  e.preventDefault();
+submenuInit();
 
-  var shownTab = $(this).data('showntab');
-  var url = '';
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
 
-  $('.book-read-list-item').removeClass('active');
-  $(this).addClass('active');
+var xDown = null;
+var yDown = null;
 
-  $('.book-read-tabs > *').removeClass('is-shown');
-  $('.book-read-tabs > .' + shownTab).addClass('is-shown');
+function getTouches(evt) {
+  return (
+    evt.touches || evt.originalEvent.touches // browser API
+  ); // jQuery
+}
 
-  if (shownTab != 'reading') {
-    shownTab != 'notes' ? (url = 'http://api.semendel.com/api/identity/listuserbracket') : (url = 'http://api.semendel.com/api/identity/listusernote');
-    getAllProps(url, shownTab, bookID);
+function handleTouchStart(evt) {
+  const firstTouch = getTouches(evt)[0];
+  xDown = firstTouch.clientX;
+  yDown = firstTouch.clientY;
+}
+
+function handleTouchMove(evt) {
+  if (!xDown || !yDown) {
+    return;
   }
+
+  var xUp = evt.touches[0].clientX;
+  var yUp = evt.touches[0].clientY;
+
+  var xDiff = xDown - xUp;
+  var yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    /*most significant*/
+    if (xDiff > 0) {
+      pageNumber = pageNumber + 2;
+
+      getPageOfBook(pageNumber, bookID);
+      changePageNumber(pageNumber);
+    } else {
+      pageNumber = pageNumber - 2;
+
+      getPageOfBook(pageNumber, bookID);
+      changePageNumber(pageNumber);
+    }
+  } else {
+    if (yDiff > 0) {
+      /* up swipe */
+    } else {
+      /* down swipe */
+    }
+  }
+  /* reset values */
+  xDown = null;
+  yDown = null;
+}
+
+$('.prev-icon,.btn--prev').on('click', function (e) {
+  history.back();
 });

@@ -17,6 +17,33 @@
     }
   }
 
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    div.row {
+      margin-left: -15px;
+      margin-right: -15px;
+
+      div[class*='col'] {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+
+  .next-page,
+  .prev-page {
+    cursor: pointer;
+    transition: color $duration;
+
+    &:hover {
+      color: rgba($colors--dark, 0.35) !important;
+    }
+  }
+
   &[class*='georgia'] {
     font-family: $ff-georgia !important;
 
@@ -108,7 +135,7 @@
   }
 
   * {
-    line-height: 1.57 !important;
+    line-height: 2 !important;
     letter-spacing: 0.042rem !important;
     text-align: justify;
 

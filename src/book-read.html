@@ -166,6 +166,11 @@
                         <div class="book-read-block">
                             <div class="book-read-top-menu">
                                 <div class="left">
+                                    <div class="prev">
+                                        <a class="btn btn--prev">
+                                            <i class="fal fa-chevron-left"></i>
+                                        </a>
+                                    </div>
                                     <div class="hamburger-icon">
                                         <a class="btn btn--hambuger" title="Menu">
                                             <img class="img-fluid" src="storage/svg/hamburger-dot-icon.svg" />
@@ -271,24 +276,15 @@
                                         <a class="btn btn--search" title="Kitap içinde ara">
                                             <img class="img-fluid" src="storage/svg/search-icon--black.svg" />
                                         </a>
-                                        <div class="popovers">
-                                            <div class="arrow"></div>
-                                            <div class="props-brightness">
-                                                <div class="row mb-2">
-                                                    <div class="col-12">
-                                                        <p class="font-size-md font-weight-bold text-center">
-                                                            Personal Options
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="book-read-submenu">
+                            <div class="book-read-submenu is-shown">
                                 <ul class="book-read-list">
-                                    <li class="book-read-list-item active" data-showntab="reading">
+                                    <li class="book-read-list-item active" data-showntab="fihrist">
+                                        İçindekiler
+                                    </li>
+                                    <li class="book-read-list-item" data-showntab="reading">
                                         Kitap Oku
                                     </li>
                                     <li class="book-read-list-item" data-showntab="bookmarks">
@@ -297,35 +293,20 @@
                                     <li class="book-read-list-item" data-showntab="notes">
                                         Notlarım
                                     </li>
+                                    <li class="book-read-list-item" non>
+                                        <select class="form-control mt-3 mt-md-0">
+                                            <option value="">Tüm Kitaplarım</option>
+                                        </select>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="book-read-tabs">
-                                <div class="book-content-block reading is-shown">
+                                <div class="book-fihrist fihrist">
+                                    <ul class="underbordered-list" data-props="fihrist"></ul>
+                                </div>
+                                <div class="book-content-block reading">
                                     <div class="book-content ff-georgia fs-1-6 theme--default">
-                                        <!-- <h1>TİTLE</h1>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, quisquam impedit,
-                                            velit autem totam doloremque nisi saepe minima cumque alias ut magnam
-                                            cupiditate, unde dolore minus officia. Harum, perspiciatis assumenda! Lorem
-                                            ipsum, dolor sit amet consectetur adipisicing elit. Fugit blanditiis nisi harum
-                                            aut amet assumenda rerum facere asperiores animi commodi ratione perferendis ea,
-                                            quidem ab nihil deserunt saepe quaerat cupiditate. Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Harum necessitatibus illo deleniti dolore
-                                            dignissimos dicta aperiam consequuntur aut culpa vero, soluta, et error? Esse
-                                            temporibus voluptatem eveniet. Aut, delectus blanditiis. Lorem ipsum dolor sit
-                                            amet consectetur adipisicing elit. Ad labore accusantium quasi qui illum, est
-                                            rerum error odit rem! Necessitatibus aspernatur laudantium quam dicta iure
-                                            itaque alias incidunt. Dolore, eos! Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Iusto, similique mollitia repellendus quis facere dolorem
-                                            ipsum ea odio velit in modi possimus illo nostrum nam? Voluptatem, omnis.
-                                            Incidunt, voluptatem ex! Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit. A necessitatibus in, repellat cupiditate ad excepturi? Officiis iste
-                                            quibusdam deserunt minus beatae, fugit libero doloribus laboriosam excepturi
-                                            molestiae quis ad! Magni! Lorem ipsum dolor, sit amet consectetur adipisicing
-                                            elit. Quasi laboriosam consectetur eligendi nemo fugit optio rem quas possimus
-                                            dolorem voluptatibus quia eveniet, earum quidem, nisi autem soluta hic molestias
-                                            impedit? Lorem ipsum dolor sit amet consectetur adipisicing elit. At natus
-                                            aperiam eius tempora, laborum adipisci in illo, maxime vero voluptate, nemo
-                                            voluptas similique doloribus eos. Nisi aliquam nam consectetur magnam!</p> -->
+
                                     </div>
                                     <div class="book-pagining">
                                         <div class="page-of">
