@@ -35,7 +35,7 @@ function getPageOfBook(pageNumber, bookID) {
       initBookContentMenus();
       getHighlights(pageNumber);
 
-      document.addEventListener(mouseupEvent, reportSelection, false);
+      document.addEventListener('mouseup', reportSelection, false);
 
       $('.book-content, .book-content *').bind('touchend', reportSelection);
     });
@@ -90,6 +90,8 @@ function reportSelection() {
   if (selectedText != '') {
     startIndex = selOffsets.start;
     lastIndex = selOffsets.end;
+
+    console.log(startIndex, lastIndex);
   }
 }
 
@@ -100,10 +102,10 @@ function postToHighlight(note, color, startIdx, lastIdx) {
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
-  })
-    .then(x => x.json())
-    .then(x => console.log(x));
-  // .catch(e => console.error(e));
+  }).then(function (e) {
+    console.log(e);
+    getHighlights(pageNumber);
+  });
 }
 
 function initBookContentMenus() {
@@ -138,7 +140,6 @@ function initBookContentMenus() {
     var thisColor = $(this).data('color');
 
     postToHighlight(obj.text, thisColor, startIndex, lastIndex);
-    getHighlights(pageNumber);
 
     $('.popovers--sm').removeClass('is-shown');
   });
@@ -291,22 +292,22 @@ $('body').click(function (e) {
   }
 });
 
-$(document)
-  .on('mouseover', function (e) {
-    console.log(e);
+// $(document)
+//   .on('mouseover', function (e) {
+//     console.log(e);
 
-    if ($(e.target).hasClass('book-read-top-menu')) {
-      $(e.target).siblings().addClass('is-shown');
-    }
-  })
-  .on('mouseleave', function (e) {
-    var $target = $(e.target);
-    if (!$target.hasClass('book-read-top-menu') || !$target.hasClass('book-read-submenu')) {
-      setTimeout(() => {
-        $(this).siblings().removeClass('is-shown');
-      }, 2000);
-    }
-  });
+//     if ($(e.target).hasClass('book-read-top-menu')) {
+//       $(e.target).siblings().addClass('is-shown');
+//     }
+//   })
+//   .on('mouseleave', function (e) {
+//     var $target = $(e.target);
+//     if (!$target.hasClass('book-read-top-menu') || !$target.hasClass('book-read-submenu')) {
+//       setTimeout(() => {
+//         $(this).siblings().removeClass('is-shown');
+//       }, 2000);
+//     }
+//   });
 
 $('.book-read-top-menu').on('mouseleave', function () {});
 
