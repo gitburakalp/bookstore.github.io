@@ -1,4 +1,4 @@
-var availableBooks = ['Yüzüklerin Efendisi', 'Harry Potter', 'Harry Potter Felsefe Taşı', 'Harry Potter Sırlar Odası', 'Harry Potter Azkaban Tutsağı', 'Harry Potter Ateş Kadehi', 'Harry Potter Zümrüdüanka Yoldaşlığı', 'Harry Potter Melez Prens', 'Harry Potter Ölüm Yadigarları'];
+var availableBooks = [];
 
 var accentMap = {
   ẚ: 'a',
@@ -728,15 +728,62 @@ var normalize = function (term) {
   return ret;
 };
 
+var type = 3;
+
+$('.filter-popover').each(function () {
+  $('#inpOnlyWord').prop('checked', true);
+  $('#btnFilterAccept').parent().removeClass('d-block').addClass('d-none');
+
+  $(this)
+    .find('input[type="radio"]')
+    .each(function () {
+      $(this).change(function () {
+        var filter = $(this).attr('id');
+
+        switch (filter) {
+          case 'inpAllBooks':
+            type = 1;
+            break;
+          case 'inpOnlyWord':
+            type = 3;
+            break;
+        }
+
+        $('#inpSearchBook').val('');
+        $('.popover--filter.is-shown').removeClass('is-shown');
+      });
+    });
+});
+
 $('#inpSearchBook').autocomplete({
-  appendTo: '.flight-autocomplete-container',
+  appendTo: '.search-block',
   source: function (request, response) {
     var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
-    response(
-      $.grep(availableBooks, function (value) {
-        value = value.label || value.value || value;
-        return matcher.test(value) || matcher.test(normalize(value));
-      }),
-    );
+
+    $.ajax({
+      url: 'http://api.semendel.com/api/ApiSearch/Suggest',
+      dataType: 'json',
+      data: {
+        keyword: request.term,
+        type: type,
+      },
+      success: function (data) {
+        response(
+          $.map(data, function (item) {
+            return {
+              label: item.name,
+              value: item.id,
+            };
+          }),
+        );
+      },
+    });
+  },
+  select: function (event, ui) {
+    // console.log(ui.item);
+
+    // can change item.label or item.value
+
+    window.location.href = '/search?val=' + ui.item.value;
   },
 });
