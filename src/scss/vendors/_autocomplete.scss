@@ -34,4 +34,50 @@
       }
     }
   }
+
+  &-menu-item {
+    > * {
+      &.ui-state-active {
+        background-color: transparent;
+        border-color: transparent;
+        color: $colors--dark;
+      }
+    }
+
+    &[heading] {
+      padding: 0;
+
+      + * {
+        margin-top: 1rem;
+        padding-top: 1rem !important;
+
+        border-top: 1px solid rgba($colors--black, 0.35);
+      }
+    }
+
+    &:hover {
+      > * {
+        transition: background-color $duration * 2;
+      }
+
+      > * {
+        background-color: rgba($colors--black, 0.15);
+        color: $colors--dark;
+      }
+
+      &[heading] {
+        > * {
+          background-color: transparent !important;
+        }
+      }
+    }
+
+    &[data-isbook='true'] {
+      + [data-isbook='false'] {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba($colors--black, 0.35);
+      }
+    }
+  }
 }

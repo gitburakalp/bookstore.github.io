@@ -81,6 +81,10 @@
         opacity: 0.65;
       }
 
+      &.btn--prev {
+        font-size: 2rem;
+      }
+
       &.btn--font-props {
         ~ .popovers {
           .arrow {

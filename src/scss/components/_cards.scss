@@ -119,7 +119,17 @@
     top: calc(var(--header-height) + 3rem);
     color: $colors--white !important;
     max-height: calc(100vh - (var(--header-height) + 6rem));
-    overflow-y: auto;
+    overflow: hidden;
+
+    .sticky-menu {
+      position: relative;
+      overflow: hidden;
+      overflow-y: auto;
+
+      @media (max-width: 1599px) {
+        max-height: 52vh;
+      }
+    }
 
     .title-block {
       &:after {
@@ -135,7 +145,7 @@
 
 .col--aside {
   .cards {
-    padding: 4.7rem 3rem;
+    padding: 3rem;
     color: $colors--black;
 
     .title-block {

@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nextEl: $this.parent().find('.slider-controls--next'),
           },
         },
-        1440: {
+        1600: {
           slidesPerView: hasPerviewProp ? slidesPerviewLG : 5,
           centeredSlides: false,
           loop: true,
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
               nextEl: $(this).siblings('.slider-controls--next-white'),
             },
             breakpoints: {
-              1440: {
+              1600: {
                 slidesPerView: 5,
               },
             },
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
         nextEl: $(this).siblings('.slider-controls--next-white'),
       },
       breakpoints: {
-        1440: {
+        1600: {
           slidesPerView: isBookDetailsSlide ? 4 : 5,
         },
         768: {

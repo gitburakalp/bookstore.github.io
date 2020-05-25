@@ -58,5 +58,20 @@ body {
         border-color: rgba($colors--black, 0.3);
       }
     }
+
+    &.theme--grey,
+    &.theme--black {
+      .btn {
+        &--prev,
+        &--hamburger {
+          font-size: 2rem;
+          color: $colors--white;
+        }
+      }
+
+      .btn--hamburger {
+        position: relative;
+      }
+    }
   }
 }
