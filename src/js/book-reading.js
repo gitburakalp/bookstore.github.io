@@ -644,9 +644,9 @@ function handleTouchMove(evt) {
     }
   } else {
     if (yDiff > 0) {
-      /* up swipe */
+      $('.book-read-block').addClass('on-hide');
     } else {
-      /* down swipe */
+      $('.book-read-block').removeClass('on-hide');
     }
   }
   /* reset values */

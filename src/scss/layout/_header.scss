@@ -61,6 +61,10 @@
     }
 
     &-logo {
+      @include media-breakpoint-down(sm) {
+        max-width: 92px;
+      }
+
       @include media-breakpoint-up(md) {
         display: none;
       }

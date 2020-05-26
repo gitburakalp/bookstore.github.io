@@ -4,6 +4,28 @@
 
     padding-top: 2.15rem !important;
 
+    @include media-breakpoint-down(sm) {
+      &.on-hide {
+        padding-top: 0 !important;
+
+        .book-read-top-menu {
+          display: none;
+        }
+
+        .book-content-block {
+          > * {
+            &:not(.book-content) {
+              display: none;
+            }
+
+            &.book-content {
+              height: calc(var(--vh) * 100);
+            }
+          }
+        }
+      }
+    }
+
     @include media-breakpoint-up(md) {
       .book-read-top-menu {
         padding-bottom: 2.15rem !important;
@@ -150,6 +172,20 @@
         color: $colors--white !important;
         font-size: 1.2rem;
         z-index: 1;
+      }
+    }
+
+    .search {
+      li[heading] {
+        display: none;
+      }
+
+      .ui-menu {
+        &.ui-widget {
+          position: relative;
+          width: 100% !important;
+          box-shadow: none;
+        }
       }
     }
   }

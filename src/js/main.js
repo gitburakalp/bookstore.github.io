@@ -406,3 +406,9 @@ $(window).on('load', function () {
     oldCardIdx = $(this).parent().index();
   });
 });
+
+$(window).on('load', function () {
+  setTimeout(() => {
+    $('body').removeClass('is-loading');
+  }, 500);
+});

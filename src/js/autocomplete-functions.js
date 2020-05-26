@@ -810,3 +810,39 @@ $('#inpSearchBook').autocomplete({
     window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
   },
 });
+
+$('#inpSearch').autocomplete({
+  appendTo: '.search-filtered-input',
+  source: function (request, response) {
+    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+    var arr = request.term.split(' ');
+    var lastKeyword = arr[arr.length - 1];
+
+    var data = [
+      {
+        id: 0,
+        name: 'heading',
+        link: '#',
+      },
+    ];
+
+    $.ajax({
+      url: 'http://api.semendel.com/api/ApiSearch/Suggest',
+      dataType: 'json',
+      data: {
+        keyword: request.term,
+        type: type,
+      },
+      success: function (x) {
+        x.forEach(function (e) {
+          data.push(e);
+        });
+
+        response(data);
+      },
+    });
+  },
+  select: function (event, ui) {
+    window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
+  },
+});

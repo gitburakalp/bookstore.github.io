@@ -11,7 +11,7 @@
     <title>BookStore</title>
 </head>
 
-<body class="mode--reading theme--default">
+<body class="mode--reading theme--default is-loading">
     <div class="offset-menu-block">
         <div class="offset-menu-wrapper">
             <ul class="offset-menu">
@@ -155,41 +155,6 @@
                                         <a class="btn--filter" role="button">
                                             <i class="icons icons--filter"></i>
                                         </a>
-                                        <div class="popover popover--filter">
-                                            <div class="arrow"></div>
-                                            <div class="popover-inner">
-                                                <div class="popover-content">
-                                                    <div class="filter-popover">
-                                                        <h5 class="title">
-                                                            Filtreler
-                                                        </h5>
-                                                        <span class="d-block">
-                                                            Göre Sırala
-                                                        </span>
-                                                        <div class="custom-inputs--radio">
-                                                            <input id="inpAllBooks" name="filter" type="radio"
-                                                                checked />
-                                                            <label for="inpAllBooks">Tüm kitaplarda ara</label>
-                                                        </div>
-                                                        <div class="custom-inputs--radio">
-                                                            <input id="inpOnlyWord" name="filter" type="radio" />
-                                                            <label for="inpOnlyWord">Sadece tam kelimelerde
-                                                                ara</label>
-                                                        </div>
-                                                        <div class="custom-inputs--radio">
-                                                            <input id="inpSomeOpt" name="filter" type="radio" />
-                                                            <label for="inpSomeOpt">Haşiyelerde de ara</label>
-                                                        </div>
-                                                        <div class="d-block mt-5">
-                                                            <a id="btnFilterAccept" href="#!"
-                                                                class="btn d-block btn--radius-20 font-weight-bold">
-                                                                UYGULA
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1050,6 +1015,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHmCyPwmR0gwm-picbqfK9acDDsm-SVc0&callback=getMap"></script>
     <!-- <script src="js/vendors/jquery.mark.min.js"></script> -->
     <script src="https://rawgit.com/julmot/mark.js/master/dist/jquery.mark.js"></script>
+    <script src="js/autocomplete-functions.js"></script>
     <script src="js/book-reading.js"></script>
 </body>
 
