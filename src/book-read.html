@@ -19,10 +19,19 @@
                     <h3 class="offset-menu-title">
                         Fihrist
                     </h3>
+                    <div class="row my-4 align-items-center">
+                        <div class="col-8 col-md-4">
+                            <input id="inpPageNumber" class="form-control" placeholder="Sayfa Numarası Giriniz" />
+                        </div>
+                        <div class="col-4 col-auto">
+                            <a class="load-page">Sayfaya Git</a>
+                        </div>
+                    </div>
                     <div class="offset-menu-content">
                         <select class="form-control mt-2 mb-4">
                             <option value="">Tüm Kitaplarım</option>
                         </select>
+
                         <ul class="underbordered-list"></ul>
                     </div>
                 </li>
@@ -303,6 +312,24 @@
                                     <div class="search">
                                         <a class="btn btn--search" title="Kitap içinde ara">
                                         </a>
+                                        <div class="popovers">
+                                            <div class="arrow"></div>
+                                            <div class="props-brightness">
+                                                <div class="search-filtered-input">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input id="inpSearch" class="form-control"
+                                                                placeholder="Kitaba, Yazar veya ISBN göre ara">
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <a class="btn--cancel">
+                                                                İptal
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

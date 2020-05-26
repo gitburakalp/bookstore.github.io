@@ -227,16 +227,15 @@ function getBookmarks(bid, pnum) {
     .then(x => x.json())
     .then(function (x) {
       var data = x.data;
+      var isBookmarked = false;
 
       data.forEach(function (e) {
-        console.log(e, bid, pnum);
-
         if (e.bookId == bid && e.pageNumber == pnum) {
-          $('.btn--brackets').addClass('bookmarked');
-        } else {
-          $('.btn--brackets').removeClass('bookmarked');
+          isBookmarked = true;
         }
       });
+
+      $('.btn--brackets').addClass('bookmarked');
     })
     .catch(error => {
       console.log(error);
@@ -392,21 +391,29 @@ $('.book-content').each(function () {
 });
 
 $('.add-brackets').on('click', function (e) {
+  var $this = $(this);
+  var isBookmarked = $this.hasClass('bookmarked');
   e.stopPropagation();
 
-  var url = 'http://api.semendel.com/api/identity/adduserbracket?bookId=' + bookID + '&page=' + pageNumber;
+  function bookmarkFunction() {
+    var url = isBookmarked ? 'http://api.semendel.com/api/identity/removeuserbracket?bookId=' + bookID + '&page=' + pageNumber : 'http://api.semendel.com/api/identity/adduserbracket?bookId=' + bookID + '&page=' + pageNumber;
 
-  fetch(url, {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-    },
-  })
-    .then(function (x) {
-      console.log(x);
+    console.log(url);
 
-      getBookmarks(bookID, pageNumber);
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
     })
-    .catch(e => console.error(e));
+      .then(function (x) {
+        getBookmarks(bookID, pageNumber);
+
+        isBookmarked ? $this.removeClass('bookmarked') : '';
+      })
+      .catch(e => console.error(e));
+  }
+
+  bookmarkFunction();
 });
 
 $('.book-content').bind('touchmove', function (event) {
@@ -666,4 +673,13 @@ $('.prev-page').on('click', function () {
     changePageNumber(pageNumber);
     $(this).removeClass('op-05');
   }
+});
+
+$('.load-page').on('click', function (e) {
+  e.preventDefault();
+  var pn = parseInt($('#inpPageNumber').val());
+  getPageOfBook(pn, bookID);
+  changePageNumber(pn);
+
+  $(this).closest('.offset-menu-block').removeClass('is-shown');
 });

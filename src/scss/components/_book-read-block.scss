@@ -89,6 +89,27 @@
         width: 16px;
         height: 18px;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15.849' height='17.702' viewBox='0 0 15.849 17.702'%3E%3Cg id='prefix__Seach' transform='translate(.75 .75)'%3E%3Cpath id='prefix__Union_2' d='M11.462 12.156A6.376 6.376 0 0 1 1 7.319a6.366 6.366 0 0 1 12.732 0 6.287 6.287 0 0 1-2.269 4.837L15.5 17.5z' data-name='Union 2' transform='translate(-1 -1)' style='fill:none;stroke:%23000;stroke-width:1.5px'/%3E%3C/g%3E%3C/svg%3E%0A");
+
+        + * {
+          min-width: 350px;
+          border-radius: 1rem;
+          right: 1rem;
+
+          @include media-breakpoint-up(md) {
+            border-radius: 2rem;
+            min-width: 537px;
+          }
+
+          .arrow {
+            transform: translateY(-100%) scale(0.8);
+            right: 0;
+
+            @include media-breakpoint-up(md) {
+              right: 2.25rem;
+              transform: translateY(-100%) scale(1);
+            }
+          }
+        }
       }
 
       &[class*='bookmarked'] {

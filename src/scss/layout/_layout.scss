@@ -79,6 +79,16 @@ body {
   &.mode--reading {
     padding-bottom: 0 !important;
 
+    .form-control {
+      font-size: 1rem;
+      padding: 1rem;
+      line-height: 1;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.4rem;
+      }
+    }
+
     header,
     footer {
       display: none !important;

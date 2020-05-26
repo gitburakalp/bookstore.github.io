@@ -29,6 +29,14 @@
     }
   }
 
+  .books-block {
+    @include media-breakpoint-up(lg) {
+      .image {
+        max-width: 80%;
+      }
+    }
+  }
+
   @include media-breakpoint-up(md) {
     .description {
       font-size: 1.5rem;
