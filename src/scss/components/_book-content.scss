@@ -32,16 +32,6 @@
     }
   }
 
-  .next-page,
-  .prev-page {
-    cursor: pointer;
-    transition: color $duration;
-
-    &:hover {
-      color: rgba($colors--dark, 0.35) !important;
-    }
-  }
-
   &[class*='georgia'] {
     font-family: $ff-georgia !important;
 
@@ -191,5 +181,16 @@
     @include media-breakpoint-up(md) {
       font-size: 1.4rem;
     }
+  }
+}
+
+.next-page,
+.prev-page {
+  cursor: pointer;
+  transition: color $duration;
+  user-select: none;
+
+  &:hover {
+    color: rgba($colors--dark, 0.35) !important;
   }
 }

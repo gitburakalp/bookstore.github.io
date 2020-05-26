@@ -44,19 +44,6 @@ function getPageOfBook(pageNumber, bookID) {
             $('.book-content > .row > .col-12').after("<div class='col-12 col-xl-6'>" + e.pageContent + '</div>');
           }
         });
-        $('.book-content').append(
-          '<div class="row justify-content-between mt-auto"><div class="col-auto"><span class="prev-page font-weight-bold"><i class="fal fa-chevron-left mr-3"></i>Önceki Sayfa</span></div><div class="col-auto"><span class="next-page font-weight-bold">Sonraki Sayfa <i class="fal fa-chevron-right ml-3"></i></span></div></div>',
-        );
-
-        $('.next-page').on('click', function () {
-          pageNumber = pageNumber + 2;
-          getPageOfBook(pageNumber, bookID);
-        });
-
-        $('.prev-page').on('click', function () {
-          pageNumber = pageNumber - 2;
-          getPageOfBook(pageNumber, bookID);
-        });
       }
 
       initBookContentMenus();
@@ -253,10 +240,11 @@ function setMinHeight() {
   var calcAmount = 0;
   var bookReadTopMenuHeight = $('.book-read-top-menu').outerHeight(true) + 'px';
   var bookReadSubMenu = $('.book-read-submenu').outerHeight(true) + 'px';
+  var bookControls = $('.book-content').next().outerHeight(true) + 'px';
   var bookpaging = $('.book-pagining').outerHeight(true) + 'px';
 
   let root = document.documentElement;
-  root.style.setProperty('--calcAmount', 'calc(100vh - (' + bookReadTopMenuHeight + ' + ' + bookpaging + ' + 2.15rem + 2rem + 2rem + 2rem + 2rem))');
+  root.style.setProperty('--calcAmount', 'calc(100vh - (' + bookReadTopMenuHeight + ' + ' + bookpaging + ' + ' + bookControls + ' + 2.15rem + 2rem + 2rem + 2rem + 2rem))');
 }
 
 function submenuInit() {
@@ -544,7 +532,7 @@ function offsetMenuContentInit(itemType, listObj) {
 
         $('html,body').animate(
           {
-            scrollTop: $('.book-read-tabs').find('.reading').offset().top - 100,
+            scrollTop: $('.book-content').offset().top - 100,
           },
           250,
         );
@@ -651,4 +639,16 @@ function handleTouchMove(evt) {
 
 $('.prev-icon,.btn--prev').on('click', function (e) {
   window.location.href = prevUrl;
+});
+
+$('.next-page').on('click', function () {
+  pageNumber = pageNumber + 2;
+  getPageOfBook(pageNumber, bookID);
+  changePageNumber(pageNumber);
+});
+
+$('.prev-page').on('click', function () {
+  pageNumber = pageNumber - 2;
+  getPageOfBook(pageNumber, bookID);
+  changePageNumber(pageNumber);
 });
