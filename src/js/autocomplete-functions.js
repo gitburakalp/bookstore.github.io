@@ -732,85 +732,48 @@ var type = 3;
 var filterbox =
   '<div class="filter-box"><div class="row"><div class="col-12"><h3 class="title font-size-lg">Filtreler</h3><span class="d-block font-size-xs">Göre Sırala</span></div></div><div class="row"><div class="col-12"></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpAllBooks" name="filter" type="radio"><label for="inpAllBooks">Tüm içeriklerde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpOnlyBookContent" name="filter" type="radio"><label for="inpOnlyBookContent">Sadece kitap isimlerinde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpSomeOpt" name="filter" type="radio"><label for="inpSomeOpt">Sadece içeriklerde ara</label></div></div></div></div>';
 
-$('#inpSearchBook')
-  .autocomplete({
-    appendTo: '.search-block',
-    source: function (request, response) {
-      var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
-      var arr = request.term.split(' ');
-      var lastKeyword = arr[arr.length - 1];
+$.ui.autocomplete.prototype._renderItem = function (ul, item) {
+  var startElem = null;
 
-      $.ajax({
-        url: 'http://api.semendel.com/api/ApiSearch/Suggest',
-        dataType: 'json',
-        data: {
-          keyword: request.term,
-          type: type,
-        },
-        success: function (data) {
-          response(
-            $.map(data, function (item) {
-              return {
-                label: item.name,
-                value: item.name,
-                link: item.link,
-              };
-            }),
-          );
-        },
-      });
-    },
-    select: function (event, ui) {
-      window.location.href = ui.item.link === '' ? '/arama/' + ui.item.value : ui.item.link;
-    },
-    open: function () {
-      $(this).data('ui-autocomplete')._renderMenu = function (ul, items) {
-        var self = this;
-        $.each(items, function (index, item) {
-          self._renderItem(ul, item);
-          if (index == 0) ul.prepend('<li heading>' + filterbox + '</li>');
-        });
-
-        $('[heading]').find('input[type="radio"]').removeAttr('checked');
-
-        $('[heading]').each(function () {
-          $(this)
-            .find('input[type="radio"]')
-            .each(function () {
-              switch (type) {
-                case 1:
-                  $('#inpOnlyBookContent').prop('checked', 'true');
-                  break;
-                case 3:
-                  $('#inpAllBooks').prop('checked', 'true');
-                  break;
-              }
-
-              $(this).change(function () {
-                var filter = $(this).attr('id');
-
-                switch (filter) {
-                  case 'inpAllBooks':
-                    type = 3;
-                    break;
-                  case 'inpOnlyBookName':
-                    type = 1;
-                    break;
-                  case 'inpOnlyBookContent':
-                    type = 1;
-                    break;
-                }
-
-                console.log(filter, type);
-              });
-            });
-        });
-      };
-    },
-  })
-  .data('ui-autocomplete')._renderItem = function (ul, item) {
-  return $('<li>')
-    .attr('data-isbook', item.link != '' ? true : false)
-    .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.label + '</div>')
-    .appendTo(ul);
+  if (item.value == 'label') {
+    startElem = $('<li></li>').addClass('categoryLabel').data('item.autocomplete', item).append('<a style="display:none;"></a>').append(item.label).appendTo(ul);
+  } else {
+    startElem = $('<li></li>')
+      .data('item.autocomplete', item)
+      .append('<a>' + item.label + '</a>')
+      .appendTo(ul);
+  }
+  return startElem;
 };
+
+$('#inpSearchBook').autocomplete({
+  appendTo: '.search-block',
+  source: function (request, response) {
+    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+    var arr = request.term.split(' ');
+    var lastKeyword = arr[arr.length - 1];
+
+    $.ajax({
+      url: 'http://api.semendel.com/api/ApiSearch/Suggest',
+      dataType: 'json',
+      data: {
+        keyword: request.term,
+        type: type,
+      },
+      success: function (data) {
+        response(data);
+      },
+    });
+  },
+  select: function (event, ui) {
+    window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
+  },
+  create: function () {
+    $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+      return $('<li>')
+        .attr('data-isbook', item.link != '' ? true : false)
+        .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.name + '</div>')
+        .appendTo(ul);
+    };
+  },
+});

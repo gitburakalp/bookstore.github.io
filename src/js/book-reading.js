@@ -389,6 +389,9 @@ $('.book-content').each(function () {
       $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
       getBookmarks(bookID, pageNumber);
     },
+    change: function (e, ui) {
+      $('.book-pagining   .current-2').html(ui.value);
+    },
   });
 
   $('.book-pagining .current').text(pageNumber);
