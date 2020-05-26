@@ -735,12 +735,41 @@ var filterbox =
 $.ui.autocomplete.prototype._renderItem = function (ul, item) {
   var startElem = null;
 
-  if (item.value == 'label') {
-    startElem = $('<li></li>').addClass('categoryLabel').data('item.autocomplete', item).append('<a style="display:none;"></a>').append(item.label).appendTo(ul);
+  if (item.name == 'heading') {
+    startElem = $('<li heading></li>').append(filterbox).appendTo(ul);
+
+    $('.filter-box').each(function () {
+      $('#inpAllBooks').removeAttr('checked');
+
+      switch (type) {
+        case 3:
+          $('#inpAllBooks').prop('checked', true);
+          break;
+
+        case 1:
+          $('#inpOnlyBookContent').prop('checked', true);
+          break;
+      }
+
+      $(this)
+        .find("input[type='radio']")
+        .change(function () {
+          var thisID = $(this).attr('id');
+
+          switch (thisID) {
+            case 'inpAllBooks':
+              type = 3;
+              break;
+            case 'inpOnlyBookContent':
+              type = 1;
+              break;
+          }
+        });
+    });
   } else {
-    startElem = $('<li></li>')
-      .data('item.autocomplete', item)
-      .append('<a>' + item.label + '</a>')
+    startElem = $('<li>')
+      .attr('data-isbook', item.link != '' ? true : false)
+      .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.name + '</div>')
       .appendTo(ul);
   }
   return startElem;
@@ -753,6 +782,14 @@ $('#inpSearchBook').autocomplete({
     var arr = request.term.split(' ');
     var lastKeyword = arr[arr.length - 1];
 
+    var data = [
+      {
+        id: 0,
+        name: 'heading',
+        link: '#',
+      },
+    ];
+
     $.ajax({
       url: 'http://api.semendel.com/api/ApiSearch/Suggest',
       dataType: 'json',
@@ -760,20 +797,16 @@ $('#inpSearchBook').autocomplete({
         keyword: request.term,
         type: type,
       },
-      success: function (data) {
+      success: function (x) {
+        x.forEach(function (e) {
+          data.push(e);
+        });
+
         response(data);
       },
     });
   },
   select: function (event, ui) {
     window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
-  },
-  create: function () {
-    $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
-      return $('<li>')
-        .attr('data-isbook', item.link != '' ? true : false)
-        .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.name + '</div>')
-        .appendTo(ul);
-    };
   },
 });

@@ -46,6 +46,8 @@
 
     &[heading] {
       padding: 0;
+      opacity: 1 !important;
+      pointer-events: visible;
 
       + * {
         margin-top: 1rem;
