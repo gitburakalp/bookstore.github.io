@@ -7,6 +7,7 @@
   line-height: 1.5 !important;
   text-align: justify;
 
+  min-height: var(--calcAmount);
   height: var(--calcAmount);
 
   @include media-breakpoint-down(sm) {
@@ -184,11 +185,25 @@
   }
 }
 
+.row.mb-3.justify-content-between.mt-auto.font-size-lg {
+  @include media-breakpoint-down(sm) {
+    box-shadow: 0 -4px 4px rgba($colors--dark, 0.15);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
 .next-page,
 .prev-page {
+  display: inline-block;
+  padding-top: 1.5rem;
   cursor: pointer;
   transition: color $duration;
   user-select: none;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1.4rem !important;
+  }
 
   &:hover {
     color: rgba($colors--dark, 0.35) !important;

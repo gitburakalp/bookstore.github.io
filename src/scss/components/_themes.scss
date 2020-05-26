@@ -62,10 +62,33 @@ body {
     &.theme--grey,
     &.theme--black {
       .btn {
-        &--prev,
-        &--hamburger {
+        &--prev {
           font-size: 2rem;
           color: $colors--white;
+        }
+
+        &--hambuger {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='13.5' viewBox='0 0 18 13.5'%3E%3Cdefs%3E%3Cstyle%3E .prefix__cls-1%7Bfill:none;stroke:%23fff;stroke-width:1.5px%7D %3C/style%3E%3C/defs%3E%3Cg id='prefix__Group_309' data-name='Group 309' transform='translate(-253.5 -29.75)'%3E%3Cg id='prefix__Group_306' data-name='Group 306' transform='translate(0 10)'%3E%3Cpath id='prefix__Line_30' d='M0 0L14 0' class='prefix__cls-1' data-name='Line 30' transform='translate(257.5 26.5)'/%3E%3Cpath id='prefix__Line_31' d='M0 0L2 0' class='prefix__cls-1' data-name='Line 31' transform='translate(253.5 26.5)'/%3E%3C/g%3E%3Cg id='prefix__Group_308' data-name='Group 308' transform='translate(0 4)'%3E%3Cpath id='prefix__Line_30-2' d='M0 0L14 0' class='prefix__cls-1' data-name='Line 30' transform='translate(257.5 26.5)'/%3E%3Cpath id='prefix__Line_31-2' d='M0 0L2 0' class='prefix__cls-1' data-name='Line 31' transform='translate(253.5 26.5)'/%3E%3C/g%3E%3Cg id='prefix__Group_307' data-name='Group 307' transform='translate(0 16)'%3E%3Cpath id='prefix__Line_30-3' d='M0 0L14 0' class='prefix__cls-1' data-name='Line 30' transform='translate(257.5 26.5)'/%3E%3Cpath id='prefix__Line_31-3' d='M0 0L2 0' class='prefix__cls-1' data-name='Line 31' transform='translate(253.5 26.5)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+
+        &--brackets {
+          &:not(.bookmarked) {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11.53' height='22.657' viewBox='0 0 11.53 22.657'%3E%3Cg id='prefix__Brackets' transform='translate(.5 .5)'%3E%3Cpath id='prefix__Path_759' d='M7037.952-1182.933l-5.251 4.815v-21.02h10.53v21.02z' data-name='Path 759' transform='translate(-7032.701 1199.139)' style='fill:none;stroke:%23fff'/%3E%3C/g%3E%3C/svg%3E%0A");
+          }
+        }
+
+        &--font-props {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='21' viewBox='0 0 22 21'%3E%3Cg id='prefix__Text' transform='translate(1)'%3E%3Ctext id='prefix__AA' transform='translate(10 17)' style='fill:%23fff;font-size:13px;font-family:Roboto-Regular,Roboto;letter-spacing:.016em'%3E%3Ctspan x='-10.215' y='0'%3EA%3C/tspan%3E%3Ctspan y='0' style='font-size:18px'%3EA%3C/tspan%3E%3C/text%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+
+        &--search {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15.849' height='17.702' viewBox='0 0 15.849 17.702'%3E%3Cg id='prefix__Seach' transform='translate(.75 .75)'%3E%3Cpath id='prefix__Union_2' d='M11.462 12.156A6.376 6.376 0 0 1 1 7.319a6.366 6.366 0 0 1 12.732 0 6.287 6.287 0 0 1-2.269 4.837L15.5 17.5z' data-name='Union 2' transform='translate(-1 -1)' style='fill:none;stroke:%23fff;stroke-width:1.5px'/%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+      }
+
+      .prev-icon {
+        &:before {
+          color: $colors--white !important;
         }
       }
 

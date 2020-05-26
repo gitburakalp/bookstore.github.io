@@ -77,6 +77,8 @@ body {
   }
 
   &.mode--reading {
+    padding-bottom: 0 !important;
+
     header,
     footer {
       display: none !important;

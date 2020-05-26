@@ -1,7 +1,7 @@
 let prevUrl = '/';
 
 let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1OTA0MDY5MDEsImV4cCI6MTU5MTAxMTcwMSwiaWF0IjoxNTkwNDA2OTAxfQ.voj4YI4xD4y1Not4dpH381g-Hgv_nsS4cTV-wfSRWkk';
-let bookID = 14;
+let bookID = 22;
 let pageNumber = 1;
 let note = 'Test Note';
 let color = 'black';
@@ -17,6 +17,11 @@ var selectedText = '';
 
 var staticVal = 6;
 var endCoords = {};
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 // Text selecting functions
 
@@ -224,6 +229,8 @@ function getBookmarks(bid, pnum) {
       var data = x.data;
 
       data.forEach(function (e) {
+        console.log(e, bid, pnum);
+
         if (e.bookId == bid && e.pageNumber == pnum) {
           $('.btn--brackets').addClass('bookmarked');
         } else {
@@ -239,12 +246,11 @@ function getBookmarks(bid, pnum) {
 function setMinHeight() {
   var calcAmount = 0;
   var bookReadTopMenuHeight = $('.book-read-top-menu').outerHeight(true) + 'px';
-  var bookReadSubMenu = $('.book-read-submenu').outerHeight(true) + 'px';
   var bookControls = $('.book-content').next().outerHeight(true) + 'px';
   var bookpaging = $('.book-pagining').outerHeight(true) + 'px';
 
   let root = document.documentElement;
-  root.style.setProperty('--calcAmount', 'calc(100vh - (' + bookReadTopMenuHeight + ' + ' + bookpaging + ' + ' + bookControls + ' + 2.15rem + 2rem + 2rem + 2rem + 2rem))');
+  root.style.setProperty('--calcAmount', 'calc((var(--vh, 1vh) * 100) - (' + bookReadTopMenuHeight + ' + ' + bookpaging + ' + ' + bookControls + ' + 7.5rem))');
 }
 
 function submenuInit() {
@@ -396,6 +402,8 @@ $('.add-brackets').on('click', function (e) {
     },
   })
     .then(function (x) {
+      console.log(x);
+
       getBookmarks(bookID, pageNumber);
     })
     .catch(e => console.error(e));
@@ -516,7 +524,7 @@ function offsetMenuContentInit(itemType, listObj) {
             if (e.note != undefined) note = '<p>' + e.note + '</p>';
 
             if (title != '' || note != '') {
-              listObj.append('<li><a data-pagenumber="' + e.pageNumber + '">' + title + note + '</a></li>');
+              listObj.append('<li ' + (e.color != undefined ? 'data-color=' + e.color : '') + '><a data-pagenumber="' + e.pageNumber + '">' + title + note + '</a></li>');
             }
           }
         });
@@ -615,15 +623,17 @@ function handleTouchMove(evt) {
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     /*most significant*/
     if (xDiff > 0) {
-      pageNumber = pageNumber + 2;
-
-      getPageOfBook(pageNumber, bookID);
-      changePageNumber(pageNumber);
+      if (pageNumber < totalPageNumber) {
+        pageNumber = pageNumber + 2;
+        getPageOfBook(pageNumber, bookID);
+        changePageNumber(pageNumber);
+      }
     } else {
-      pageNumber = pageNumber - 2;
-
-      getPageOfBook(pageNumber, bookID);
-      changePageNumber(pageNumber);
+      if (pageNumber > 1) {
+        pageNumber = pageNumber - 2;
+        getPageOfBook(pageNumber, bookID);
+        changePageNumber(pageNumber);
+      }
     }
   } else {
     if (yDiff > 0) {
@@ -642,13 +652,18 @@ $('.prev-icon,.btn--prev').on('click', function (e) {
 });
 
 $('.next-page').on('click', function () {
-  pageNumber = pageNumber + 2;
-  getPageOfBook(pageNumber, bookID);
-  changePageNumber(pageNumber);
+  if (pageNumber < totalPageNumber) {
+    pageNumber = pageNumber + 2;
+    getPageOfBook(pageNumber, bookID);
+    changePageNumber(pageNumber);
+  }
 });
 
 $('.prev-page').on('click', function () {
-  pageNumber = pageNumber - 2;
-  getPageOfBook(pageNumber, bookID);
-  changePageNumber(pageNumber);
+  if (pageNumber > 1) {
+    pageNumber = pageNumber - 2;
+    getPageOfBook(pageNumber, bookID);
+    changePageNumber(pageNumber);
+    $(this).removeClass('op-05');
+  }
 });

@@ -7,21 +7,21 @@
 
   &.green {
     background-color: $colors--turquise-green;
-    box-shadow: -2px 2px 10px 0 rgba($colors--turquise-green, 0.5);
+    box-shadow: -2px 2px 10px 0 rgba($colors--turquise-green, 0.05);
   }
 
   &.orange {
     background-color: $colors--yellow-orange;
-    box-shadow: -2px 2px 10px 0 rgba($colors--yellow-orange, 0.5);
+    box-shadow: -2px 2px 10px 0 rgba($colors--yellow-orange, 0.05);
   }
 
   &.azure {
     background-color: $colors--azure;
-    box-shadow: -2px 2px 10px 0 rgba($colors--azure, 0.5);
+    box-shadow: -2px 2px 10px 0 rgba($colors--azure, 0.05);
   }
 
   &.seafoam {
     background-color: $colors--main-green;
-    box-shadow: -2px 2px 10px 0 rgba($colors--main-green, 0.5);
+    box-shadow: -2px 2px 10px 0 rgba($colors--main-green, 0.05);
   }
 }

@@ -12,9 +12,26 @@
     opacity: 0;
     visibility: hidden;
     z-index: -1;
+  }
 
-    .offset-menu {
-      transform: translateX(-100%);
+  &.is-shown {
+    .offset-menu-wrapper {
+      animation: transformXAnim $duration * 1.25;
+
+      @include media-breakpoint-down(sm) {
+        &:before {
+          content: '\f00d';
+          font-family: $font-awesome;
+          font-weight: 300;
+          position: absolute;
+          top: 1.75rem;
+          right: 2.3rem;
+          font-size: 2rem;
+          color: $colors--dark !important;
+          z-index: 9999;
+          line-height: 1;
+        }
+      }
     }
   }
 
@@ -34,6 +51,59 @@
         overflow-y: auto;
         padding-right: 2rem;
         margin-top: 1rem;
+
+        @include media-breakpoint-down(sm) {
+          max-height: calc(var(--vh) * 60);
+          overflow-y: auto;
+        }
+
+        [data-color] {
+          a {
+            position: relative;
+            padding-left: 1rem;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 3px;
+              bottom: 0;
+            }
+          }
+        }
+
+        [data-color='orange'] {
+          a {
+            &:before {
+              background-color: $colors--yellow-orange;
+            }
+          }
+        }
+
+        [data-color='green'] {
+          a {
+            &:before {
+              background-color: $colors--light-green;
+            }
+          }
+        }
+
+        [data-color='azure'] {
+          a {
+            &:before {
+              background-color: $colors--azure;
+            }
+          }
+        }
+
+        [data-color='seafoam'] {
+          a {
+            &:before {
+              background-color: $colors--main-green;
+            }
+          }
+        }
       }
 
       &-item {
@@ -94,7 +164,7 @@
         background-color: $colors--white;
 
         @include media-breakpoint-up(md) {
-          width: 75vw;
+          width: 50vw;
           height: 100%;
         }
       }
