@@ -28,6 +28,9 @@ $colors--pinkish-grey-two: #cecaca;
 $colors--yellow-orange: #e6a500;
 $colors--azure: #09ade2;
 
+$colors--light-grey-blue: #87c2cc;
+$colors--pale-grey: #ecf0f4;
+
 $bgColorMap: (
   pale-teal: #8bcbc8,
   windows-blue: #2e93a4,
@@ -68,6 +71,10 @@ $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e
 .bg {
   @include color-modifiers;
 
+  &-aqua-blue {
+    background-color: $colors--aqua-blue;
+  }
+
   &-dark-green-blue {
     background-color: rgba(36, 100, 100, 0.3);
   }
@@ -80,5 +87,9 @@ $bgColors: #8bcbc8, #2e93a4, #ecc7c0, #fdae84, #e18453, #037f8c, #05a6a6, #e6e6e
 
   &--dark {
     color: $colors--dark !important;
+  }
+
+  &--main-green {
+    color: $colors--main-green !important;
   }
 }

@@ -9,6 +9,7 @@
   font-size: 2.4rem;
   color: $colors--black-two;
   font-weight: bold;
+  letter-spacing: 0.048rem;
 
   @include media-breakpoint-up(md) {
     font-size: 2.2rem;
@@ -143,6 +144,10 @@
 
   &-xhuge {
     font-size: 2.4rem !important;
+  }
+
+  &-3rem {
+    font-size: 3rem !important;
   }
 }
 

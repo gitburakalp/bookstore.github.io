@@ -412,3 +412,40 @@ $(window).on('load', function () {
     $('body').removeClass('is-loading');
   }, 500);
 });
+
+var themeSliders = [];
+
+$('.theme-slider').each(function (idx, e) {
+  var config = {
+    observer: true,
+    observeParents: true,
+    slidesPerView: 2.75,
+    spaceBetween: '7%',
+    freeMode: true,
+    containerModifierClass: 'theme-slider--',
+    wrapperClass: 'theme-wrapper',
+    slideClass: 'theme-slide',
+    slideActiveClass: 'theme-slide--active',
+    slideNextClass: 'theme-slide--next',
+    slidePrevClass: 'theme-slide--prev',
+    navigation: {
+      prevEl: $(this).parent().find('.slider-controls--prev'),
+      nextEl: $(this).parent().find('.slider-controls--next'),
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+
+      1024: {
+        slidesPerView: 4,
+      },
+
+      1280: {
+        slidesPerView: 5,
+      },
+    },
+  };
+
+  themeSliders[idx] = new Swiper($(this), config);
+});

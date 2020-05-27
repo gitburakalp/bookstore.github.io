@@ -1,0 +1,81 @@
+.read-book-cards {
+  position: relative;
+  border-radius: 1rem;
+  background-color: $colors--aqua-blue;
+
+  padding: 4rem 2.6rem;
+
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+
+  > * {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+
+    @include media-breakpoint-down(sm) {
+      + * {
+        margin-top: 5rem;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      + * {
+        margin-left: 5rem;
+      }
+    }
+  }
+
+  .book-cover {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: -6px;
+      bottom: 0;
+      box-shadow: 12px 14px 0px 6px $colors--black;
+      border-radius: 5px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      left: -3px;
+      bottom: 10px;
+      box-shadow: 13px 13px 0px 6px $colors--white;
+      border-radius: 5px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .img {
+      padding-bottom: 300 / 200 * 100%;
+      border-radius: 5px;
+      z-index: 9;
+    }
+
+    @include media-breakpoint-up(md) {
+      $mw: calcPercent(200, 536) * 1%;
+      flex: 0 0 $mw;
+      max-width: $mw;
+    }
+
+    &-content {
+      flex-basis: 0;
+      flex-grow: 1;
+      width: auto;
+      max-width: 100%;
+    }
+
+    &-title {
+      font-size: 3rem;
+      color: $colors--black;
+      line-height: 1.17;
+      font-weight: bold;
+    }
+  }
+}
