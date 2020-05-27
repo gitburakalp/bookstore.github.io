@@ -443,6 +443,7 @@ $('.theme-slider').each(function (idx, e) {
 
       1280: {
         slidesPerView: 5,
+        spaceBetween: 48,
       },
     },
   };

@@ -58,17 +58,21 @@
       z-index: 9;
     }
 
-    @include media-breakpoint-up(md) {
-      $mw: calcPercent(200, 536) * 1%;
-      flex: 0 0 $mw;
-      max-width: $mw;
+    $mw: calcPercent(200, 536) * 1%;
+    flex: 0 0 $mw;
+    max-width: $mw;
+
+    @include media-breakpoint-down(sm) {
+      margin: 0 auto;
     }
 
     &-content {
-      flex-basis: 0;
-      flex-grow: 1;
-      width: auto;
-      max-width: 100%;
+      @include media-breakpoint-up(md) {
+        flex-basis: 0;
+        flex-grow: 1;
+        width: auto;
+        max-width: 100%;
+      }
     }
 
     &-title {
