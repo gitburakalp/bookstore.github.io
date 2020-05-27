@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  if (!$('body').hasClass('homepage')) {
+  if (!$('body').hasClass('homepage') && !$('body').hasClass('mode--payment')) {
     $('body').append("<i class='prev-icon'></i>");
   }
 

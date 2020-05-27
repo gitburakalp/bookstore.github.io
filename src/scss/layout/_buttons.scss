@@ -125,6 +125,16 @@
     padding-left: 6rem;
     text-align: left;
   }
+
+  &--windows-blue {
+    font-size: 1.4rem;
+    border: 1px solid $colors--dodger-blue;
+    color: $colors--azul;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 1;
+    padding: 0.8rem;
+  }
 }
 
 .btn--radius-20 {

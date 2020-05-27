@@ -123,6 +123,18 @@ body {
       }
     }
   }
+
+  &.mode--payment {
+    header {
+      display: none;
+    }
+
+    .form-control {
+      font-size: 1.4rem;
+      padding: 1rem 1.5rem;
+      border-color: $colors--pinkish-grey;
+    }
+  }
 }
 
 html,
@@ -307,4 +319,44 @@ form {
 
 .bl-1-solid {
   border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  &-minus,
+  &-plus {
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    width: 3.6rem;
+    height: 3.6rem;
+    border: 1px solid $colors--pinkish-grey;
+
+    &:before {
+      font-family: $font-awesome;
+      font-weight: 300;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: $colors--pinkish-grey;
+    }
+  }
+
+  &-plus {
+    &:before {
+      content: '\f067';
+    }
+
+    + * {
+      margin-left: 1.5rem;
+    }
+  }
+
+  &-minus {
+    &::before {
+      content: '\f068';
+    }
+  }
 }
