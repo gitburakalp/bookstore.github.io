@@ -92,7 +92,7 @@
           left: 0;
           right: 0;
           height: 11.4rem;
-          background: nth($bgColors, random(length($colors)));
+          // background: nth($bgColors, random(length($colors)));
         }
       }
 
@@ -124,26 +124,28 @@
       //   }
       // }
 
-      &:nth-child(2n + 1) {
-        .books-section {
-          &::before {
-            background-color: $colors--beige;
+      &:not([class*='d-md-block']) {
+        &:nth-child(3n + 1) {
+          .books-section {
+            &::before {
+              background-color: $colors--beige;
+            }
           }
         }
-      }
 
-      &:nth-child(2n + 2) {
-        .books-section {
-          &::before {
-            background-color: $colors--pale-teal;
+        &:nth-child(3n + 2) {
+          .books-section {
+            &::before {
+              background-color: $colors--pale-teal;
+            }
           }
         }
-      }
 
-      &:nth-child(2n + 3) {
-        .books-section {
-          &::before {
-            background-color: $colors--peach;
+        &:nth-child(3n + 3) {
+          .books-section {
+            &::before {
+              background-color: $colors--peach;
+            }
           }
         }
       }

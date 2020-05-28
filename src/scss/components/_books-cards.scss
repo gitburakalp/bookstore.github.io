@@ -140,12 +140,39 @@
     padding: 1rem 0;
 
     &.flexible {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      padding: 2px;
+
+      &:not(:hover) {
+        > * {
+          &:last-child {
+            display: none;
+          }
+        }
+      }
 
       > * {
         margin-top: 0;
+
+        &:last-child {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(2px);
+
+          a {
+            width: auto;
+          }
+        }
       }
 
       .btn--black-cart {
