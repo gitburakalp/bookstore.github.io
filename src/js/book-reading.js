@@ -53,6 +53,8 @@ function getPageOfBook(pageNumber, bookID) {
 
       initBookContentMenus();
       getHighlights(pageNumber);
+      getBookmarks(bookID, pageNumber);
+      changePageNumber(pageNumber);
 
       document.addEventListener('mouseup', reportSelection, false);
 
@@ -227,15 +229,15 @@ function getBookmarks(bid, pnum) {
     .then(x => x.json())
     .then(function (x) {
       var data = x.data;
-      var isBookmarked = false;
+      var isBookmarked = [];
 
-      data.forEach(function (e) {
-        if (e.bookId == bid && e.pageNumber == pnum) {
-          isBookmarked = true;
+      data.filter(function (data) {
+        if (data.bookId == bid && data.pageNumber == pnum) {
+          isBookmarked.push(data);
         }
       });
 
-      $('.btn--brackets').addClass('bookmarked');
+      isBookmarked.length != 0 ? $('.add-brackets').addClass('bookmarked') : $('.add-brackets').removeClass('bookmarked');
     })
     .catch(error => {
       console.log(error);
@@ -375,12 +377,10 @@ $('.book-content').each(function () {
 
       $('.book-pagining .current').text(pageNumber);
       $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
-      getBookmarks(bookID, pageNumber);
     },
     create: function (event, ui) {
       getPageOfBook(pageNumber, bookID);
       $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
-      getBookmarks(bookID, pageNumber);
     },
     change: function (e, ui) {
       $('.book-pagining   .current-2').html(ui.value);
@@ -541,7 +541,6 @@ function offsetMenuContentInit(itemType, listObj) {
         var pn = $(this).data('pagenumber');
         getPageOfBook(pn, bookID);
         pageNumber = pn;
-        changePageNumber(pageNumber);
 
         $('.offset-menu-block').removeClass('is-shown');
 

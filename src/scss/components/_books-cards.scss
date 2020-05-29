@@ -171,6 +171,24 @@
 
           a {
             width: auto;
+
+            &.haveDetails {
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+              border-right: none;
+
+              + * {
+                padding: 1.375rem 2.5rem;
+
+                &:before {
+                  content: none;
+                }
+                border-left-color: rgba($colors--black, 0.35);
+
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+              }
+            }
           }
         }
       }

@@ -732,117 +732,142 @@ var type = 3;
 var filterbox =
   '<div class="filter-box"><div class="row"><div class="col-12"><h3 class="title font-size-lg">Filtreler</h3><span class="d-block font-size-xs">Göre Sırala</span></div></div><div class="row"><div class="col-12"></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpAllBooks" name="filter" type="radio"><label for="inpAllBooks">Tüm içeriklerde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpOnlyBookContent" name="filter" type="radio"><label for="inpOnlyBookContent">Sadece kitap isimlerinde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpSomeOpt" name="filter" type="radio"><label for="inpSomeOpt">Sadece içeriklerde ara</label></div></div></div></div>';
 
-$.ui.autocomplete.prototype._renderItem = function (ul, item) {
-  var startElem = null;
+$('#inpSearchBook').each(function () {
+  var $this = $(this);
 
-  if (item.name == 'heading') {
-    startElem = $('<li heading></li>').append(filterbox).appendTo(ul);
+  $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+    var startElem = null;
 
-    $('.filter-box').each(function () {
-      $('#inpAllBooks').removeAttr('checked');
+    if (item.name == 'heading') {
+      startElem = $('<li heading></li>').append(filterbox).appendTo(ul);
 
-      switch (type) {
-        case 3:
-          $('#inpAllBooks').prop('checked', true);
-          break;
+      $('.filter-box').each(function () {
+        $('#inpAllBooks').removeAttr('checked');
 
-        case 1:
-          $('#inpOnlyBookContent').prop('checked', true);
-          break;
+        switch (type) {
+          case 3:
+            $('#inpAllBooks').prop('checked', true);
+            break;
+
+          case 1:
+            $('#inpOnlyBookContent').prop('checked', true);
+            break;
+        }
+
+        $(this)
+          .find("input[type='radio']")
+          .change(function () {
+            var thisID = $(this).attr('id');
+
+            switch (thisID) {
+              case 'inpAllBooks':
+                type = 3;
+                break;
+              case 'inpOnlyBookContent':
+                type = 1;
+                break;
+            }
+          });
+      });
+    } else {
+      startElem = $('<li>')
+        .attr('data-isbook', item.link != '' ? true : false)
+        .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.name + '</div>')
+        .appendTo(ul);
+    }
+    return startElem;
+  };
+
+  $this
+    .autocomplete({
+      appendTo: '.search-block',
+      source: function (request, response) {
+        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+        var arr = request.term.split(' ');
+        var lastKeyword = arr[arr.length - 1];
+
+        var data = [
+          {
+            id: 0,
+            name: 'heading',
+            link: '#',
+          },
+        ];
+
+        $.ajax({
+          url: 'http://api.semendel.com/api/ApiSearch/Suggest',
+          dataType: 'json',
+          data: {
+            keyword: request.term,
+            type: type,
+          },
+          success: function (x) {
+            x.forEach(function (e) {
+              data.push(e);
+            });
+
+            response(data);
+          },
+        });
+      },
+      select: function (event, ui) {
+        window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
+      },
+    })
+    .bind('keydown', function (event) {
+      if (event.keyCode === $.ui.keyCode.ENTER && !$(this).data('selectVisible')) {
+        window.location.href = '/arama/' + $this.val();
       }
-
-      $(this)
-        .find("input[type='radio']")
-        .change(function () {
-          var thisID = $(this).attr('id');
-
-          switch (thisID) {
-            case 'inpAllBooks':
-              type = 3;
-              break;
-            case 'inpOnlyBookContent':
-              type = 1;
-              break;
-          }
-        });
     });
-  } else {
-    startElem = $('<li>')
-      .attr('data-isbook', item.link != '' ? true : false)
-      .append('<div id="ui-id-2" tabindex="-1" class="ui-menu-item-wrapper">' + (item.link != '' ? "<i class='fal fa-book mr-2'></i>" : "<i class='fal fa-bookmark mr-2'></i>") + item.name + '</div>')
-      .appendTo(ul);
-  }
-  return startElem;
-};
-
-$('#inpSearchBook').autocomplete({
-  appendTo: '.search-block',
-  source: function (request, response) {
-    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
-    var arr = request.term.split(' ');
-    var lastKeyword = arr[arr.length - 1];
-
-    var data = [
-      {
-        id: 0,
-        name: 'heading',
-        link: '#',
-      },
-    ];
-
-    $.ajax({
-      url: 'http://api.semendel.com/api/ApiSearch/Suggest',
-      dataType: 'json',
-      data: {
-        keyword: request.term,
-        type: type,
-      },
-      success: function (x) {
-        x.forEach(function (e) {
-          data.push(e);
-        });
-
-        response(data);
-      },
-    });
-  },
-  select: function (event, ui) {
-    window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
-  },
 });
 
-$('#inpSearch').autocomplete({
-  appendTo: '.search-filtered-input',
-  source: function (request, response) {
-    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
-    var arr = request.term.split(' ');
-    var lastKeyword = arr[arr.length - 1];
+$('#inpSearch').each(function () {
+  var $this = $(this);
+  var data = [];
 
-    var data = [
-      {
-        id: 0,
-        name: 'heading',
-        link: '#',
-      },
-    ];
+  $this
+    .autocomplete({
+      appendTo: '.search-filtered-input',
+      source: function (request, response) {
+        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+        var arr = request.term.split(' ');
+        var lastKeyword = arr[arr.length - 1];
 
-    $.ajax({
-      url: 'http://api.semendel.com/api/ApiSearch/Suggest',
-      dataType: 'json',
-      data: {
-        keyword: request.term,
-        type: type,
-      },
-      success: function (x) {
-        x.forEach(function (e) {
-          data.push(e);
+        $.ajax({
+          url: 'http://api.semendel.com/api/ApiSearch/Result',
+          dataType: 'json',
+          data: {
+            keyword: request.term,
+            type: 3,
+          },
+          success: function (x) {
+            x.forEach(function (e) {
+              if (e.bookId == bookID) {
+                data.push(e);
+              }
+            });
+
+            response(data);
+          },
         });
-
-        response(data);
       },
-    });
-  },
-  select: function (event, ui) {
-    window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
-  },
+      select: function (event, ui) {
+        console.log(ui);
+
+        getPageOfBook(ui.item.page, bookID);
+        $('.btn--search').siblings('.popovers').removeClass('is-shown');
+      },
+    })
+    .data('ui-autocomplete')._renderItem = function (ul, item) {
+    $(ul).addClass('underbordered-list');
+    return $('<li>')
+      .append(
+        '<div class="collapsed-contents"><div class="form-row"><div class="col-10"><p class="description font-size-sm">' +
+          item.descriptionClear +
+          '</p></div><div class="col-2 text-center"><h3 class="font-weight-medium"><a href="/oku/yirmi-besinci-mektub-yasin-suresinin-tefsiri-3-cild-46-516?keyword=tesadüf" target="_blank">Sayfa ' +
+          item.page +
+          '</a></h3></div></div></div>',
+      )
+      .appendTo(ul);
+  };
 });

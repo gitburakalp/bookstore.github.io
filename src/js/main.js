@@ -450,3 +450,79 @@ $('.theme-slider').each(function (idx, e) {
 
   themeSliders[idx] = new Swiper($(this), config);
 });
+
+$('.underbordered-list .books-cards .books-cards__content > *:last-child > a:nth-child(1)').each(function () {
+  if ($(this).siblings().length != 0) {
+    $(this).addClass('haveDetails');
+  }
+});
+
+$('.underbordered-list').each(function () {
+  var $this = $(this);
+  var ww = $(window).outerWidth();
+
+  if (ww < 768) {
+    if ($this.find('li').length >= 10) {
+      $this.addClass('isMore-active');
+
+      var $item = $this.find('li');
+      var moreBtn = '<div class="text-center my-3"><a class="btn font-size-sm show-more"><span class="more">Daha Fazla Sonuç</span><span class="less">Daha Az Sonuç</span></a></div>';
+
+      if ($item.length > 10) {
+        $(moreBtn).insertAfter($this);
+      }
+
+      $this.find('li:lt(10)').fadeIn();
+    }
+  }
+});
+
+$('.show-more').on('click', function (e) {
+  e.preventDefault();
+  var $this = $(this);
+
+  var $list = $this.parent().prev();
+
+  var max = 10;
+  var hiddenLength = $list.find('li:hidden').length;
+
+  if (hiddenLength == 0) {
+    $list.find('li').removeAttr('style');
+    $list.find('li:hidden:lt(' + max + ')').fadeIn();
+  } else {
+    $list.find('li:hidden:lt(' + max + ')').fadeIn();
+  }
+
+  var lastOffset = $list.find('li:visible:last').offset().top;
+
+  $('html,body').animate(
+    {
+      scrollTop: lastOffset > 2000 ? lastOffset / 1.375 : lastOffset / 2,
+    },
+    1000,
+  );
+
+  if ($list.find('li:hidden').length == 0) {
+    $this.removeClass('show-more');
+  } else {
+    $this.addClass('show-more');
+  }
+});
+
+$('.btn--trigger-filter').on('click', function () {
+  var ww = $(window).outerWidth();
+
+  if (ww < 768) {
+    $('.category-aside').addClass('is-shown');
+  }
+});
+
+$('.category-aside').on('click', function (e) {
+  var ww = $(window).outerWidth();
+
+  if (ww < 768) {
+    if ($(e.target).closest('.underbordered-list').length == 0) {
+      $(this).removeClass('is-shown');
+    }
+  }
+});
