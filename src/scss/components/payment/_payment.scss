@@ -1,0 +1,145 @@
+.payment {
+  @include media-breakpoint-down(sm) {
+    padding-top: 0 !important;
+  }
+
+  .product {
+    &-info {
+      .description {
+        color: rgba($colors--black, 0.5);
+        letter-spacing: 0.024rem;
+        line-height: 1.2;
+        font-size: 1.5rem;
+      }
+
+      .books-section {
+        @include media-breakpoint-down(sm) {
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+      }
+    }
+  }
+
+  &-continue {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to top, #ffffff 50%, rgba(255, 255, 255, 0) 93%);
+    z-index: 999;
+    height: 110px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+
+    .btn {
+      font-size: 1rem;
+      border: 1px solid $colors--warm-grey;
+      border-radius: 5px;
+      padding: 0.9rem 2rem;
+      min-width: 77px;
+      background-color: $colors--white;
+
+      + * {
+        margin-left: 2.5rem;
+      }
+    }
+  }
+}
+
+.payment-info-block {
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    > * {
+      position: relative;
+      min-height: 1px;
+      width: auto;
+    }
+
+    .product-row {
+      $w: calcPercent(414, 1226) * 1%;
+
+      flex: 0 0 $w;
+      max-width: $w;
+    }
+
+    .product-info {
+      $w: calcPercent(745, 1226) * 1%;
+      flex: 0 0 $w;
+      max-width: $w;
+
+      > *:nth-child(1) {
+        min-height: 14vw;
+      }
+    }
+  }
+}
+
+.product {
+  &-row {
+    display: flex;
+    flex-flow: wrap;
+
+    @include media-breakpoint-down(sm) {
+      align-items: center;
+    }
+
+    > * {
+      position: relative;
+      min-height: 1px;
+      width: 100%;
+
+      + * {
+        margin-top: 1rem;
+      }
+    }
+
+    .cover-block {
+      $w: calcPercent(154, 345) * 1%;
+
+      flex: 0 0 $w;
+      max-width: $w;
+
+      .img {
+        padding-bottom: 230 / 154 * 100%;
+
+        @extend %book;
+      }
+
+      + * {
+        margin-left: 1rem;
+      }
+    }
+
+    .content-block {
+      flex-basis: 0;
+      flex-grow: 1;
+      width: auto;
+      max-width: 100%;
+
+      text-align: center;
+
+      .title {
+        font-size: 2rem;
+        color: rgba($colors--dark, 0.75);
+
+        + * {
+          margin-top: 1rem;
+        }
+
+        &.sub {
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: rgba($colors--dark, 0.5);
+        }
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ a {
 
 body {
   @include media-breakpoint-down(sm) {
-    &:not(.homepage) {
+    &:not(.homepage):not(.mode--payment) {
       header {
         > * {
           > * {

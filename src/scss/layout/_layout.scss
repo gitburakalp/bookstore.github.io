@@ -70,7 +70,7 @@ body {
     }
   }
 
-  &:not(.homepage) {
+  &:not(.homepage):not(.mode--payment) {
     @include media-breakpoint-down(sm) {
       header + * {
         padding-top: 0 !important;
@@ -125,8 +125,21 @@ body {
   }
 
   &.mode--payment {
-    header {
-      display: none;
+    @include media-breakpoint-down(sm) {
+      header {
+        > * {
+          display: none;
+        }
+      }
+
+      main {
+        padding-top: 0;
+
+        .container {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
     }
 
     .form-control {

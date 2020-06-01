@@ -1,0 +1,19 @@
+.payment-header {
+  position: relative;
+
+  @include media-breakpoint-down(sm) {
+    padding: 2.5rem 1.5rem;
+    background-color: $colors--pale-grey-three;
+  }
+
+  .title {
+    @include media-breakpoint-up(md) {
+      &-block {
+        padding: 2.5rem 5rem;
+        background-color: $colors--pale-grey-three;
+      }
+
+      font-size: 3rem;
+    }
+  }
+}

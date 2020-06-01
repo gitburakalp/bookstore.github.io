@@ -870,6 +870,7 @@ $('#inpSearch').each(function () {
       },
     })
     .data('ui-autocomplete')._renderItem = function (ul, item) {
+    $(ul).empty();
     $(ul).addClass('underbordered-list');
     return $('<li>')
       .append(

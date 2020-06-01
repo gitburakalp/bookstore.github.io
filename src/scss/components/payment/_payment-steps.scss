@@ -1,0 +1,131 @@
+.payment-steps {
+  @include media-breakpoint-down(sm) {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    background-color: $colors--pale-grey-three;
+  }
+
+  + * {
+    padding: 2rem 0;
+  }
+
+  .steps-list {
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    counter-reset: section;
+
+    @include media-breakpoint-up(md) {
+      justify-content: space-between;
+      width: 50%;
+      margin: 0 auto;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc((100% - (1rem + 1.4rem)) / 2);
+        height: 2px;
+        left: 3rem;
+        right: 3rem;
+        background-color: $colors--grey;
+      }
+    }
+
+    &-item {
+      position: relative;
+      min-height: 1px;
+      width: auto;
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+        flex-direction: column;
+
+        &.active {
+          &::before {
+            background-color: $colors--dark;
+          }
+        }
+      }
+
+      &::before {
+        counter-increment: section;
+        content: counter(section);
+        font-weight: bold;
+        line-height: 1;
+
+        @include media-breakpoint-up(md) {
+          width: 3.8rem;
+          height: 3.8rem;
+          border-radius: 50%;
+          background-color: $colors--grey;
+          color: $colors--white;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.2rem;
+          margin: 0 auto;
+        }
+      }
+
+      span {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: $colors--charcoal;
+        font-weight: 500;
+
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 1rem;
+        }
+
+        @include media-breakpoint-up(md) {
+          display: block;
+          color: $colors--warm-grey;
+          font-weight: bold;
+          margin-top: 1rem;
+        }
+      }
+
+      @include media-breakpoint-down(sm) {
+        min-width: 40px;
+        border-bottom: 6px solid;
+
+        &::before {
+          position: absolute;
+          left: 3rem;
+          font-size: 3rem;
+          bottom: 0.75rem;
+        }
+
+        &:not(.active) {
+          span {
+            display: none;
+          }
+
+          &:before {
+            font-size: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0.5rem;
+          }
+
+          opacity: 0.5;
+          color: $colors--silver-two;
+        }
+
+        &.active {
+          padding-top: 2rem;
+          padding-left: calc(3rem + 3rem);
+          flex-basis: 0;
+          flex-grow: 1;
+          width: auto;
+          max-width: 100%;
+        }
+      }
+
+      + * {
+        margin-left: 4px;
+      }
+    }
+  }
+}
