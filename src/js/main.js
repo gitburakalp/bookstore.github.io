@@ -526,3 +526,11 @@ $('.category-aside').on('click', function (e) {
     }
   }
 });
+
+$('.header-list-item:last-child').on('click', function () {
+  var ww = $(window).outerWidth();
+
+  if (ww < 768) {
+    $('.search-block').addClass('is-shown');
+  }
+});

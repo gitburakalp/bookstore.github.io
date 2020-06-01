@@ -58,6 +58,10 @@ body {
     }
 
     .col--aside {
+      @include media-breakpoint-down(sm) {
+        margin-top: 3rem;
+      }
+
       > * {
         + * {
           margin-top: 3rem;

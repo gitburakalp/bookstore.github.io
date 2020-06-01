@@ -367,6 +367,8 @@
     }
 
     &.is-shown {
+      display: block !important;
+
       position: fixed;
       top: 0;
       left: 0;

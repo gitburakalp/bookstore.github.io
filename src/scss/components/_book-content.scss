@@ -179,6 +179,30 @@
     letter-spacing: 0.019rem;
     color: $colors--charcoal;
 
+    + span {
+      span {
+        position: absolute;
+        left: 50%;
+        transition: all $duration * 4;
+        font-size: 1.2rem;
+        transform: translate(-50%, 0%) !important;
+        opacity: 0;
+        color: $black;
+        padding: 2px;
+        box-shadow: 0 0 3px rgba($colors--dark, 0.35);
+        border-radius: 5px;
+        z-index: 9999;
+      }
+
+      &.ui-state-active {
+        span {
+          display: inline-block;
+          transform: translate(-50%, -120%) !important;
+          opacity: 1;
+        }
+      }
+    }
+
     @include media-breakpoint-up(md) {
       font-size: 1.4rem;
     }
@@ -207,5 +231,30 @@
 
   &:hover {
     color: rgba($colors--dark, 0.35) !important;
+  }
+}
+
+.row.heading {
+  position: relative;
+
+  &:before {
+    content: '';
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    height: 7px;
+  }
+
+  span {
+    display: inline-block;
+    background-color: $colors--white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: bold;
+    transition-duration: 0s !important;
   }
 }

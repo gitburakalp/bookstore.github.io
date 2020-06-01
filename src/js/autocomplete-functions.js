@@ -785,7 +785,8 @@ $('#inpSearchBook').each(function () {
         var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
         var arr = request.term.split(' ');
         var lastKeyword = arr[arr.length - 1];
-
+        arr.pop();
+        //var previousKeyword = arr.length > 0 ? arr.join(" ") : "test";
         var data = [
           {
             id: 0,
@@ -798,14 +799,25 @@ $('#inpSearchBook').each(function () {
           url: 'http://api.semendel.com/api/ApiSearch/Suggest',
           dataType: 'json',
           data: {
-            keyword: request.term,
+            keyword: lastKeyword,
             type: type,
           },
           success: function (x) {
+            //response($.map(x, function (item) {
+            //    return {
+
+            //        //uri: item.uri,
+            //        label: previousKeyword + " " + item.name,
+            //        value: previousKeyword + " " + item.name,
+            //        name: previousKeyword + " " + item.name,
+            //        link: item.link,
+            //        id: item.id
+            //    };
+            //}));
+
             x.forEach(function (e) {
               data.push(e);
             });
-
             response(data);
           },
         });
@@ -820,7 +832,6 @@ $('#inpSearchBook').each(function () {
       }
     });
 });
-
 $('#inpSearch').each(function () {
   var $this = $(this);
   var data = [];

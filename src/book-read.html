@@ -19,6 +19,24 @@
                     <h3 class="offset-menu-title">
                         Fihrist
                     </h3>
+                </li>
+                <li class="offset-menu-item" data-item-type="bookmarks">
+                    <h3 class="offset-menu-title">
+                        Ayraçlarım
+                    </h3>
+                </li>
+                <li class="offset-menu-item" data-item-type="notes">
+                    <h3 class="offset-menu-title">
+                        Notlarım
+                    </h3>
+                </li>
+            </ul>
+            <div class="offset-menu-contents">
+                <div class="offset-menu-content fihrist">
+                    <select class="form-control mt-2 mb-4">
+                        <option value="">Tüm Kitaplarım</option>
+                    </select>
+
                     <div class="row my-4 align-items-center">
                         <div class="col-8 col-md-4">
                             <input id="inpPageNumber" class="form-control" placeholder="Sayfa Numarası Giriniz" />
@@ -27,31 +45,16 @@
                             <a class="load-page">Sayfaya Git</a>
                         </div>
                     </div>
-                    <div class="offset-menu-content">
-                        <select class="form-control mt-2 mb-4">
-                            <option value="">Tüm Kitaplarım</option>
-                        </select>
 
-                        <ul class="underbordered-list"></ul>
-                    </div>
-                </li>
-                <li class="offset-menu-item" data-item-type="bookmarks">
-                    <h3 class="offset-menu-title">
-                        Ayraçlarım
-                    </h3>
-                    <div class="offset-menu-content">
-                        <ul class="underbordered-list"></ul>
-                    </div>
-                </li>
-                <li class="offset-menu-item" data-item-type="notes">
-                    <h3 class="offset-menu-title">
-                        Notlarım
-                    </h3>
-                    <div class="offset-menu-content">
-                        <ul class="underbordered-list"></ul>
-                    </div>
-                </li>
-            </ul>
+                    <ul class="underbordered-list"></ul>
+                </div>
+                <div class="offset-menu-content bookmarks">
+                    <ul class="underbordered-list"></ul>
+                </div>
+                <div class="offset-menu-content notes">
+                    <ul class="underbordered-list"></ul>
+                </div>
+            </div>
         </div>
     </div>
     <header class="header">
@@ -168,6 +171,10 @@
     <main class="main">
         <section class="container">
             <div class="row no-gutter-on-mobile">
+                <input type="hidden" id="hdnBookId" value="23">
+                <input type="hidden" id="hdnPage" value="1">
+                <input type="hidden" id="hdnFirstPageForRead" value="8">
+                <input type="hidden" id="hdnBaseUrl" value="/oku/tesettur-risalesinin-serhi-13-">
                 <div class="col-12 col-md-8 col-xl-9">
                     <div class="main-section">
                         <div class="book-read-block">
@@ -1011,7 +1018,42 @@
     <!-- <script src="js/vendors/jquery.mark.min.js"></script> -->
     <script src="https://rawgit.com/julmot/mark.js/master/dist/jquery.mark.js"></script>
     <script src="js/autocomplete-functions.js"></script>
+    <script src="js/site.js"></script>
+    <script type="text/javascript">
+
+        // let userToken = getCookie('_jwt');
+        //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1ODk5NzQ3OTUsImV4cCI6MTU5MDU3OTU5NSwiaWF0IjoxNTg5OTc0Nzk1fQ.JOwyP0a-98nPt6vJowjliqckgvG3QaZd6zzeM4LNX2w';
+        let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1OTEwMTk2MTAsImV4cCI6MTU5MTYyNDQxMCwiaWF0IjoxNTkxMDE5NjEwfQ.-wCsiZysHtlNA1p9x24GO7cdydMjtawoFQ4GL8tDgh0';
+
+        let isAuthenticated = userToken === undefined ? false : true;
+        if (!isAuthenticated) {
+            $.ajax({
+                type: "POST",
+                url: 'http://beta.semendel.com/User/SignupForGuest',
+                dataType: 'json',
+                data: {},
+                success: function () {
+                    userToken = getCookie('_jwt');
+                    console.log(userToken);
+                },
+            });
+        }
+        let bookID = $("#hdnBookId").val();
+        setLastReadBook(bookID);
+        let pageNumber = parseInt($("#hdnPage").val());
+        let firstPageForRead = parseInt($("#hdnFirstPageForRead").val());
+        if (pageNumber < firstPageForRead)
+            pageNumber = firstPageForRead;
+        let note = 'Test Note';
+        let color = 'black';
+
+        var startIndex = pageNumber;
+        var lastIndex = 300;
+        let totalPageNumber = lastIndex;
+        var baseUrl = $("#hdnBaseUrl").val();
+    </script>
     <script src="js/book-reading.js"></script>
+
 </body>
 
 </html>

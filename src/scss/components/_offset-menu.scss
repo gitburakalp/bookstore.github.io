@@ -51,6 +51,8 @@
       padding: 2.3rem;
       transition: transform $duration;
 
+      justify-content: center;
+
       &-content {
         position: relative;
         overflow: hidden;
@@ -114,10 +116,25 @@
         }
       }
 
+      &-contents {
+        position: relative;
+        padding: 0 2.3rem;
+
+        > * {
+          &:not(.is-shown) {
+            display: none;
+          }
+
+          &.is-shown {
+            animation: fadeIn $duration;
+          }
+        }
+      }
+
       &-item {
         position: relative;
         min-height: 1px;
-        width: 100%;
+        width: auto;
         transition: opacity $duration * 3;
 
         cursor: pointer;
@@ -149,7 +166,7 @@
 
       > * {
         + * {
-          margin-top: 2rem;
+          margin-left: 2rem;
         }
       }
 

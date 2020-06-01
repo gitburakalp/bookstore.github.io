@@ -1,15 +1,15 @@
 let prevUrl = '/';
 
-let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1OTA0MDY5MDEsImV4cCI6MTU5MTAxMTcwMSwiaWF0IjoxNTkwNDA2OTAxfQ.voj4YI4xD4y1Not4dpH381g-Hgv_nsS4cTV-wfSRWkk';
-let bookID = 22;
-let pageNumber = 1;
-let note = 'Test Note';
-let color = 'black';
+// let userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjYiLCJuYmYiOjE1OTA0MDY5MDEsImV4cCI6MTU5MTAxMTcwMSwiaWF0IjoxNTkwNDA2OTAxfQ.voj4YI4xD4y1Not4dpH381g-Hgv_nsS4cTV-wfSRWkk';
+//let bookID = 22;
+//let pageNumber = 1;
+//let note = 'Test Note';
+//let color = 'black';
 
-var startIndex = 89;
-var lastIndex = 189;
+//var startIndex = 89;
+//var lastIndex = 189;
 
-let totalPageNumber = 0;
+//let totalPageNumber = 0;
 var ww = $(window).outerWidth();
 var mouseupEvent = 'touchend mouseup';
 var markLabels = [];
@@ -27,6 +27,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 function getPageOfBook(pageNumber, bookID) {
   var url = 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber;
+  var $bookContent = $('.book-content');
 
   fetch(url)
     .then(function (response) {
@@ -35,21 +36,23 @@ function getPageOfBook(pageNumber, bookID) {
     .then(function (data) {
       var ww = $(window).outerWidth();
 
-      $('.book-content').empty();
+      $bookContent.empty();
 
-      if (ww < 1279.99) {
-        data.forEach(function (e, idx) {
-          $('.book-content').append(e.pageContent);
-        });
-      } else {
-        data.forEach(function (e, idx) {
+      data.forEach(function (e, idx) {
+        if (idx == 0) {
+          $bookContent.append("<div class='row heading'><div class='col-12 text-center'><span>" + e.bookName + '</span></div></div>');
+        }
+
+        if (ww < 1279.99) {
+          $bookContent.append(e.pageContent);
+        } else {
           if (idx == 0) {
-            $('.book-content').append("<div class='row'><div class='col-12 col-xl-6'>" + e.pageContent + '</div></div>');
+            $bookContent.append("<div class='row'><div class='col-12 col-xl-6'>" + e.pageContent + '</div></div>');
           } else {
-            $('.book-content > .row > .col-12').after("<div class='col-12 col-xl-6'>" + e.pageContent + '</div>');
+            $('.book-content > .row:not(.heading) > .col-12').after("<div class='col-12 col-xl-6'>" + e.pageContent + '</div>');
           }
-        });
-      }
+        }
+      });
 
       initBookContentMenus();
       getHighlights(pageNumber);
@@ -302,9 +305,24 @@ function submenuInit() {
 }
 
 function changePageNumber(pageNumber) {
-  $('.book-pagining').find('.current').text(pageNumber);
-  $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
-  $('.book-pagining').slider('value', pageNumber);
+  var currentPage = $('.book-pagining').find('.current');
+  var leftPage = $('.book-pagining .pagesLeft i');
+  currentPage.text(pageNumber);
+  leftPage.text(totalPageNumber - pageNumber);
+  $('.book-pagining').slider(
+    {
+      slide: function (event, ui) {
+        var currentIndex = $('.book-pagining').slider('values', 0);
+        currentPage.text(currentIndex);
+        leftPage.text(totalPageNumber - currentIndex);
+
+        $('.ui-slider-handle').empty();
+        $('.ui-slider-handle').prepend('<span>' + currentIndex + '</span>');
+      },
+    },
+    'value',
+    pageNumber,
+  );
 
   if ($(window).outerWidth() < 768) {
     if (document.documentElement.scrollTop || document.body.scrollTop > 500) {
@@ -318,15 +336,15 @@ function changePageNumber(pageNumber) {
   }
 }
 
-$.ajax({
-  dataType: 'json',
-  url: 'http://api.semendel.com/api/list/book?bookId=43',
-  type: 'get',
-  async: false,
-  success: function (data) {
-    totalPageNumber = data.pageCount;
-  },
-});
+//$.ajax({
+//    dataType: 'json',
+//    url: 'http://api.semendel.com/api/list/book?bookId=43',
+//    type: 'get',
+//    async: false,
+//    success: function (data) {
+//        totalPageNumber = data.pageCount;
+//    },
+//});
 
 document.addEventListener('DOMContentLoaded', function () {
   setMinHeight();
@@ -561,11 +579,15 @@ function offsetMenuInit() {
     var $thisActiveMenuItem = $this.find('.offset-menu-item.active');
     var $offsetMenuBlock = $this.closest('.offset-menu-block');
 
+    var $offsetMenuContents = $('.offset-menu-contents');
+
     $thisActiveMenuItem.each(function () {
       var $this = $(this);
       var thisItemType = $(this).data('item-type');
 
-      offsetMenuContentInit(thisItemType, $this.find('.underbordered-list'));
+      $offsetMenuContents.find('.' + thisItemType).addClass('is-shown');
+
+      offsetMenuContentInit(thisItemType, $('.offset-menu-contents').find('.' + thisItemType + ' .underbordered-list'));
     });
 
     $thisMenuItem.on('click', function () {
@@ -573,9 +595,13 @@ function offsetMenuInit() {
       var thisItemType = $(this).data('item-type');
 
       if (!$this.hasClass('active')) {
+        $offsetMenuContents.find('> *').removeClass('is-shown');
         $thisMenuItem.removeClass('active');
         $this.addClass('active');
-        offsetMenuContentInit(thisItemType, $this.find('.underbordered-list'));
+
+        $offsetMenuContents.find('.' + thisItemType).addClass('is-shown');
+
+        offsetMenuContentInit(thisItemType, $('.offset-menu-contents').find('.' + thisItemType + ' .underbordered-list'));
       } else {
         // $this.toggleClass('active');
       }
@@ -584,7 +610,7 @@ function offsetMenuInit() {
     $offsetMenuBlock.on('click', function (e) {
       var target = $(e.target);
 
-      if (target.closest('.offset-menu').length == 0) {
+      if (target.closest('.offset-menu').length == 0 && target.closest('.offset-menu-contents').length == 0) {
         $offsetMenuBlock.removeClass('is-shown');
       }
     });
