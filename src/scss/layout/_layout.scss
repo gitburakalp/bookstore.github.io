@@ -221,6 +221,12 @@ main {
         }
       }
     }
+
+    &--success {
+      @include media-breakpoint-up(lg) {
+        max-width: 720px;
+      }
+    }
   }
 
   .row {
@@ -381,4 +387,8 @@ form {
       content: '\f068';
     }
   }
+}
+
+.border-none {
+  border: none !important;
 }

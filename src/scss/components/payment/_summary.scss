@@ -21,7 +21,7 @@
 
     .books-cards {
       &__img {
-        $mw: calcPercent(40, 346) * 1%;
+        $mw: 40px;
 
         flex: 0 0 $mw;
         max-width: $mw;

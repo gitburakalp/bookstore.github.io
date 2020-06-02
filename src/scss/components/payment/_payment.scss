@@ -212,12 +212,45 @@
 
   .cards {
     position: relative;
-    background-color: rgba($colors--warm-grey, 0.25);
-    box-shadow: 0 0 4px rgba($colors--warm-grey, 0.25);
+    background-color: $colors--pale-grey;
     min-height: vw(150, 375);
 
     @include media-breakpoint-up(md) {
       min-height: 150px;
+    }
+  }
+
+  &-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include media-breakpoint-down(sm) {
+      padding-top: 5rem !important;
+
+      > * {
+        &:nth-child(1) {
+          order: 1;
+        }
+
+        &:nth-child(2) {
+          order: 3;
+        }
+
+        &:nth-child(3) {
+          order: 2;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-top: vw(98, 1920);
+    }
+
+    > * {
+      + * {
+        margin-top: 3rem;
+      }
     }
   }
 }
