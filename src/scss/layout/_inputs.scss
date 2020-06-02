@@ -17,6 +17,7 @@
   &:focus {
     outline: none;
     box-shadow: none;
+    border-color: $colors--black !important;
   }
 
   &.bg-dirty-white-40 {
@@ -28,6 +29,10 @@
       background-color: $colors--white;
     }
   }
+}
+
+select.form-control {
+  line-height: 1.25 !important;
 }
 
 textarea.form-control {
@@ -172,5 +177,64 @@ textarea.form-control {
       left: 20px;
       box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
     }
+  }
+}
+
+.checkbox {
+  position: relative;
+  appearance: none;
+  outline: none;
+
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: $colors--dark;
+  border-radius: 0.8rem;
+  border: 1px solid $colors--dark;
+  transition-duration: 200ms;
+
+  &.transparent {
+    background-color: transparent !important;
+  }
+
+  &:checked {
+    &::after {
+      content: '\f00c';
+      position: absolute;
+      font-family: $font-awesome;
+      font-weight: 300;
+      font-size: 1.4rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $colors--white;
+    }
+
+    + * {
+      color: $colors--dark;
+    }
+  }
+
+  &.transparent {
+    border-color: rgba($colors--black, 0.5);
+
+    &:checked {
+      &::after {
+        color: rgba($colors--black, 0.5);
+      }
+    }
+  }
+
+  &.br-0 {
+    border-radius: 0 !important;
+  }
+
+  + * {
+    position: relative;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.019rem;
+    color: rgba($colors--black, 0.5);
+    margin-left: 0.5rem;
   }
 }

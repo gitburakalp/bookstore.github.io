@@ -46,3 +46,28 @@ $('#btnSignUp').on('click', function () {
 $('img').on('error', function () {
   $(this).attr('src', '/storage/default.png');
 });
+
+$('.payment-tabs').each(function () {
+  var $tabItems = $(this).find('.payment-tabs-item');
+  var $paymentTabsContents = $('.payment-tabs-contents');
+  var activeCss = 'active';
+
+  $tabItems.each(function () {
+    var $this = $(this);
+
+    if ($this.hasClass(activeCss)) {
+      var thisProp = $this.data('prop');
+      $paymentTabsContents.find('.' + thisProp).addClass(activeCss);
+    }
+  });
+
+  $tabItems.on('click', function () {
+    var $this = $(this);
+    $tabItems.removeClass(activeCss);
+    $this.addClass(activeCss);
+
+    var thisProp = $this.data('prop');
+    $paymentTabsContents.find('> *').removeClass(activeCss);
+    $paymentTabsContents.find('.' + thisProp).addClass(activeCss);
+  });
+});

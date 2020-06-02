@@ -72,7 +72,7 @@
                                             </span>
                                         </div>
                                         <div class="col-3 pl-0">
-                                            <select class="form-control">
+                                            <select class="form-control p-3 lh-1">
                                                 <option>1 Adet</option>
                                                 <option>2 Adet</option>
                                                 <option>3 Adet</option>
@@ -248,11 +248,179 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="payment-bill-block">
-
+                        <div class="payment-bill-block d-none">
+                            <div class="title-block bottom-line d-md-none text-center">
+                                <div class="title font-size-xl">
+                                    Teslimat ve Ödeme Bilgileri
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <input type="checkbox" id="chk1" class="checkbox" checked>
+                                            <label for="chk1"> Teslim Adresi</label>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <input type="checkbox" id="chk2" class="checkbox">
+                                            <label for="chk2"> Fatura Adresi</label>
+                                        </div>
+                                        <div class="col-12 col-lg mt-5 mt-lg-0">
+                                            <p class="description op-05">
+                                                Lütfen ödeme hakkında iletişim kurulacak bilgileri girin.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input class="form-control" placeholder="İsim">
+                                        </div>
+                                        <div class="col-12">
+                                            <input class="form-control" placeholder="Soyisim">
+                                        </div>
+                                        <div class="col-12">
+                                            <input class="form-control" placeholder="E-Posta Adresi">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input class="form-control" placeholder="Identity">
+                                        </div>
+                                        <div class="col-12">
+                                            <select class="form-control">
+                                                <option value="">Ülke Seçiniz</option>
+                                                <option value="TR">Türkiye</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <input class="form-control" placeholder="Telefon Numarası">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <textarea rows="6" class="form-control" placeholder="Adress"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="checkbox" id="chk3" class="checkbox transparent br-0">
+                                            <label for="chk3"> Fatura Bilgilerimde Kullan</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="payment-block">
-
+                        <div class="payment-block d-none">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul class="payment-tabs">
+                                        <li class="payment-tabs-item active" data-prop="credit-card">
+                                            Kredi Kartı
+                                        </li>
+                                        <li class="payment-tabs-item" data-prop="money-order">
+                                            Banka Havalesi
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="payment-tabs-contents">
+                                <div class="credit-card">
+                                    <div class="row align-items-end">
+                                        <div class="col-12 col-lg-4">
+                                            <input type="text" class="form-control"
+                                                placeholder="Kart Üzerindeki İsim Soyisim">
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <input type="text" class="form-control" placeholder="Kredi Kartı Numarası">
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <div class="form-row">
+                                                <div class="col-12">
+                                                    <p class="description op-05">
+                                                        Valid Date
+                                                    </p>
+                                                </div>
+                                                <div class="col-4 mt-4">
+                                                    <select class="form-control">
+                                                        <option value="">Ay</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4 mt-4">
+                                                    <select class="form-control">
+                                                        <option value="">Yıl</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4 mt-4">
+                                                    <input class="form-control" placeholder="CVV" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3 mx-auto mt-5">
+                                            <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                                ÖDEME YAP
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="money-order">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-8">
+                                            <h4 class="title font-size-xl ">
+                                                IBAN AÇIKLAMASI
+                                            </h4>
+                                            <p class="description op-05 mt-4">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+                                                repudiandae autem blanditiis perspiciatis itaque sunt aliquid
+                                                reprehenderit laudantium! Temporibus harum neque nisi. Possimus,
+                                                eligendi accusantium! Illum totam tempora provident quae?
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-4">
+                                            <div class="cards p-5">
+                                                <h4 class="title font-size-sm">
+                                                    BANK 2
+                                                </h4>
+                                                <h5 class="title font-size-md">
+                                                    HESAP NO:<br> XXX-XXX-XX
+                                                </h5>
+                                                <h5 class="title font-size-md">
+                                                    IBAN NO:<br> TR 0000000000000000000
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <div class="cards p-5">
+                                                <h4 class="title font-size-sm">
+                                                    BANK 3
+                                                </h4>
+                                                <h5 class="title font-size-md">
+                                                    HESAP NO:<br> XXX-XXX-XX
+                                                </h5>
+                                                <h5 class="title font-size-md">
+                                                    IBAN NO:<br> TR 0000000000000000000
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3 mx-auto mt-5">
+                                            <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                                                ÖDEMEYİ TAMAMLA
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="payment-continue">
                             <a href="#!" class="btn">GERİ</a>
@@ -261,7 +429,103 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-xl-3">
-
+                    <div class="summary">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="title">
+                                    SEPETİMDEKİLER
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row summary-products">
+                            <div class="col-12">
+                                <div class="books-cards align-items-center">
+                                    <div class="books-cards__img">
+                                        <figure class="img">
+                                            <img src="https://via.placeholder.com/40x60" alt="Book">
+                                        </figure>
+                                    </div>
+                                    <div class="books-cards__content">
+                                        <h3>
+                                            Book Title
+                                        </h3>
+                                        <span class="count">
+                                            1 ADET
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row summary-products">
+                            <div class="col-12">
+                                <div class="books-cards align-items-center">
+                                    <div class="books-cards__img">
+                                        <figure class="img">
+                                            <img src="https://via.placeholder.com/40x60" alt="Book">
+                                        </figure>
+                                    </div>
+                                    <div class="books-cards__content">
+                                        <h3>
+                                            Book Title
+                                        </h3>
+                                        <span class="count">
+                                            1 ADET
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row summary-products">
+                            <div class="col-12">
+                                <div class="books-cards align-items-center">
+                                    <div class="books-cards__img">
+                                        <figure class="img">
+                                            <img src="https://via.placeholder.com/40x60" alt="Book">
+                                        </figure>
+                                    </div>
+                                    <div class="books-cards__content">
+                                        <h3>
+                                            Book Title
+                                        </h3>
+                                        <span class="count">
+                                            1 ADET
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row summary-products">
+                            <div class="col-12">
+                                <div class="books-cards align-items-center">
+                                    <div class="books-cards__img">
+                                        <figure class="img">
+                                            <img src="https://via.placeholder.com/40x60" alt="Book">
+                                        </figure>
+                                    </div>
+                                    <div class="books-cards__content">
+                                        <h3>
+                                            Book Title
+                                        </h3>
+                                        <span class="count">
+                                            1 ADET
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row total-row">
+                            <div class="col-12">
+                                <div class="total-block">
+                                    <div class="col-8">
+                                        TOPLAM ÖDEME
+                                    </div>
+                                    <div class="col-4 text-right total-cost">
+                                        200 <span>TRY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -420,6 +684,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/autocomplete-functions.js"></script>
+    <script src="js/site.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHmCyPwmR0gwm-picbqfK9acDDsm-SVc0&callback=getMap"></script>
 </body>

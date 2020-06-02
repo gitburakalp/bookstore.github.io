@@ -235,6 +235,22 @@ document.addEventListener('DOMContentLoaded', function () {
   $('.books-slider').each(function () {
     var slideCssClass = 'books-block';
     var isBookDetailsSlide = $(this).closest('.book-details').length != 0 ? true : false;
+    var isProductSlide = $(this).closest('.product-info').length != 0 ? true : false;
+
+    var b768 = 4;
+    var b1600 = 5;
+    var b768sb = 0;
+    var b1600sb = 0;
+
+    if (isBookDetailsSlide) {
+      b768 = 3;
+      b1600 = 4;
+    } else if (isProductSlide) {
+      b768 = 3;
+      b1600 = 3;
+      b768sb = 40;
+      b1600sb = 40;
+    }
 
     var config = {
       slidesPerView: 2.5,
@@ -250,10 +266,12 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       breakpoints: {
         1600: {
-          slidesPerView: isBookDetailsSlide ? 4 : 5,
+          slidesPerView: b1600,
+          spaceBetween: b1600sb,
         },
         768: {
-          slidesPerView: isBookDetailsSlide ? 3 : 4,
+          slidesPerView: b768,
+          spaceBetween: b768sb,
         },
       },
     };

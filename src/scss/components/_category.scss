@@ -92,7 +92,13 @@
           left: 0;
           right: 0;
           height: 11.4rem;
-          // background: nth($bgColors, random(length($colors)));
+        }
+
+        .slider-controls--prev-white,
+        .slider-controls--next-white {
+          top: unset;
+          bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
+          transform: translateY(0);
         }
       }
 

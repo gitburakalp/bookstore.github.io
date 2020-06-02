@@ -1,0 +1,99 @@
+.summary {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid $colors--warm-grey;
+  padding: 2.5rem;
+
+  > .row {
+    &:nth-child(1) {
+      + * {
+        margin-top: 5rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .title {
+      font-size: 1.8rem;
+      letter-spacing: 0.425rem;
+      text-align: center;
+    }
+
+    .books-cards {
+      &__img {
+        $mw: calcPercent(40, 346) * 1%;
+
+        flex: 0 0 $mw;
+        max-width: $mw;
+      }
+
+      &__content {
+        @for $i from 1 to 6 {
+          h#{$i} {
+            font-size: 1.2rem;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .count {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          display: inline-block;
+          right: 1rem;
+          font-size: 1.2rem;
+          font-weight: 500;
+          letter-spacing: 0.019rem;
+        }
+      }
+    }
+  }
+
+  &-products {
+    position: relative;
+
+    + .summary-products {
+      .books-cards {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px dashed rgba($colors--warm-grey, 0.5);
+      }
+    }
+  }
+
+  .total-row {
+    .total-block {
+      display: flex;
+      flex-flow: wrap;
+      align-items: center;
+
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid $colors--black;
+
+      font-size: 1.4rem;
+      color: $colors--dark;
+
+      > * {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .total-cost {
+      font-size: 2.4rem;
+      font-weight: bold;
+      letter-spacing: -0.12rem;
+
+      span {
+        font-size: 1.4rem;
+        letter-spacing: -0.07rem;
+      }
+    }
+  }
+}

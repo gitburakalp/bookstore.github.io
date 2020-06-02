@@ -70,26 +70,6 @@
   &-section {
     position: relative;
 
-    &.bg-shelf--sm {
-      padding-bottom: 6.2rem;
-
-      @include media-breakpoint-down(sm) {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 6.2rem;
-        background-image: url($storageSrc + 'svg/bg-shelf.png');
-        z-index: 9;
-      }
-    }
-
     @include media-breakpoint-up(md) {
       $pd: (1.9rem + 3.7rem + 2.6rem);
 
@@ -116,6 +96,31 @@
         bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
         transform: translateY(0);
       }
+    }
+
+    &.bg-shelf--sm {
+      padding-bottom: 6.2rem;
+
+      @include media-breakpoint-down(sm) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 6.2rem;
+        background-image: url($storageSrc + 'svg/bg-shelf.png');
+        z-index: 9;
+      }
+    }
+
+    .slider-controls--prev-white,
+    .slider-controls--next-white {
+      top: calc((100% - 6.2rem) / 2);
     }
   }
 
