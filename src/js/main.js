@@ -552,3 +552,9 @@ $('.header-list-item:last-child').on('click', function () {
     $('.search-block').addClass('is-shown');
   }
 });
+
+$(window).on('load', function () {
+  $('.prev-icon,.btn--prev').on('click', function (e) {
+    window.location.href = prevUrl;
+  });
+});

@@ -23,6 +23,9 @@ let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+var bookmarks = [];
+var noteHighlights = [];
+
 // Text selecting functions
 
 function getPageOfBook(pageNumber, bookID) {
@@ -55,8 +58,10 @@ function getPageOfBook(pageNumber, bookID) {
       });
 
       initBookContentMenus();
-      getHighlights(pageNumber);
-      getBookmarks(bookID, pageNumber);
+      bookmarkCheck();
+
+      noteHighlights.length != 0 ? setHighlights() : '';
+
       changePageNumber(pageNumber);
 
       document.addEventListener('mouseup', reportSelection, false);
@@ -114,8 +119,6 @@ function reportSelection() {
   if (selectedText != '') {
     startIndex = selOffsets.start;
     lastIndex = selOffsets.end;
-
-    // console.log(startIndex, lastIndex);
   }
 }
 
@@ -132,6 +135,7 @@ function postToHighlight(note, color, startIdx, lastIdx) {
     })
     .then(function (e) {
       getHighlights(pageNumber);
+      setHighlights();
     })
     .catch(error => {
       console.log(error);
@@ -169,8 +173,6 @@ function initBookContentMenus() {
     e.preventDefault();
     var thisColor = $(this).data('color');
 
-    // console.log(obj.text, thisColor, startIndex, lastIndex);
-
     postToHighlight(obj.text, thisColor, startIndex, lastIndex);
 
     $('.popovers--sm').removeClass('is-shown');
@@ -187,11 +189,20 @@ function listUserBooks() {
     .then(x => console.log(x));
 }
 
-function getHighlights(pageNumber) {
-  var $bookContent = $('.book-content, .book-content *'),
-    results = [],
-    ranges = [];
+var val = false;
 
+Object.defineProperty(window, 'isLoadedHighlight', {
+  get: function () {
+    return val;
+  },
+  set: function (v) {
+    val = !!v;
+
+    setHighlights();
+  },
+});
+
+function getHighlights() {
   fetch('http://api.semendel.com/api/identity/listusernote', {
     headers: {
       Authorization: `Bearer ${userToken}`,
@@ -199,28 +210,39 @@ function getHighlights(pageNumber) {
   })
     .then(x => x.json())
     .then(function (x) {
-      x.data.forEach(function (e) {
-        if (e.bookId == bookID && e.pageNumber === pageNumber) {
-          results.push({ offset: e.startIndex, length: e.lastIndex - e.startIndex, color: e.color, note: e.note });
-          ranges.push({ start: e.startIndex, length: e.lastIndex - e.startIndex });
-        }
-      });
+      noteHighlights = [];
+      noteHighlights = x;
 
-      $bookContent.markRanges(ranges, {
-        debug: true,
-        separateWordSearch: false,
-        each: function (node, range) {
-          var start = range.start;
-          found =
-            results.find(function (el) {
-              return el.offset === start;
-            }) || null;
-          if (found) {
-            node.classList.add(found.color);
-          }
-        },
-      });
+      isLoadedHighlight = true;
     });
+}
+
+function setHighlights() {
+  var $bookContent = $('.book-content, .book-content *'),
+    results = [],
+    ranges = [];
+
+  noteHighlights.data.forEach(function (e) {
+    if (e.bookId == bookID && e.pageNumber === pageNumber) {
+      results.push({ offset: e.startIndex, length: e.lastIndex - e.startIndex, color: e.color, note: e.note });
+      ranges.push({ start: e.startIndex, length: e.lastIndex - e.startIndex });
+    }
+  });
+
+  $bookContent.markRanges(ranges, {
+    debug: true,
+    separateWordSearch: false,
+    each: function (node, range) {
+      var start = range.start;
+      found =
+        results.find(function (el) {
+          return el.offset === start;
+        }) || null;
+      if (found) {
+        node.classList.add(found.color);
+      }
+    },
+  });
 }
 
 function getBookmarks(bid, pnum) {
@@ -232,19 +254,27 @@ function getBookmarks(bid, pnum) {
     .then(x => x.json())
     .then(function (x) {
       var data = x.data;
-      var isBookmarked = [];
 
-      data.filter(function (data) {
-        if (data.bookId == bid && data.pageNumber == pnum) {
-          isBookmarked.push(data);
-        }
-      });
-
-      isBookmarked.length != 0 ? $('.add-brackets').addClass('bookmarked') : $('.add-brackets').removeClass('bookmarked');
+      bookmarks = [];
+      bookmarks = data;
     })
     .catch(error => {
       console.log(error);
     });
+}
+
+function bookmarkCheck() {
+  var isBookmarked = [];
+
+  if (bookmarks.length != 0) {
+    bookmarks.filter(function (data) {
+      if (data.bookId == bookID && data.pageNumber == pageNumber) {
+        isBookmarked.push(data);
+      }
+    });
+  }
+
+  isBookmarked.length != 0 ? $('.add-brackets').addClass('bookmarked') : $('.add-brackets').removeClass('bookmarked');
 }
 
 function setMinHeight() {
@@ -397,7 +427,10 @@ $('.book-content').each(function () {
       $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
     },
     create: function (event, ui) {
+      getBookmarks(bookID, pageNumber);
+      getHighlights(pageNumber);
       getPageOfBook(pageNumber, bookID);
+
       $('.book-pagining .pagesLeft i').text(totalPageNumber - pageNumber);
     },
     change: function (e, ui) {
@@ -416,8 +449,6 @@ $('.add-brackets').on('click', function (e) {
   function bookmarkFunction() {
     var url = isBookmarked ? 'http://api.semendel.com/api/identity/removeuserbracket?bookId=' + bookID + '&page=' + pageNumber : 'http://api.semendel.com/api/identity/adduserbracket?bookId=' + bookID + '&page=' + pageNumber;
 
-    console.log(url);
-
     fetch(url, {
       headers: {
         Authorization: `Bearer ${userToken}`,
@@ -432,6 +463,7 @@ $('.add-brackets').on('click', function (e) {
   }
 
   bookmarkFunction();
+  bookmarkCheck();
 });
 
 $('.book-content').bind('touchmove', function (event) {
@@ -509,8 +541,11 @@ $('.popovers--sm').each(function () {
 
 submenuInit();
 
-function offsetMenuContentInit(itemType, listObj) {
+function offsetMenuContentInit(itemType, listObj, $relatedItem) {
   var url = '';
+  var errorMessages = { bookmarks: 'Eklenmiş Ayraç Bulunmamaktadır.', notes: 'Eklenmiş Not Bulunmamaktadır.' };
+
+  $('.error-message').remove();
 
   switch (itemType) {
     case 'notes':
@@ -569,6 +604,11 @@ function offsetMenuContentInit(itemType, listObj) {
           250,
         );
       });
+
+      $('.offset-menu-content').removeClass('is-loading');
+      $relatedItem.addClass('is-shown');
+
+      $relatedItem.find('.underbordered-list > *').length == 0 ? $relatedItem.append('<p class="error-message">' + errorMessages[itemType] + '</p>') : '';
     });
 }
 
@@ -595,13 +635,14 @@ function offsetMenuInit() {
       var thisItemType = $(this).data('item-type');
 
       if (!$this.hasClass('active')) {
+        $offsetMenuContents.find('> *').removeClass('is-loading');
         $offsetMenuContents.find('> *').removeClass('is-shown');
         $thisMenuItem.removeClass('active');
         $this.addClass('active');
 
-        $offsetMenuContents.find('.' + thisItemType).addClass('is-shown');
+        $offsetMenuContents.find('.' + thisItemType).addClass('is-loading');
 
-        offsetMenuContentInit(thisItemType, $('.offset-menu-contents').find('.' + thisItemType + ' .underbordered-list'));
+        offsetMenuContentInit(thisItemType, $('.offset-menu-contents').find('.' + thisItemType + ' .underbordered-list'), $offsetMenuContents.find('.' + thisItemType));
       } else {
         // $this.toggleClass('active');
       }
@@ -678,10 +719,6 @@ function handleTouchMove(evt) {
   xDown = null;
   yDown = null;
 }
-
-$('.prev-icon,.btn--prev').on('click', function (e) {
-  window.location.href = prevUrl;
-});
 
 $('.next-page').on('click', function () {
   if (pageNumber < totalPageNumber) {
