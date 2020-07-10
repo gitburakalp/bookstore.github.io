@@ -583,3 +583,27 @@ $('.shoping-cart').each(function () {
     },
   });
 });
+
+$('.increment-buttons').each(function () {
+  var $this = $(this);
+  var $btnMinus = $(this).find('[data-prop="minus]');
+  var $btnPlus = $(this).find('[data-prop="plus"]');
+  var $inpBookCount = $(this).find('[data-prop="book-count"]');
+
+  var max = $(this).data('max');
+
+  $(this)
+    .find('button')
+    .on('click', function () {
+      var isMinus = $(this).data('prop') == 'minus';
+      var bookCount = $inpBookCount.val();
+
+      if (isMinus && bookCount != 1) {
+        bookCount--;
+      } else if (!isMinus && bookCount < max) {
+        bookCount++;
+      }
+
+      $inpBookCount.val(bookCount);
+    });
+});

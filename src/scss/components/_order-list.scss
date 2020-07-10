@@ -1,0 +1,149 @@
+.order-list {
+  &.cart {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .order-list-item {
+      border-radius: 5px;
+
+      @include media-breakpoint-up(md) {
+        flex: 0 0 50%;
+        max-width: 50%;
+
+        &:nth-child(2) {
+          margin-top: 0;
+          border: none;
+          padding-top: 0;
+        }
+      }
+    }
+
+    .increment-buttons {
+      display: inline-flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      border: 1px solid rgba($color: #000000, $alpha: 0.15);
+      border-radius: 5px;
+      font-size: 1.2rem;
+      background-color: rgba($color: #000000, $alpha: 0.025);
+
+      > * {
+        display: flex;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+        appearance: none;
+
+        &:active {
+          transform: scale(0.85);
+          background-color: rgba($color: #000000, $alpha: 0.025);
+        }
+      }
+
+      input {
+        width: 40px;
+        border: 1px solid rgba($color: #000000, $alpha: 0.15);
+        border-top: none;
+        border-bottom: none;
+        text-align: center;
+      }
+    }
+
+    p {
+      text-shadow: 0 0 1px rgba($color: #000000, $alpha: 0.25);
+      line-height: 1.27;
+    }
+
+    .book {
+      &-title {
+        @include media-breakpoint-up(md) {
+          font-family: 'Roboto', sans-serif;
+          font-size: 1.6rem;
+          color: $colors--pure-black;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .book-img {
+      @include media-breakpoint-up(md) {
+        $mw: 125px;
+
+        flex: 0 0 $mw;
+        max-width: $mw;
+
+        .img {
+          box-shadow: 0 4px 4px rgba($color: #000000, $alpha: 0.25);
+        }
+      }
+    }
+  }
+
+  &-item {
+    + * {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba($color: #000000, $alpha: 0.25);
+    }
+
+    .book {
+      &-img {
+        $mw: calcPercent(104, 375) * 1%;
+
+        flex: 0 0 $mw;
+        max-width: $mw;
+
+        .img {
+          padding-bottom: 215 / 144 * 100%;
+        }
+
+        @include media-breakpoint-up(md) {
+          $mw: 84px;
+
+          flex: 0 0 $mw;
+          max-width: $mw;
+        }
+      }
+
+      &-title {
+        position: relative;
+        max-width: 230px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        font-family: $font-family-base;
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: rgba($colors--black, 0.75);
+
+        + * {
+          margin-top: 0.5rem;
+        }
+      }
+
+      &-description {
+        position: relative;
+        max-width: 230px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        font-family: $font-family-base;
+        font-weight: 400;
+        font-size: 1.3rem;
+        letter-spacing: 0.25px;
+
+        + * {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

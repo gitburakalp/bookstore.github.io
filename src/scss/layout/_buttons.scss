@@ -1,6 +1,21 @@
 .btn {
   font-size: 1.4rem;
 
+  &.psv {
+    font-family: $font-family-base;
+    font-weight: 400;
+    background-color: rgba($color: #000000, $alpha: 0.015);
+    box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: 0.25);
+  }
+
+  &.pri {
+    font-family: $font-family-base;
+    background-color: $colors--main-green;
+    box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: 0.25);
+    color: $colors--white;
+    font-weight: 600;
+  }
+
   &--more {
     &::after {
       content: '>>';
@@ -134,6 +149,11 @@
     text-align: center;
     line-height: 1;
     padding: 1rem;
+  }
+
+  &--underline {
+    text-decoration: underline !important;
+    line-height: 1.47;
   }
 }
 

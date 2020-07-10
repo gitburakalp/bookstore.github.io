@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="css/main.min.css?v=1.03" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>BookStore</title>
+  </head>
+
+  <body class="homepage is-loading">
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="header-top">
+              <div class="header-top-logo">
+                <img class="img-fluid" src="https://via.placeholder.com/92x59" alt="Main Brand" />
+              </div>
+              <div class="header-top-right">
+                <div class="row">
+                  <div class="col-12 col-md-auto d-none d-md-block">
+                    <a href="tel:+05334882702" class=""> <b>WhatsApp İletişim Hattı:</b> +90 (533) 488 27 02 </a>
+                  </div>
+                  <div class="col-12 col-md-auto">
+                    <ul class="header-list ml-lg-4">
+                      <li class="header-list-item">
+                        <a id="btnSignIn" href="#!" class="header-list-link">
+                          Şifremi Unuttum
+                        </a>
+                      </li>
+                      <li class="header-list-item">
+                        <a id="btnSignUp" href="#!" class="header-list-link" data-toggle="modal" data-target="#accountModal">
+                          Üye Ol
+                        </a>
+                      </li>
+                      <li class="header-list-item shoping-cart">
+                        <a class="header-list-link"> <i class="fal fa-shopping-cart"></i> Sepetim </a>
+                        <div class="shoping-cart-block">
+                          <div class="shoping-cart-wrapper">
+                            <div class="cart-header">
+                              Sepetim
+                            </div>
+                            <div class="cart-main">
+                              <div class="empty d-none">
+                                <i class="fal fa-shopping-basket"></i>
+                                <p class="empty-desc">
+                                  Sepetiniz Boş.
+                                </p>
+                              </div>
+                              <ul class="order-list">
+                                <li class="order-list-item">
+                                  <div class="form-row text-left align-items-center">
+                                    <div class="col-auto book-img">
+                                      <a class="order-list-link">
+                                        <figure class="img">
+                                          <img src="https://via.placeholder.com/144x215" alt="" />
+                                        </figure>
+                                      </a>
+                                    </div>
+                                    <div class="col">
+                                      <h4 class="book-title">
+                                        Book Title
+                                      </h4>
+                                      <p class="book-description">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur commodi aut doloribus possimus
+                                      </p>
+                                      <div class="form-row align-items-center">
+                                        <div class="col-auto">
+                                          <p class="book-description">1 Adet</p>
+                                        </div>
+                                        <div class="col-auto ml-auto">
+                                          <b class="font-size-lg text-color--main-green">
+                                            25 TRY
+                                          </b>
+                                        </div>
+                                        <div class="col-12 mt-4 text-right">
+                                          <a class="btn font-size-sm d-inline-block psv ml-auto">Ürünü Kaldır</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="order-list-item">
+                                  <div class="form-row text-left align-items-center">
+                                    <div class="col-auto book-img">
+                                      <a class="order-list-link">
+                                        <figure class="img">
+                                          <img src="https://via.placeholder.com/144x215" alt="" />
+                                        </figure>
+                                      </a>
+                                    </div>
+                                    <div class="col">
+                                      <h4 class="book-title">
+                                        Book Title
+                                      </h4>
+                                      <p class="book-description">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur commodi aut doloribus possimus
+                                      </p>
+                                      <div class="form-row align-items-center">
+                                        <div class="col-auto">
+                                          <p class="book-description">1 Adet</p>
+                                        </div>
+                                        <div class="col-auto ml-auto">
+                                          <b class="font-size-lg text-color--main-green">
+                                            25 TRY
+                                          </b>
+                                        </div>
+                                        <div class="col-12 mt-4 text-right">
+                                          <a class="btn font-size-sm d-inline-block psv ml-auto">Ürünü Kaldır</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="order-list-item">
+                                  <div class="form-row text-left align-items-center">
+                                    <div class="col-auto book-img">
+                                      <a class="order-list-link">
+                                        <figure class="img">
+                                          <img src="https://via.placeholder.com/144x215" alt="" />
+                                        </figure>
+                                      </a>
+                                    </div>
+                                    <div class="col">
+                                      <h4 class="book-title">
+                                        Book Title
+                                      </h4>
+                                      <p class="book-description">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur commodi aut doloribus possimus
+                                      </p>
+                                      <div class="form-row align-items-center">
+                                        <div class="col-auto">
+                                          <p class="book-description">1 Adet</p>
+                                        </div>
+                                        <div class="col-auto ml-auto">
+                                          <b class="font-size-lg text-color--main-green">
+                                            25 TRY
+                                          </b>
+                                        </div>
+                                        <div class="col-12 mt-4 text-right">
+                                          <a class="btn font-size-sm d-inline-block psv ml-auto">Ürünü Kaldır</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="cart-footer">
+                              <div class="form-row">
+                                <div class="col-6">
+                                  <a class="btn d-block text-center psv">
+                                    Sepete Git
+                                  </a>
+                                </div>
+                                <div class="col-6">
+                                  <a class="btn d-block text-center pri">
+                                    Siparişi Tamamla
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center d-md-none">
+          <div class="col-7">
+            <h4 class="title">
+              Kütüphanemiz
+            </h4>
+            <p class="description font-size-sm">
+              Sitemizde bulunan yayınları online ücretsiz okuyabilirsiniz.
+            </p>
+          </div>
+          <div class="col-auto">
+            <div class="icons-block with-notification">
+              <i class="icons icons--library"></i>
+              <span class="update-notification bottom-left">21</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="header-main">
+              <div class="header-logo">
+                <img class="img-fluid" src="https://via.placeholder.com/105x68" alt="Main Logo" />
+              </div>
+              <div class="header-main-right">
+                <div class="header-main-menu">
+                  <ul class="header-list">
+                    <li class="header-list-item active">
+                      <a href="#!" class="header-list-link">
+                        <i class="icons icons--home"></i>
+                        Ana Sayfa
+                      </a>
+                    </li>
+                    <li class="header-list-item">
+                      <a href="#!" class="header-list-link">
+                        <i class="icons icons--libraries"></i>
+                        Kitaplık
+                      </a>
+                    </li>
+                    <li class="header-list-item">
+                      <a href="#!" class="header-list-link">
+                        <i class="icons icons--shopping-cart"></i>
+                        Kitapçı
+                      </a>
+                    </li>
+                    <li class="header-list-item d-md-none">
+                      <a href="#!" class="header-list-link">
+                        <i class="icons icons--search-white"></i>
+                        Arama
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="search-block">
+                  <a class="cancel-btn">
+                    İptal
+                  </a>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <i class="icons icons--search"></i>
+                    </div>
+                    <input id="inpSearchBook" class="form-control" placeholder="Kitaba, Yazar veya ISBN göre ara" />
+                    <div class="input-group-prepend p-0">
+                      <a class="btn--filter" role="button">
+                        <i class="icons icons--filter"></i>
+                      </a>
+                      <!-- <div class="popover popover--filter">
+                                            <div class="arrow"></div>
+                                            <div class="popover-inner">
+                                                <div class="popover-content">
+                                                    <div class="filter-popover">
+                                                        <h5 class="title">
+                                                            Filtreler
+                                                        </h5>
+                                                        <span class="d-block">
+                                                            Göre Sırala
+                                                        </span>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpAllBooks" name="filter" type="radio"
+                                                                checked />
+                                                            <label for="inpAllBooks">Tüm kitaplarda ara</label>
+                                                        </div>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpOnlyWord" name="filter" type="radio" />
+                                                            <label for="inpOnlyWord">Sadece tam kelimelerde
+                                                                ara</label>
+                                                        </div>
+                                                        <div class="custom-inputs--radio">
+                                                            <input id="inpSomeOpt" name="filter" type="radio" />
+                                                            <label for="inpSomeOpt">Haşiyelerde de ara</label>
+                                                        </div>
+                                                        <div class="d-block mt-5">
+                                                            <a id="btnFilterAccept" href="#!"
+                                                                class="btn d-block btn--radius-20 font-weight-bold">
+                                                                UYGULA
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="container">
+        <div class="row no-gutter-on-mobile">
+          <div class="col-12 col-md-8 col-xl-9">
+            <div class="main-section">
+              <div class="title-block bottom-lined-text">
+                <div class="row">
+                  <div class="col">
+                    <h2 class="title font-weight-medium">
+                      Sepetim (3 Ürün)
+                    </h2>
+                  </div>
+                  <div class="col-auto">
+                    <a class="btn btn--underline font-weight-medium">Alışverişe Devam Et</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <ul class="order-list cart">
+                    <li class="order-list-item">
+                      <div class="form-row text-left">
+                        <div class="col-auto book-img">
+                          <a class="order-list-link">
+                            <figure class="img">
+                              <img src="https://via.placeholder.com/144x215" alt="" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <div class="form-row">
+                            <div class="col p-3">
+                              <h4 class="book-title">
+                                Book Title
+                              </h4>
+                              <p class="book-description">By<b class="text-color--main-green"> Name Surname</b></p>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-12 col-md pl-3">
+                              <p class="book-description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum expedita vel nulla dolor delectus, quod in explicabo perspiciatis deserunt nemo reprehenderit, dolorum repellat quae cum sequi officia corrupti nisi? Debitis?
+                              </p>
+                              <p class="book-description">
+                                1234 Pages | Türkçe
+                              </p>
+                            </div>
+                            <div class="col col-md-3 text-center ml-md-auto mt-3 mt-md-0">
+                              <div class="increment-buttons" data-max="10">
+                                <button data-prop="minus">
+                                  <i class="fal fa-minus"></i>
+                                </button>
+                                <input id="inpBookCount" value="1" data-prop="book-count" readonly />
+                                <button data-prop="plus">
+                                  <i class="fal fa-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="col col-md-3 text-center mt-3 mt-md-0">
+                              <b class="d-block font-size-md text-line-through op-05">
+                                25 TRY
+                              </b>
+                              <b class="d-block font-size-xl mt-2">
+                                25 TRY
+                              </b>
+                              <a class="btn btn--underline font-weight-medium op-05">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="order-list-item">
+                      <div class="form-row text-left">
+                        <div class="col-auto book-img">
+                          <a class="order-list-link">
+                            <figure class="img">
+                              <img src="https://via.placeholder.com/144x215" alt="" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <div class="form-row">
+                            <div class="col p-3">
+                              <h4 class="book-title">
+                                Book Title
+                              </h4>
+                              <p class="book-description">By<b class="text-color--main-green"> Name Surname</b></p>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-12 col-md pl-3">
+                              <p class="book-description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum expedita vel nulla dolor delectus, quod in explicabo perspiciatis deserunt nemo reprehenderit, dolorum repellat quae cum sequi officia corrupti nisi? Debitis?
+                              </p>
+                              <p class="book-description">
+                                1234 Pages | Türkçe
+                              </p>
+                            </div>
+                            <div class="col col-md-3 text-center ml-md-auto mt-3 mt-md-0">
+                              <div class="increment-buttons" data-max="10">
+                                <button data-prop="minus">
+                                  <i class="fal fa-minus"></i>
+                                </button>
+                                <input id="inpBookCount" value="1" data-prop="book-count" readonly />
+                                <button data-prop="plus">
+                                  <i class="fal fa-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="col col-md-3 text-center mt-3 mt-md-0">
+                              <b class="d-block font-size-md text-line-through op-05">
+                                25 TRY
+                              </b>
+                              <b class="d-block font-size-xl mt-2">
+                                25 TRY
+                              </b>
+                              <a class="btn btn--underline font-weight-medium op-05">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="order-list-item">
+                      <div class="form-row text-left">
+                        <div class="col-auto book-img">
+                          <a class="order-list-link">
+                            <figure class="img">
+                              <img src="https://via.placeholder.com/144x215" alt="" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <div class="form-row">
+                            <div class="col p-3">
+                              <h4 class="book-title">
+                                Book Title
+                              </h4>
+                              <p class="book-description">By<b class="text-color--main-green"> Name Surname</b></p>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-12 col-md pl-3">
+                              <p class="book-description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum expedita vel nulla dolor delectus, quod in explicabo perspiciatis deserunt nemo reprehenderit, dolorum repellat quae cum sequi officia corrupti nisi? Debitis?
+                              </p>
+                              <p class="book-description">
+                                1234 Pages | Türkçe
+                              </p>
+                            </div>
+                            <div class="col col-md-3 text-center ml-md-auto mt-3 mt-md-0">
+                              <div class="increment-buttons" data-max="10">
+                                <button data-prop="minus">
+                                  <i class="fal fa-minus"></i>
+                                </button>
+                                <input id="inpBookCount" value="1" data-prop="book-count" readonly />
+                                <button data-prop="plus">
+                                  <i class="fal fa-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="col col-md-3 text-center mt-3 mt-md-0">
+                              <b class="d-block font-size-md text-line-through op-05">
+                                25 TRY
+                              </b>
+                              <b class="d-block font-size-xl mt-2">
+                                25 TRY
+                              </b>
+                              <a class="btn btn--underline font-weight-medium op-05">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="order-list-item">
+                      <div class="form-row text-left">
+                        <div class="col-auto book-img">
+                          <a class="order-list-link">
+                            <figure class="img">
+                              <img src="https://via.placeholder.com/144x215" alt="" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <div class="form-row">
+                            <div class="col p-3">
+                              <h4 class="book-title">
+                                Book Title
+                              </h4>
+                              <p class="book-description">By<b class="text-color--main-green"> Name Surname</b></p>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-12 col-md pl-3">
+                              <p class="book-description">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum expedita vel nulla dolor delectus, quod in explicabo perspiciatis deserunt nemo reprehenderit, dolorum repellat quae cum sequi officia corrupti nisi? Debitis?
+                              </p>
+                              <p class="book-description">
+                                1234 Pages | Türkçe
+                              </p>
+                            </div>
+                            <div class="col col-md-3 text-center ml-md-auto mt-3 mt-md-0">
+                              <div class="increment-buttons" data-max="10">
+                                <button data-prop="minus">
+                                  <i class="fal fa-minus"></i>
+                                </button>
+                                <input id="inpBookCount" value="1" data-prop="book-count" readonly />
+                                <button data-prop="plus">
+                                  <i class="fal fa-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="col col-md-3 text-center mt-3 mt-md-0">
+                              <b class="d-block font-size-md text-line-through op-05">
+                                25 TRY
+                              </b>
+                              <b class="d-block font-size-xl mt-2">
+                                25 TRY
+                              </b>
+                              <a class="btn btn--underline font-weight-medium op-05">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-xl-3 col--aside"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="title-block bottom-line">
+            <h4 class="title text-uppercase">
+              İletişim Bilgileri
+            </h4>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <h4 class="title">
+                Adres Bilgisi
+              </h4>
+              <p class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam facilis reiciendis illo, dolor unde optio, dicta at repudiandae necessitatibus quia deserunt? Quae ut provident numquam doloremque perspiciatis ducimus, enim beatae.
+              </p>
+
+              <div class="row mt-5">
+                <div class="col-4">
+                  <h4 class="title">
+                    E-Posta
+                  </h4>
+                </div>
+                <div class="col-8">
+                  <p class="description">
+                    example@example.com
+                  </p>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4">
+                  <h4 class="title">
+                    Telefon
+                  </h4>
+                </div>
+                <div class="col-8">
+                  <a href="#!" class="description">
+                    +90 500 123 45 67
+                  </a>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4">
+                  <h4 class="title">
+                    Mobil
+                  </h4>
+                </div>
+                <div class="col-8">
+                  <a href="#!" class="description">
+                    +90 500 123 45 67
+                  </a>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4">
+                  <h4 class="title">
+                    Faks
+                  </h4>
+                </div>
+                <div class="col-8">
+                  <a href="#!" class="description">
+                    +90 500 123 45 67
+                  </a>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-auto">
+                  <h4 class="title">
+                    Whatsapp Danışma Hattı
+                  </h4>
+                </div>
+                <div class="col">
+                  <a href="#!" class="description">
+                    +90 500 123 45 67
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div id="googleMap" class="google-maps"></div>
+            </div>
+            <div class="col-md-3">
+              <textarea rows="16" class="form-control" placeholder="Mesajınız"></textarea>
+            </div>
+            <div class="col-md-3">
+              <form class="subscribe-form">
+                <div class="row">
+                  <div class="col-12">
+                    <input class="form-control" placeholder="Adı ve Soyadı" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input class="form-control" placeholder="E-Posta" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input class="form-control" placeholder="Telefon" />
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col">
+                    <input class="form-control" placeholder="Güvenlik Kodu" />
+                  </div>
+                  <div class="col-auto text-center">
+                    <p class="font-size-md font-weight-bold">
+                      6367070
+                    </p>
+                  </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                  <div class="col-10">
+                    <a href="#!" class="btn d-block btn--radius-20 font-weight-bold">
+                      GÖNDER
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-main">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col-3 text-center">
+                  <a href="#!" class="footer-logo">
+                    <img src="https://via.placeholder.com/162x105" />
+                  </a>
+                </div>
+                <div class="col">
+                  <h4 class="title">
+                    Hakkımızda
+                  </h4>
+
+                  <ul class="footer-main-list">
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Haberler
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Kitap Duyuruları
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Enstitü
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Sesli Dersler
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h4 class="title">
+                    Şirket Hakkında
+                  </h4>
+
+                  <ul class="footer-main-list">
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Bize Ulaşın
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        İade Sözleşmesi
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Gizlilik Politikası
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Mesafeli Satış Sözleşmesi
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h4 class="title">
+                    Mağaza
+                  </h4>
+
+                  <ul class="footer-main-list">
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Kategoriler
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Fiyat Listesi
+                      </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link">
+                        Satış Bilgilendirme
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row mt-6rem">
+                <div class="col-3 text-center">
+                  <p class="copyright-text font-size-sm">
+                    Copyright © 2020
+                  </p>
+                </div>
+                <div class="col text-center">
+                  <ul class="footer-main-list right-list">
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link font-size-sm"> <i class="fab fa-facebook-f mr-2 font-size-lg"></i> Facebook </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link font-size-sm"> <i class="fab fa-twitter mr-2 font-size-xxl"></i> Twitter </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link font-size-sm"> <i class="fab fa-instagram mr-2 font-size-xxl"></i>Instagram </a>
+                    </li>
+                    <li class="footer-main-list-item">
+                      <a href="#!" class="footer-main-list-link font-size-sm"> <i class="fab fa-youtube mr-2 font-size-xxl"></i> Youtube </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-auto footer-main-subscribe">
+              <h4 class="title font-size-huge mb-3">
+                Bizden Haberdar<br />
+                Olmak İster misiniz?
+              </h4>
+
+              <div class="cards bg--white-40">
+                <p class="default">
+                  Aylık bültenimizi alın ve güncellemeleri alın yeni stok, kitapları size tanıtalım
+                </p>
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <input class="form-control font-size-sm" placeholder="İsminiz" />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <input class="form-control font-size-sm" placeholder="E-Postanız" />
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-12 col-md-6">
+                  <a href="#!" class="btn d-block btn--radius-10 btn--black">KAYIT OL</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login & Sign Up Modal -->
+    <div class="modal modal--account fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="accountModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="brand">
+              <img src="https://via.placeholder.com/76x49" alt="Brand" />
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="welcome-screen">
+              <div class="form-row">
+                <div class="col-12">
+                  <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                    Oturumu Aç
+                  </a>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                    Kayıt Ol
+                  </a>
+                </div>
+              </div>
+              <div class="form-row justify-content-center mt-5 pt-3">
+                <div class="col-10">
+                  <a href="#!" class="d-block btn btn--google">
+                    Sign in with Google
+                  </a>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-10">
+                  <a href="#!" class="d-block btn btn--facebook">
+                    Sign in with Facebook
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-body__sign-in">
+              <div class="form-row">
+                <div class="col-12">
+                  <h3 class="title">
+                    Oturum Açın
+                  </h3>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="İsteğe Bağlı Özel Grup Kodu" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="E-Posta" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input type="password" class="form-control bg-dirty-white-40" placeholder="Şifreniz" />
+                </div>
+              </div>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <div class="custom-inputs--checkbox">
+                    <input id="chkRemindMe" type="checkbox" />
+                    <label for="chkRemindMe">Bağlı Kal</label>
+                  </div>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="font-size-sm op-05 line-height-24">
+                    Parolanızı mı unuttunuz?
+                  </a>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                    Oturumu Aç
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-body__sign-up is-shown">
+              <div class="form-row">
+                <div class="col-12">
+                  <h3 class="title">
+                    Kayıt Olun
+                  </h3>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="Adınız & Soyadınız" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="E-Posta" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="Cep Telefonunuz" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="İsteğe Bağlı Grup Özel Kodu (Opsiyonel)" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <input class="form-control bg-dirty-white-40" placeholder="Şifre" />
+                </div>
+              </div>
+              <div class="form-row align-items-center">
+                <div class="col-12">
+                  <div class="custom-inputs--checkbox">
+                    <input id="chkEBullettin" type="checkbox" />
+                    <label for="chkEBullettin">Lütfen aylık bültene üye olun</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-12">
+                  <a href="#!" class="d-block btn btn--radius-20 font-weight-bold">
+                    Kayıt Ol
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendors/jquery.min.js"></script>
+    <script src="js/vendors/jquery-ui.min.js"></script>
+    <script src="js/vendors/popper.min.js"></script>
+    <script src="js/vendors/bootstrap.min.js"></script>
+    <script src="js/vendors/swiper.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/autocomplete-functions.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHmCyPwmR0gwm-picbqfK9acDDsm-SVc0&callback=getMap"></script>
+  </body>
+</html>
