@@ -62,9 +62,9 @@
       flex-direction: column;
       justify-content: center;
       background-color: #eef4e7 !important;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      background-position: center !important;
     }
 
     @include media-breakpoint-up(lg) {
