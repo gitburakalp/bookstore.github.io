@@ -15,12 +15,6 @@
         background-color: $colors--beige;
       }
 
-      &:nth-child(2n + 1) {
-      }
-
-      &:nth-child(3n + 1) {
-      }
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -73,6 +67,10 @@
         }
 
         &-block {
+          position: relative;
+          overflow: hidden;
+          border-radius: 0.5rem;
+
           &:not(:nth-child(2)) {
             transform: scale(0.8);
           }
@@ -96,8 +94,9 @@
 
         .slider-controls--prev-white,
         .slider-controls--next-white {
-          top: unset;
-          bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
+          top: 50%;
+          // top: unset;
+          // bottom: calc(6.2rem + (11.4rem - 3.7rem) / 2);
           transform: translateY(0);
         }
       }
@@ -130,31 +129,31 @@
       //   }
       // }
 
-      &:not([class*='d-md-block']) {
-        &:nth-child(3n + 1) {
-          .books-section {
-            &::before {
-              background-color: $colors--beige;
-            }
-          }
-        }
+      // &:not([class*='d-md-block']) {
+      //   &:nth-child(3n + 1) {
+      //     .books-section {
+      //       &::before {
+      //         background-color: $colors--beige;
+      //       }
+      //     }
+      //   }
 
-        &:nth-child(3n + 2) {
-          .books-section {
-            &::before {
-              background-color: $colors--pale-teal;
-            }
-          }
-        }
+      //   &:nth-child(3n + 2) {
+      //     .books-section {
+      //       &::before {
+      //         background-color: $colors--pale-teal;
+      //       }
+      //     }
+      //   }
 
-        &:nth-child(3n + 3) {
-          .books-section {
-            &::before {
-              background-color: $colors--peach;
-            }
-          }
-        }
-      }
+      //   &:nth-child(3n + 3) {
+      //     .books-section {
+      //       &::before {
+      //         background-color: $colors--peach;
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 }

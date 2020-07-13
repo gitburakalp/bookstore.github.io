@@ -20,28 +20,28 @@
     }
   }
 
-  &-shelf {
-    &--sm {
-      @include media-breakpoint-down(sm) {
-        position: relative;
-        padding-bottom: 6rem;
-        z-index: 2;
+  // &-shelf {
+  //   &--sm {
+  //     @include media-breakpoint-down(sm) {
+  //       position: relative;
+  //       padding-bottom: 6rem;
+  //       z-index: 2;
 
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-image: url($storageSrc + '/svg/bg-shelf.png');
-          height: 6rem;
-        }
+  //       &:after {
+  //         content: '';
+  //         position: absolute;
+  //         bottom: 0;
+  //         left: 0;
+  //         right: 0;
+  //         background-image: url($storageSrc + '/svg/bg-shelf.png');
+  //         height: 6rem;
+  //       }
 
-        background-position: bottom;
-        background-size: 10px;
-      }
-    }
-  }
+  //       background-position: bottom;
+  //       background-size: 10px;
+  //     }
+  //   }
+  // }
 
   &-gray-bordered {
     position: relative;

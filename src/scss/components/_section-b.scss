@@ -1,0 +1,136 @@
+%elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-width: 200px;
+
+  @include media-breakpoint-up(xl) {
+    max-width: 8vw;
+  }
+}
+
+.section-b {
+  position: relative;
+
+  .b {
+    .row {
+      .col {
+        padding-top: 2rem;
+      }
+    }
+
+    &-title {
+      font-family: $ff-sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+
+      @extend %elipsis;
+
+      + * {
+        margin-top: 0.5rem;
+      }
+    }
+
+    &-writer {
+      font-family: $ff-sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: $colors--azure;
+
+      @extend %elipsis;
+
+      + * {
+        margin-top: 1.5rem;
+      }
+    }
+
+    &-description {
+      position: relative;
+      overflow: hidden;
+      font-family: $ff-sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.37;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      @include media-breakpoint-between(md, lg) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .b-img {
+    .img {
+      padding-bottom: 215 / 144 * 100%;
+      border-radius: 0.5rem;
+    }
+
+    flex: 0 0 159px;
+    max-width: 159px;
+
+    @include media-breakpoint-up(md) {
+      $mw: calcPercent(159, 418) * 1%;
+
+      flex: 0 0 $mw;
+      max-width: $mw;
+    }
+  }
+
+  &-w {
+    position: relative;
+
+    display: flex;
+    flex-flow: wrap;
+
+    > * {
+      position: relative;
+      min-height: 1px;
+      width: 100%;
+
+      + * {
+        @include media-breakpoint-down(sm) {
+          margin-top: 14px;
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        $mw: calc((100% / 2) - 2.8rem);
+
+        flex: 0 0 $mw;
+        max-width: $mw;
+
+        + * {
+          margin-left: 1.4rem;
+        }
+      }
+
+      @include media-breakpoint-between(md, lg) {
+        &:nth-child(2n + 1) {
+          margin-left: 0;
+        }
+
+        &:nth-child(n + 3) {
+          margin-top: 3rem;
+        }
+      }
+
+      @include media-breakpoint-up(xl) {
+        $mw: calc((100% / 3) - 2.8rem);
+
+        flex: 0 0 $mw;
+        max-width: $mw;
+
+        &:nth-child(3n + 1) {
+          margin-left: 0;
+        }
+
+        &:nth-child(n + 4) {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}
