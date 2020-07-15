@@ -621,4 +621,28 @@ $('.account-menu').each(function () {
       $('.account-tabs-item').removeClass('active');
       $('.account-tabs-item.' + thisTabItem).addClass('active');
     });
+$('.fw-b-s').each(function () {
+  var config = {
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 28,
+    containerModifierClass: 'fw-b-s--',
+    wrapperClass: 'fw-b-w',
+    slideClass: 'fw-b-b',
+    slideActiveClass: 'fw-b-b--active',
+    slideNextClass: 'fw-b-b--next',
+    slidePrevClass: 'fw-b-b--prev',
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1280: {
+        slidesPerView: 2.75,
+        spaceBetween: 28,
+      },
+    },
+  };
+
+  var slider = new Swiper($(this), config);
 });

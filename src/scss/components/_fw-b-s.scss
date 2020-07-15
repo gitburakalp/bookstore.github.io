@@ -1,0 +1,43 @@
+.fw {
+  &-b {
+    &-s {
+      @extend %slider-container;
+    }
+
+    &-w {
+      @extend %slider-wrapper;
+    }
+
+    &-b {
+      @extend %slider-slide;
+      position: relative;
+      display: block;
+      padding: 2rem;
+      border-radius: 2rem;
+      background: linear-gradient(to bottom, rgba(#93a0a6, 1), rgba(#93a0a6, 0.25));
+
+      .row {
+        align-items: center;
+      }
+
+      * {
+        color: $colors--white;
+        text-shadow: 0 0 1px rgba($colors--black, 0.325);
+      }
+
+      .b {
+        &-title {
+          font-size: 2.4rem;
+        }
+
+        &-writer {
+          font-size: 1.8rem;
+        }
+      }
+
+      .img {
+        border-radius: 2rem;
+      }
+    }
+  }
+}
