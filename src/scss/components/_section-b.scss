@@ -13,6 +13,35 @@
 .section-b {
   position: relative;
 
+  &.mode--3 {
+    .section-b-w {
+      > * {
+        @include media-breakpoint-up(md) {
+          $mw: calc((100% / 3) - 2.8rem);
+
+          flex: 0 0 $mw;
+          max-width: $mw;
+
+          + * {
+            margin-left: 1.4rem;
+          }
+
+          &:nth-child(3) {
+            margin-top: 0;
+          }
+
+          &:nth-child(3n + 1) {
+            margin-left: 0;
+          }
+
+          &:nth-child(n + 4) {
+            margin-top: 3rem;
+          }
+        }
+      }
+    }
+  }
+
   &-w {
     position: relative;
 

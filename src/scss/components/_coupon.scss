@@ -1,0 +1,19 @@
+.coupon {
+  position: relative;
+  border-radius: 1rem;
+  padding: 4rem 2rem;
+  box-shadow: 0 0 4px 0 rgba($color: #000000, $alpha: 0.5);
+  background: linear-gradient(to bottom, $colors--aqua-blue, rgba($colors--aqua-blue, 0.25));
+
+  &-amount {
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 3.6rem;
+      font-weight: 600;
+    }
+  }
+}

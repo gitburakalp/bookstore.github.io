@@ -621,6 +621,8 @@ $('.account-menu').each(function () {
       $('.account-tabs-item').removeClass('active');
       $('.account-tabs-item.' + thisTabItem).addClass('active');
     });
+});
+
 $('.fw-b-s').each(function () {
   var config = {
     observer: true,
