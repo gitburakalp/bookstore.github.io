@@ -16,4 +16,22 @@
       font-weight: 600;
     }
   }
+
+  &-info {
+    font-family: $ff-sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.37;
+    letter-spacing: 0.025rem;
+
+    + * {
+      margin-top: 2rem;
+    }
+  }
+
+  .btn {
+    border: 1px solid $colors--ocean;
+    color: $colors--ocean;
+    font-weight: bold;
+  }
 }
