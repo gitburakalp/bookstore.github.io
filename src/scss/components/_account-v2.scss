@@ -5,6 +5,13 @@
     display: flex;
     flex-direction: column;
 
+    @include media-breakpoint-down(sm) {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      margin-bottom: 2rem;
+    }
+
     > * {
       position: relative;
       min-height: 1px;
@@ -62,6 +69,13 @@
 
   &-tabs {
     position: relative;
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      margin-bottom: 2rem;
+    }
 
     &-item {
       transition: opacity $duration * 2;
