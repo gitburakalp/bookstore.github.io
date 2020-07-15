@@ -607,3 +607,18 @@ $('.increment-buttons').each(function () {
       $inpBookCount.val(bookCount);
     });
 });
+
+$('.account-menu').each(function () {
+  $(this)
+    .find('.account-menu-link')
+    .on('click', function (e) {
+      var $accountMenuItem = $(this).parent();
+      var thisTabItem = $accountMenuItem.data('tabs-item');
+
+      $('.account-menu > *').removeClass('active');
+      $accountMenuItem.addClass('active');
+
+      $('.account-tabs-item').removeClass('active');
+      $('.account-tabs-item.' + thisTabItem).addClass('active');
+    });
+});

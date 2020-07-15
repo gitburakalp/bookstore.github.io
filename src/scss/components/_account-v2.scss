@@ -1,0 +1,96 @@
+.account {
+  &-menu {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      position: relative;
+      min-height: 1px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &-item {
+      font-family: $ff-sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.025rem;
+
+      &.active {
+        > * {
+          color: $colors--main-green !important;
+        }
+      }
+
+      + * {
+        margin-top: 1.6rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba($colors--warm-grey, 0.25);
+      }
+    }
+
+    &-link {
+      position: relative;
+      display: block;
+      color: $colors--warm-grey;
+      cursor: pointer;
+      transition: color $duration * 2;
+
+      &:after {
+        content: '\f054';
+        position: absolute;
+        right: 0;
+        font-family: $font-awesome;
+        font-weight: 300;
+      }
+
+      &:hover {
+        color: $colors--main-green !important;
+      }
+    }
+
+    &-title {
+      font-family: $ff-sans-serif;
+      font-size: 2.4rem;
+      font-weight: 500;
+
+      padding-bottom: 3rem;
+    }
+  }
+
+  &-tabs {
+    position: relative;
+
+    &-item {
+      transition: opacity $duration * 2;
+
+      &:not(.active) {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        max-height: 0px;
+      }
+
+      &.active {
+        min-height: 50vh;
+      }
+    }
+
+    .form-control {
+      font-size: 1.4rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      height: auto;
+    }
+
+    &-title {
+      position: relative;
+
+      font-family: $ff-sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+}

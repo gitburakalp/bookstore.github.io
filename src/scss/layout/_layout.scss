@@ -46,7 +46,7 @@ body {
       padding-left: $margin;
       padding-right: $margin;
 
-      .row {
+      .row:not(.normal-row) {
         margin-left: $margin * -1;
         margin-right: $margin * -1;
 
