@@ -2,6 +2,7 @@ var slideSpaceMobile = 8;
 var slideSpaceTablet = 10;
 var slideSpaceDesktop = 18;
 var ww = $(window).outerWidth();
+let root = document.documentElement;
 
 var bgColorList = [];
 
@@ -72,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
       slideActiveClass: slideCssClass + '--active',
       slideNextClass: slideCssClass + '--next',
       slidePrevClass: slideCssClass + '--prev',
-
       breakpoints: {
         768: {
           slidesPerView: 1,
@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
       slideActiveClass: slideCssClass + '--active',
       slideNextClass: slideCssClass + '--next',
       slidePrevClass: slideCssClass + '--prev',
+      autoplay: { delay: 5000 },
+
       pagination: {
         el: '.cards-slider--standart .cards-pagination',
         type: 'bullets',
@@ -145,6 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
       slidePrevClass: slideCssClass + '--prev',
       breakpoints: {
         768: {
+          slidesPerView: hasPerviewProp ? slidesPerviewMD : 2,
+          centeredSlides: false,
+          loop: true,
+          spaceBetween: slideSpaceTablet,
+          navigation: {
+            prevEl: $this.parent().find('.slider-controls--prev'),
+            nextEl: $this.parent().find('.slider-controls--next'),
+          },
+        },
+        1280: {
           slidesPerView: hasPerviewProp ? slidesPerviewMD : 4,
           centeredSlides: false,
           loop: true,
@@ -168,6 +180,19 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     var cardsSlider = new Swiper($this, config);
+
+    var t = 0; // the height of the highest element (after the function runs)
+    var t_elem; // the highest element (after the function runs)
+
+    $this.find('.cards-slide').each(function () {
+      $this = $(this);
+      if ($this.outerHeight() > t) {
+        t_elem = this;
+        t = $this.outerHeight();
+      }
+    });
+
+    root.style.setProperty('--mh', t + 'px');
   });
 
   $('.cards.standart').each(function () {
@@ -299,7 +324,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var cardsSlider = new Swiper($this, config);
   });
 
-  let root = document.documentElement;
   root.style.setProperty('--book-row-count', 10);
   root.style.setProperty('--header-height', $('header').height() + 'px');
 
@@ -328,14 +352,11 @@ document.addEventListener('DOMContentLoaded', function () {
     $('html,body').removeClass('overflow-hidden');
   });
 
-  $('.btn--filter').on('click', function () {
-    ww = $(window).outerWidth();
+  $('.btn--filter').on('click', function (e) {
+    $(this).closest('.search-block').toggleClass('shown-filter');
+    isFilter = !isFilter;
 
-    if (ww < 768) {
-      $('.search-block').hasClass('is-shown') ? $(this).siblings().toggleClass('is-shown') : '';
-    } else {
-      $(this).siblings().toggleClass('is-shown');
-    }
+    $('.ui-autocomplete > *').length != 0 ? $('ul.ui-autocomplete, .ui-widget-content').filter(':hidden').show() : $('#inpSearchBook').focus();
   });
 
   $('#btnFilterAccept').on('click', function (e) {

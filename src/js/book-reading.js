@@ -28,6 +28,8 @@ var noteHighlights = [];
 
 // Text selecting functions
 
+pageNumber = pageNumber - 1;
+
 function getPageOfBook(pageNumber, bookID) {
   var url = 'http://api.semendel.com/api/list/bookpage?bookId=' + bookID + '&page=' + pageNumber;
   var $bookContent = $('.book-content');
@@ -41,6 +43,12 @@ function getPageOfBook(pageNumber, bookID) {
 
       $bookContent.empty();
 
+      console.log(data);
+
+      data = data.sort(function (a, b) {
+        return a.page < b.page ? -1 : 0;
+      });
+
       data.forEach(function (e, idx) {
         if (idx == 0) {
           $bookContent.append("<div class='row heading'><div class='col-12 text-center'><span>" + e.bookName + '</span></div></div>');
@@ -50,9 +58,9 @@ function getPageOfBook(pageNumber, bookID) {
           $bookContent.append(e.pageContent);
         } else {
           if (idx == 0) {
-            $bookContent.append("<div class='row'><div class='col-12 col-xl-6'>" + e.pageContent + '</div></div>');
+            $bookContent.append("<div class='row'><div class='col-12 col-lg-6'>" + e.pageContent + '</div></div>');
           } else {
-            $('.book-content > .row:not(.heading) > .col-12').after("<div class='col-12 col-xl-6'>" + e.pageContent + '</div>');
+            $('.book-content > .row:not(.heading) > .col-12').after("<div class='col-12 col-lg-6'>" + e.pageContent + '</div>');
           }
         }
       });
@@ -119,6 +127,8 @@ function reportSelection() {
   if (selectedText != '') {
     startIndex = selOffsets.start;
     lastIndex = selOffsets.end;
+
+    console.log(startIndex, lastIndex);
   }
 }
 
@@ -493,6 +503,7 @@ $('.book-read-top-menu [class*=btn--]').on('click', function (e) {
 
   $('.popovers').removeClass('is-shown');
   $(this).siblings().toggleClass('is-shown');
+  $('[data-item-type="fihrist"]').trigger('click');
 });
 
 $('#selectFontFamily').change(function () {

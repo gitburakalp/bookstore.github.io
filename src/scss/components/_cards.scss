@@ -6,14 +6,10 @@
     .cards {
       border-radius: 1rem;
 
-      .title {
-        text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        word-break: break-all;
-        word-wrap: break-word;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: var(--mh);
     }
   }
 

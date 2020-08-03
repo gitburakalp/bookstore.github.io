@@ -2,8 +2,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: vw(150, 375);
 
-  max-width: 200px;
+  @include media-breakpoint-up(md) {
+    max-width: 200px;
+  }
 
   @include media-breakpoint-up(xl) {
     max-width: 8vw;

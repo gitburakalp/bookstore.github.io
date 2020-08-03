@@ -732,8 +732,11 @@ var type = 3;
 var filterbox =
   '<div class="filter-box"><div class="row"><div class="col-12"><h3 class="title font-size-lg">Filtreler</h3><span class="d-block font-size-xs">Göre Sırala</span></div></div><div class="row"><div class="col-12"></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpAllBooks" name="filter" type="radio"><label for="inpAllBooks">Tüm içeriklerde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpOnlyBookContent" name="filter" type="radio"><label for="inpOnlyBookContent">Sadece kitap isimlerinde ara</label></div></div></div><div class="row mt-3"><div class="col-12"><div class="custom-inputs--radio"><input id="inpSomeOpt" name="filter" type="radio"><label for="inpSomeOpt">Sadece içeriklerde ara</label></div></div></div></div>';
 
+var isFilter = false;
+
 $('#inpSearchBook').each(function () {
   var $this = $(this);
+  var thisVal = '';
 
   $.ui.autocomplete.prototype._renderItem = function (ul, item) {
     var startElem = null;
@@ -795,6 +798,8 @@ $('#inpSearchBook').each(function () {
           },
         ];
 
+        thisVal = request.term;
+
         $.ajax({
           url: 'http://api.semendel.com/api/ApiSearch/Suggest',
           dataType: 'json',
@@ -803,18 +808,6 @@ $('#inpSearchBook').each(function () {
             type: type,
           },
           success: function (x) {
-            //response($.map(x, function (item) {
-            //    return {
-
-            //        //uri: item.uri,
-            //        label: previousKeyword + " " + item.name,
-            //        value: previousKeyword + " " + item.name,
-            //        name: previousKeyword + " " + item.name,
-            //        link: item.link,
-            //        id: item.id
-            //    };
-            //}));
-
             x.forEach(function (e) {
               data.push(e);
             });
@@ -823,7 +816,18 @@ $('#inpSearchBook').each(function () {
         });
       },
       select: function (event, ui) {
-        window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
+        var itemName = ui.item.name;
+
+        if (itemName == 'heading') {
+          $('ul.ui-autocomplete, .ui-widget-content').filter(':hidden').show();
+
+          console.log(thisVal);
+
+          $('#inpSearchBook').val(thisVal);
+          return false;
+        } else {
+          window.location.href = ui.item.link === '' ? '/arama/' + ui.item.name : ui.item.link;
+        }
       },
     })
     .bind('keydown', function (event) {
@@ -832,6 +836,7 @@ $('#inpSearchBook').each(function () {
       }
     });
 });
+
 $('#inpSearch').each(function () {
   var $this = $(this);
   var data = [];

@@ -1,5 +1,7 @@
 .ui {
   &-autocomplete {
+    user-select: none;
+
     &.ui-widget {
       z-index: 1000;
       border: none;
@@ -49,6 +51,8 @@
       opacity: 1 !important;
       pointer-events: visible;
 
+      transition: opacity 350ms ease;
+
       + * {
         margin-top: 1rem;
         padding-top: 1rem !important;
@@ -79,6 +83,21 @@
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba($colors--black, 0.35);
+      }
+    }
+  }
+}
+
+.search-block {
+  &:not(.shown-filter) {
+    li[heading] {
+      display: none;
+      opacity: 0;
+
+      + * {
+        padding-top: 0;
+        margin-top: 0;
+        border: none;
       }
     }
   }
