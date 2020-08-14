@@ -1,0 +1,61 @@
+.tooltip {
+  font-size: 1.4rem;
+
+  &-inner {
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+  }
+}
+
+.border {
+  &-transparent {
+    border-color: transparent !important;
+  }
+}
+
+[data-toggle='modal'] {
+  cursor: pointer;
+}
+
+.modal {
+  .fal.fa-times-circle {
+    font-size: 2.5rem;
+  }
+}
+
+#dynamicModal {
+  .modal {
+    &-header {
+      border-bottom: none;
+      justify-content: center;
+
+      button {
+        position: absolute;
+        margin: 0;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    &-title {
+      font-size: 1.6rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 2.4rem;
+      }
+    }
+
+    &-body {
+      font-size: 1.4rem;
+      line-height: 1.47;
+      letter-spacing: 0.25px;
+      color: rgba($colors--black, 0.85);
+    }
+
+    &-content {
+      border: none;
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+  }
+}

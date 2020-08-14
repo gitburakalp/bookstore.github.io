@@ -34,7 +34,7 @@ $mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
     &-white {
       @extend .slider-controls--prev;
 
-      color: $colors--white;
+      // color: $colors--white;
       text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
     }
   }
@@ -47,7 +47,7 @@ $mw: calc(100% - ((1.9rem + 3.7rem + 2.6rem) * 2));
     &-white {
       @extend .slider-controls--next;
 
-      color: $colors--white;
+      // color: $colors--white;
       text-shadow: 1px 1px 2px rgba($colors--black-two, 0.35);
     }
   }

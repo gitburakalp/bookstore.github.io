@@ -6,7 +6,42 @@ let root = document.documentElement;
 
 var bgColorList = [];
 
+var dynamicModalHtml = `<div id="dynamicModal" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" data-modal-title></h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fal fa-times-circle"></i></button></div><div class="modal-body" data-modal-body></div></div></div></div>`;
+
 document.addEventListener('DOMContentLoaded', function () {
+  $('[href*="#"]').click(function (event) {
+    event.preventDefault();
+  });
+
+  $('.books-title > .description').each(function () {
+    var $el = $(this).closest('a');
+    $el.attr('data-toogle', 'tooltip');
+    $el.attr('title', $(this).text().trim());
+
+    $el.tooltip();
+  });
+
+  $('.summary').each(function () {
+    $('body').append(dynamicModalHtml);
+
+    $(this)
+      .find('.summary-products')
+      .each(function () {
+        $(this).attr('data-toggle', 'modal');
+        $(this).attr('data-target', '#dynamicModal');
+      });
+
+    $('#dynamicModal').on('shown.bs.modal', function (e) {
+      var $relatedTarget = $(e.relatedTarget);
+
+      var bookTitle = $relatedTarget.data('book-title');
+      var bookDescription = $relatedTarget.data('book-description');
+
+      $('#dynamicModal [data-modal-title]').text(bookTitle);
+      $('#dynamicModal [data-modal-body]').text(bookDescription);
+    });
+  });
+
   $(document.styleSheets[0].rules).each(function (idx, e) {
     if (e.selectorText != undefined ? e.selectorText.includes('bg--') : '') {
       bgColorList.push(e.selectorText.replace('.', ''));
