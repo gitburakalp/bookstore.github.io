@@ -37,6 +37,12 @@
     padding: 3.4rem 2.7rem;
     border-radius: 10px;
 
+    @include media-breakpoint-up(md) {
+      + * {
+        margin-top: 1.4rem;
+      }
+    }
+
     .title {
       font-size: 1.8rem;
     }

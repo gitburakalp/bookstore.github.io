@@ -54,17 +54,15 @@
     min-height: 189px;
 
     @include media-breakpoint-up(md) {
-      min-height: 450px;
       flex-direction: column;
       justify-content: center;
       background-color: #eef4e7 !important;
       background-repeat: no-repeat !important;
       background-size: cover !important;
       background-position: center !important;
-    }
 
-    @include media-breakpoint-up(lg) {
-      min-height: 480px;
+      padding: 0;
+      padding-bottom: 600 / 1920 * 100%;
     }
 
     .mobile-block {

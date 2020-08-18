@@ -9,14 +9,12 @@ var bgColorList = [];
 var dynamicModalHtml = `<div id="dynamicModal" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" data-modal-title></h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fal fa-times-circle"></i></button></div><div class="modal-body" data-modal-body></div></div></div></div>`;
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log(window.location.pathname.replace('/', '').replace('.html', ''));
-
   var isBookstorePage = window.location.pathname.replace('/', '').replace('.html', '') == 'kitaplik';
   var hasCategoryList = false;
 
   if (isBookstorePage) {
     $(window).outerWidth() < 768 ? $('.main-section > .row:nth-child(1)').addClass('_title-block') : '';
-    $('.main-section > .row').append('<div class="col-12" data-prop="category-col"><div class="ct-sc"><ul class="category-list ct-sw"></ul></div></div>');
+    $('.main-section > .row').append('<div class="col-12" data-prop="category-col"><div class="ct-sc"><h3 class="ct-sc__title mt-4">Kategoriler</h3><ul class="category-list ct-sw"></ul></div></div>');
 
     $('.main-section > .title-block').each(function (idx, e) {
       var ctID = `ct-item-${idx}`;
@@ -68,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         $('[id*=ct-item-]').each(function () {
-          var top = $(this).offset().top - 250,
+          var offsetAmount = cur_ow < 768 ? -200 : -250;
+
+          var top = $(this).offset().top + offsetAmount,
             bottom = top + $(this).outerHeight();
 
           if (cur_pos >= top && cur_pos <= bottom) {
