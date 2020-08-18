@@ -9,6 +9,95 @@ var bgColorList = [];
 var dynamicModalHtml = `<div id="dynamicModal" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" data-modal-title></h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fal fa-times-circle"></i></button></div><div class="modal-body" data-modal-body></div></div></div></div>`;
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log(window.location.pathname.replace('/', '').replace('.html', ''));
+
+  var isBookstorePage = window.location.pathname.replace('/', '').replace('.html', '') == 'kitaplik';
+  var hasCategoryList = false;
+
+  if (isBookstorePage) {
+    $(window).outerWidth() < 768 ? $('.main-section > .row:nth-child(1)').addClass('_title-block') : '';
+    $('.main-section > .row').append('<div class="col-12" data-prop="category-col"><div class="ct-sc"><ul class="category-list ct-sw"></ul></div></div>');
+
+    $('.main-section > .title-block').each(function (idx, e) {
+      var ctID = `ct-item-${idx}`;
+      var title = $(this).find('.title').text().trim();
+
+      $(this).next().attr('id', ctID);
+      $(this).next().attr('data-slide-index', idx);
+
+      $('[data-prop="category-col"] .category-list').append(`<li class="category-list-item ct-ss" data-show-category="ct-item-${idx}">${title}</li>`);
+    });
+
+    $('.category-list > li').length >= 1 ? (hasCategoryList = !hasCategoryList) : hasCategoryList;
+
+    if (hasCategoryList) {
+      $('.category-list > li:nth-child(1)').addClass('category-list-item--active');
+
+      $('[data-show-category]').on('click', function () {
+        var thisCt = $(this).data('show-category');
+        $('html,body').animate(
+          {
+            scrollTop: $(`[id=${thisCt}]`).offset().top - 200,
+          },
+          1000,
+        );
+      });
+
+      $(window).on('scroll', function () {
+        var cur_ow = $(window).outerWidth();
+        var $ctSC = $('.ct-sc');
+        var cur_pos = $(this).scrollTop();
+
+        var activeSmCss = 'active';
+
+        var activeCss = 'category-list-item--active';
+        var posFixCss = 'pos-fix';
+
+        if (cur_ow < 768) {
+          if (cur_pos > 500) {
+            $('._title-block').addClass(activeSmCss);
+          } else {
+            $('._title-block').removeClass(activeSmCss);
+          }
+        }
+
+        if (cur_pos >= 300) {
+          $ctSC.addClass(posFixCss);
+        } else {
+          $ctSC.removeClass(posFixCss);
+        }
+
+        $('[id*=ct-item-]').each(function () {
+          var top = $(this).offset().top - 250,
+            bottom = top + $(this).outerHeight();
+
+          if (cur_pos >= top && cur_pos <= bottom) {
+            $('[data-show-category]').removeClass(activeCss);
+            $(`[data-show-category=${$(this).attr('id')}]`).addClass(activeCss);
+
+            cur_ow < 768 ? $('.ct-sc')[0].swiper.slideTo($(this).data('slide-index')) : '';
+          }
+        });
+      });
+
+      if ($(window).outerWidth() < 768) {
+        var categoryListSlider = new Swiper('.ct-sc', {
+          slidesPerView: 'auto',
+          spaceBetween: 16,
+          centeredSlides: true,
+          allowTouchMove: false,
+          centeredSlidesBounds: true,
+          containerModifierClass: 'ct-sc--',
+          wrapperClass: 'ct-sw',
+          slideClass: 'ct-ss',
+          slideActiveClass: 'ct-ss--active',
+          slideNextClass: 'ct-ss--next',
+          slidePrevClass: 'ct-ss--prev',
+        });
+      }
+    }
+  }
+
   $('[href*="#"]').click(function (event) {
     event.preventDefault();
   });
