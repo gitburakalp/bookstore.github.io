@@ -207,6 +207,7 @@
 
     &-logo {
       @include media-breakpoint-down(sm) {
+        width: 100%;
         max-width: 92px;
       }
 

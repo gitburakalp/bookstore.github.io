@@ -793,3 +793,16 @@ $('.fw-b-s').each(function () {
 
   var slider = new Swiper($(this), config);
 });
+
+$('.collapsed-row').each(function () {
+  $(this).on('click', function () {
+    var isShown = $(this).siblings().hasClass('is-shown');
+
+    if (isShown) {
+      $(this).siblings().removeClass('is-shown');
+    } else {
+      $('.collapsed-row + *').removeClass('is-shown');
+      $(this).siblings().toggleClass('is-shown');
+    }
+  });
+});

@@ -24,4 +24,13 @@
     background-color: $colors--main-green;
     box-shadow: -2px 2px 10px 0 rgba($colors--main-green, 0.05);
   }
+
+  &.red {
+    color: $colors--white !important;
+    background: lighten($colors--red, 20%);
+    padding: 5px !important;
+    border-radius: 3px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    font-weight: bold !important;
+  }
 }

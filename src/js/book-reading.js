@@ -75,6 +75,14 @@ function getPageOfBook(pageNumber, bookID) {
       document.addEventListener('mouseup', reportSelection, false);
 
       $('.book-content, .book-content *').bind('touchend', reportSelection);
+
+      var keyword = getParameterByName('keyword');
+
+      if (keyword != '' && keyword != null && keyword != undefined) {
+        $('.book-content').mark(keyword, {
+          className: 'red',
+        });
+      }
     });
 }
 

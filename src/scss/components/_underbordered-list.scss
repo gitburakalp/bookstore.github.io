@@ -53,6 +53,52 @@
 .underbordered-list {
   position: relative;
 
+  &.modified {
+    .book-img--min {
+      position: relative;
+      overflow: hidden;
+      max-width: 65px;
+      border-radius: 5px;
+
+      box-shadow: 0 0 4px 0 rgba($colors--black, 0.15);
+    }
+
+    li {
+      position: relative;
+
+      > .form-row {
+        margin-top: 0;
+      }
+
+      + li {
+        border-top: none;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          border-top: 1px solid rgba($colors--black, 0.3);
+        }
+      }
+    }
+  }
+
+  .collapsed-row {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .collapsed-contents {
+    &.is-shown {
+      margin-top: 0 !important;
+      margin-bottom: 1.5rem;
+    }
+  }
+
   + .underbordered-list {
     margin-top: 2rem;
   }
@@ -77,6 +123,46 @@
             .more {
               display: none;
             }
+          }
+        }
+      }
+    }
+  }
+
+  .collapsed-row {
+    position: relative;
+    margin-top: 1.5rem;
+    cursor: pointer;
+
+    &::after {
+      content: '\f107';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5px;
+      font-family: $font-awesome;
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
+    + * {
+      &:not(.is-shown) {
+        max-height: 0px;
+        overflow: hidden;
+      }
+
+      &.is-shown {
+        border-top: 1px solid rgba($colors--black, 0.35);
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      &.collapsed-contents {
+        .form-row {
+          + * {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba($colors--black, 0.15);
           }
         }
       }
