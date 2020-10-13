@@ -59,8 +59,8 @@ function getPageOfBook(pageNumber, bookID) {
       });
 
       data.forEach(function (e, idx) {
-        e.pageContent = e.pageContent.replace(/<(?!i|\/i|img|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, "");
-        e.pageContent = e.pageContent.replace(/<\s*([a-z][a-z0-9]*)\s.*?>/gi, '<p>');
+        e.pageContent = e.pageContent.replace(/<(?!img|edutooltip|\/edutooltip|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, "");
+        // e.pageContent = e.pageContent.replace(/<\s*([a-z][a-z0-9]*)\s.*?>/gi, '<p>');
 
         if (idx === 0) {
           $bookContent.append("<div class='row heading'><div class='col-12 text-center'><span>" + e.bookName + '</span></div></div>');
