@@ -86,6 +86,9 @@ function getPageOfBook(pageNumber, bookID) {
 
       changePageNumber(pageNumber);
 
+      $("edutooltip").addClass("d-inline-block");
+      $("edutooltip[title]").tooltip();
+
       document.addEventListener('mouseup', reportSelection, false);
 
       $('.book-content, .book-content *').bind('touchend', reportSelection);
