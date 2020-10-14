@@ -19,6 +19,7 @@ var selectedText = '';
 
 var staticVal = 6;
 var endCoords = {};
+var bookPageNumber = "";
 
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
@@ -59,7 +60,7 @@ function getPageOfBook(pageNumber, bookID) {
       });
 
       data.forEach(function (e, idx) {
-        e.pageContent = e.pageContent.replace(/<(?!img|edutooltip|\/edutooltip|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, "");
+        e.pageContent = e.pageContent.replace(/<(?!img|mark|\/mark|edutooltip|\/edutooltip|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, "");
         // e.pageContent = e.pageContent.replace(/<\s*([a-z][a-z0-9]*)\s.*?>/gi, '<p>');
 
         if (idx === 0) {
@@ -72,9 +73,9 @@ function getPageOfBook(pageNumber, bookID) {
           $bookContent.append(e.pageContent);
         } else {
           if (idx === 0) {
-            $bookContent.append("<div class='row'><div class='col-12 col-lg-6'><div class='font-weight-bold'>" + e.page + '</div>' + e.pageContent + '</div></div>');
+            $bookContent.append("<div class='row'><div class='col-12 col-lg-6'><div class='font-weight-bold book-page-number'>" + e.page + '</div>' + e.pageContent + '</div></div>');
           } else {
-            $('.book-content > .row:not(.heading) > .col-12').after("<div class='col-12 col-lg-6'><div class='font-weight-bold text-right'>" + e.page + '</div>' + e.pageContent + '</div>');
+            $('.book-content > .row:not(.heading) > .col-12').after("<div class='col-12 col-lg-6'><div class='font-weight-bold text-right book-page-number'>" + e.page + '</div>' + e.pageContent + '</div>');
           }
         }
       });
@@ -153,7 +154,7 @@ function reportSelection() {
 }
 
 function postToHighlight(note, color, startIdx, lastIdx) {
-  var url = baseUrl + '/api/identity/addusernote?bookId=' + bookID + '&page=' + pageNumber + '&note=' + note + '&color=' + color + '&startIndex=' + startIdx + '&lastIndex=' + lastIdx;
+  var url = baseUrl + '/api/identity/addusernote?bookId=' + bookID + '&page=' + bookPageNumber + '&note=' + note + '&color=' + color + '&startIndex=' + startIdx + '&lastIndex=' + lastIdx;
 
   fetch(url, {
     headers: {
@@ -176,6 +177,9 @@ function initBookContentMenus() {
   var obj = null;
 
   $('.book-content, .book-content *').on(mouseupEvent, function (e) {
+
+    bookPageNumber = $(e.target).closest(".col-lg-6").find(".book-page-number").text().trim();
+
     var $popoversSm = $('.popovers--sm');
     var pageX = ww > 768 ? e.pageX - 100 : e.pageX / 1.875;
     var pageY = ww > 768 ? e.pageY + 10 : e.pageY;
@@ -202,6 +206,7 @@ function initBookContentMenus() {
   $('[class*=color-pick--]').on('click', function (e) {
     e.preventDefault();
     var thisColor = $(this).data('color');
+    var thisPageNumber = $(this).closest("");
 
     postToHighlight(obj.text, thisColor, startIndex, lastIndex);
 
