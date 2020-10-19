@@ -19,7 +19,7 @@ var selectedText = '';
 
 var staticVal = 6;
 var endCoords = {};
-var bookPageNumber = "";
+var bookPageNumber = '';
 
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
@@ -60,13 +60,11 @@ function getPageOfBook(pageNumber, bookID) {
       });
 
       data.forEach(function (e, idx) {
-        e.pageContent = e.pageContent.replace(/<(?!img|b|\/b|mark|\/mark|edutooltip|\/edutooltip|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, "");
-
+        e.pageContent = e.pageContent.replace(/<(?!img|b|\/b|mark|\/mark|edutooltip|\/edutooltip|a|\/a|table|\/table|tr|\/tr|td|\/td|p|\/p\s*\/?)[^>]+>/g, '');
 
         if (idx === 0) {
           $bookContent.append("<div class='row heading'><div class='col-12 text-center'><span>" + e.bookName + '</span></div></div>');
         }
-
 
         if (ww < 1279.99) {
           $bookContent.append("<div class='font-weight-bold'>" + e.page + '</div>');
@@ -86,8 +84,8 @@ function getPageOfBook(pageNumber, bookID) {
 
       changePageNumber(pageNumber);
 
-      $("edutooltip").addClass("d-inline-block");
-      $("edutooltip[title]").tooltip();
+      $('edutooltip').addClass('d-inline-block');
+      $('edutooltip[title]').tooltip();
 
       document.addEventListener('mouseup', reportSelection, false);
 
@@ -180,8 +178,7 @@ function initBookContentMenus() {
   var obj = null;
 
   $('.book-content, .book-content *').on(mouseupEvent, function (e) {
-
-    bookPageNumber = $(e.target).closest(".col-lg-6").find(".book-page-number").text().trim();
+    bookPageNumber = $(e.target).closest('.col-lg-6').find('.book-page-number').text().trim();
 
     var $popoversSm = $('.popovers--sm');
     var pageX = ww > 768 ? e.pageX - 100 : e.pageX / 1.875;
@@ -209,7 +206,7 @@ function initBookContentMenus() {
   $('[class*=color-pick--]').on('click', function (e) {
     e.preventDefault();
     var thisColor = $(this).data('color');
-    var thisPageNumber = $(this).closest("");
+    var thisPageNumber = $(this).closest('');
 
     postToHighlight(obj.text, thisColor, startIndex, lastIndex);
 
@@ -432,11 +429,11 @@ $(window).on('resize oriantedChange', function () {
 $('body').hasClass('mode--reading') ? $('.main-section').parent().attr('class', 'col-12') : '';
 
 $('body').click(function (e) {
-  console.log(1);
-  var isFontPropsPopover = !$(e.target).closest('[class*=btn--]').siblings().closest('.popovers').length && !$(e.target).closest('.popovers').hasClass('is-shown');
-  var isCustomizePopover = !$(e.target).closest('body').find('.popovers--sm.is-shown').length;
+  var $target = $(e.target);
+  var isPopover = $target.closest('.popovers').length != 0;
+  var isPopoverTrigger = $target.closest('[class*=btn--]').length != 0;
 
-  if (isFontPropsPopover) {
+  if (!isPopoverTrigger && !isPopover) {
     $('.popovers').removeClass('is-shown');
   }
 });
@@ -526,8 +523,6 @@ $('.book-content').bind('touchmove', function (event) {
 // });
 
 $('.book-read-top-menu [class*=btn--]').on('click', function (e) {
-  e.preventDefault();
-
   function getPos(el) {
     // yay readability
     for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
@@ -538,8 +533,9 @@ $('.book-read-top-menu [class*=btn--]').on('click', function (e) {
   var wwouterWidth = $(window).outerWidth();
 
   $('.popovers').removeClass('is-shown');
-  $(this).siblings().toggleClass('is-shown');
-  $('[data-item-type="fihrist"]').trigger('click');
+  $(this).siblings().addClass('is-shown');
+
+  if ($(this).hasClass('btn--hambuger')) $('[data-item-type="fihrist"]').trigger('click');
 });
 
 $('#selectFontFamily').change(function () {
