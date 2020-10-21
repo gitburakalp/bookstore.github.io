@@ -84,12 +84,17 @@ function getPageOfBook(pageNumber, bookID) {
 
       changePageNumber(pageNumber);
 
-      $('edutooltip').addClass('d-inline-block');
-      $('edutooltip[title]').tooltip();
+      $('edutooltip').each(function () {
+        var $this = $(this);
+        var val = $this.text().match(/\[(.*?)\]/)[0];
+        var title = $this.attr('title');
+        var convertedValue = $this.text().replace(/\[(.*?)\]/, `<span class='tooltip-container' title="${title}" style="position:relative;display:inline;cursor:pointer">${val}</span>`);
 
-      document.addEventListener('mouseup', reportSelection, false);
+        $this.addClass('d-inline-block');
+        $this.html(convertedValue);
+      });
 
-      $('.book-content, .book-content *').bind('touchend', reportSelection);
+      $('body').tooltip({ placement: 'bottom', selector: 'edutooltip[title] .tooltip-container' });
 
       var keyword = getParameterByName('keyword');
       if (keyword !== '' && keyword !== null && keyword !== undefined) {
